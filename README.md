@@ -34,8 +34,8 @@ int main()
 
 ### Assertions
 
-Bandit uses a constraint based assertion model that is heavily inspired by the
-model used in [NUnit](http://nunit.org/). An assertion in Bandit is written 
+Snowhouse uses a constraint based assertion model that is heavily inspired by the
+model used in [NUnit](http://nunit.org/). An assertion in Snowhouse is written 
 using the following format:
 
 ```cpp
@@ -113,7 +113,7 @@ AssertThat(x, Is().LessThan(3));
 
 ### String Constraints
 
-String assertions in Bandit are used to verify the values of STL strings (std::string).
+String assertions in Snowhouse are used to verify the values of STL strings (std::string).
 
 ####Equality Constraints
 
@@ -164,7 +164,7 @@ AssertThat(actual_str, Is().OfLength(5));
 
 If you have a string that contains multiple lines, you can use the collection constraints to make assertions on the content of that string. This may be handy if you have a string that, for instance, represents the resulting content of a file or a network transmission.
 
-Bandit can handle both windows (CR+LF) and unix (LF) line endings
+Snowhouse can handle both windows (CR+LF) and unix (LF) line endings
 
 ```cpp
 std::string lines = "First line\r\nSecond line\r\nThird line"; 
@@ -302,7 +302,7 @@ The LastException<> is available in the scope of the call to AssertThrows. An ex
 
 ###Custom Constraints
 
-You can add your own constraints to Bandit to create more expressive specifications.
+You can add your own constraints to Snowhouse to create more expressive specifications.
 
 ####Fulfills Constraints
 
@@ -326,7 +326,7 @@ std::ostream& operator<<(std::ostream& stm, const IsEvenNumber& )
 }
 ```
 
-You can create the following constraints in Bandit:
+You can create the following constraints in Snowhouse:
 
 ```cpp
 AssertThat(42, Fulfills(IsEvenNumber()));
