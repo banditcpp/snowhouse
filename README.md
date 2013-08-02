@@ -16,7 +16,7 @@ using namespace snowhouse;
 int main()
 {
   std::cout << "Testing that 23 is 23" << std::endl;
-  Assert::That(23, Is().EqualTo(23));
+  AssertThat(23, Is().EqualTo(23));
 
   try
   {
@@ -39,7 +39,7 @@ model used in [NUnit](http://nunit.org/). An assertion in Bandit is written
 using the following format:
 
 ```cpp
-Assert::That(actual_value, <constraint expression>);
+AssertThat(actual_value, <constraint expression>);
 ```
 
 where &lt;constraint expression&gt; is an expression that actual_value is evaluated against when the test is executed.
@@ -53,7 +53,7 @@ With composite expressions, you can create compact, powerful expressions that co
 Example:
 
 ```cpp
-Assert::That(length, IsGreaterThan(4) && !Equals(10));
+AssertThat(length, IsGreaterThan(4) && !Equals(10));
 ```
 
 Composite expressions can be any combination of constraints and the standard logical C++ operators.
@@ -69,7 +69,7 @@ Fluent expressions also has the ability to make assertions on the elements in a 
 Example:
 
 ```cpp
-Assert::That(length, Is().GreaterThan(4).And().Not().EqualTo(10));
+AssertThat(length, Is().GreaterThan(4).And().Not().EqualTo(10));
 ```
 
 ### Basic Constraints
@@ -79,8 +79,8 @@ Assert::That(length, Is().GreaterThan(4).And().Not().EqualTo(10));
 Used to verify equality between actual and expected.
 
 ```cpp
-Assert::That(x, Equals(12));
-Assert::That(x, Is().EqualTo(12));
+AssertThat(x, Equals(12));
+AssertThat(x, Is().EqualTo(12));
 ```
 
 ####EqualityWithDelta Constraint
@@ -88,8 +88,8 @@ Assert::That(x, Is().EqualTo(12));
 Used to verify equality between actual and expected, allowing the two to differ by a delta.
 
 ```cpp
-Assert::That(2.49, EqualsWithDelta(2.5, 0.1));
-Assert::That(2.49, Is().EqualToWithDelta(2.5, 0.1));
+AssertThat(2.49, EqualsWithDelta(2.5, 0.1));
+AssertThat(2.49, Is().EqualToWithDelta(2.5, 0.1));
 ```
 
 ####GreaterThan Constraint
@@ -97,8 +97,8 @@ Assert::That(2.49, Is().EqualToWithDelta(2.5, 0.1));
 Used to verify that actual is greater than a value.
 
 ```cpp
-Assert::That(x, IsGreaterThan(4));
-Assert::That(x, Is().GreaterThan(4));
+AssertThat(x, IsGreaterThan(4));
+AssertThat(x, Is().GreaterThan(4));
 ```
 
 
@@ -107,8 +107,8 @@ Assert::That(x, Is().GreaterThan(4));
 Used to verify that actual is less than a value.
 
 ```cpp
-Assert::That(x, IsLessThan(3));
-Assert::That(x, Is().LessThan(3));
+AssertThat(x, IsLessThan(3));
+AssertThat(x, Is().LessThan(3));
 ```
 
 ### String Constraints
@@ -121,7 +121,7 @@ Used to verify that actual is equal to an expected value.
 
 ```cpp
 Assert:That(actual_str, Equals("foo")); 
-Assert::That(actual_str, Is().EqualTo("foo"));
+AssertThat(actual_str, Is().EqualTo("foo"));
 ```
 
 ####Contains Constraint
@@ -129,8 +129,8 @@ Assert::That(actual_str, Is().EqualTo("foo"));
 Used to verify that a string contains a substring.
 
 ```cpp
-Assert::That(actual_str, Contains("foo")); 
-Assert::That(actual_str, Is().Containing("foo"));
+AssertThat(actual_str, Contains("foo")); 
+AssertThat(actual_str, Is().Containing("foo"));
 ```
 
 ####EndsWith Constraint
@@ -138,8 +138,8 @@ Assert::That(actual_str, Is().Containing("foo"));
 Used to verify that a string ends with an expected substring.
 
 ```cpp
-Assert::That(actual_str, EndsWith("foo"));
-Assert::That(actual_str, Is().EndingWith("foo"));
+AssertThat(actual_str, EndsWith("foo"));
+AssertThat(actual_str, Is().EndingWith("foo"));
 ```
 
 ####StartsWith Constraint
@@ -147,8 +147,8 @@ Assert::That(actual_str, Is().EndingWith("foo"));
 Used to verify that a string starts with an expected substring.
 
 ```cpp
-Assert::That(actual_str, StartsWith("foo"));
-Assert::That(actual_str, Is().StartingWith("foo"));
+AssertThat(actual_str, StartsWith("foo"));
+AssertThat(actual_str, Is().StartingWith("foo"));
 ```
 
 ####HasLength Constraint
@@ -156,8 +156,8 @@ Assert::That(actual_str, Is().StartingWith("foo"));
 Used to verify that a string is of the expected length.
 
 ```cpp
-Assert::That(actual_str, HasLength(5));
-Assert::That(actual_str, Is().OfLength(5));
+AssertThat(actual_str, HasLength(5));
+AssertThat(actual_str, Is().OfLength(5));
 ```
 
 ###Constraints on Multi Line Strings
@@ -168,7 +168,7 @@ Bandit can handle both windows (CR+LF) and unix (LF) line endings
 
 ```cpp
 std::string lines = "First line\r\nSecond line\r\nThird line"; 
-Assert::That(lines, Has().Exactly(1).StartingWith("Second"));
+AssertThat(lines, Has().Exactly(1).StartingWith("Second"));
 ```
 
 ###Container Constraints
@@ -180,8 +180,8 @@ The following constraints can be applied to containers in the standard template 
 Used to verify that a container contains an expected value.
 
 ```cpp
-Assert::That(container, Contains(12));
-Assert::That(container, Is().Containing(12));
+AssertThat(container, Contains(12));
+AssertThat(container, Is().Containing(12));
 ```
 
 ####HasLength Constraint
@@ -189,8 +189,8 @@ Assert::That(container, Is().Containing(12));
 Used to verify that a container has the expected length.
 
 ```cpp
-Assert::That(container, HasLength(3));
-Assert::That(container, Is().OfLength(3));
+AssertThat(container, HasLength(3));
+AssertThat(container, Is().OfLength(3));
 ```
 
 ####IsEmpty Constraint
@@ -198,8 +198,8 @@ Assert::That(container, Is().OfLength(3));
 Used to verify that a container is empty.
 
 ```cpp
-Assert::That(contatiner, IsEmpty());
-Assert::That(container, Is().Empty());
+AssertThat(contatiner, IsEmpty());
+AssertThat(container, Is().Empty());
 ```
 
 ####All
@@ -207,7 +207,7 @@ Assert::That(container, Is().Empty());
 Used to verify that all elements of a STL sequence container matches an expectation.
 
 ```cpp
-Assert::That(container, Has().All().LessThan(5).Or().EqualTo(66));
+AssertThat(container, Has().All().LessThan(5).Or().EqualTo(66));
 ```
 
 ####AtLeast
@@ -215,7 +215,7 @@ Assert::That(container, Has().All().LessThan(5).Or().EqualTo(66));
 Used to verify that at least a specified amount of elements in a STL sequence container matches an expectation.
 
 ```cpp
-Assert::That(container, Has().AtLeast(3).StartingWith("foo"));
+AssertThat(container, Has().AtLeast(3).StartingWith("foo"));
 ```
 
 ####AtMost
@@ -231,7 +231,7 @@ Assert:That(container, Has().AtMost(2).Not().Containing("failed"));
 Used to verify that a STL sequence container has exactly a specified amount of elements that matches an expectation.
 
 ```cpp
-Assert::That(container, Has().Exactly(3).GreaterThan(10).And().LessThan(20));
+AssertThat(container, Has().Exactly(3).GreaterThan(10).And().LessThan(20));
 ```
 
 ####EqualsContainer
@@ -239,8 +239,8 @@ Assert::That(container, Has().Exactly(3).GreaterThan(10).And().LessThan(20));
 Used to verify that two STL sequence containers are equal.
 
 ```cpp
-Assert::That(container1, EqualsContainer(container2));
-Assert::That(container1, Is().EqualToContainer(container2));
+AssertThat(container1, EqualsContainer(container2));
+AssertThat(container1, Is().EqualToContainer(container2));
 ```
 
 #####Predicate functions
@@ -255,7 +255,7 @@ static bool are_my_types_equal(const my_type& lhs, const my_type& rhs)
   return lhs.my_val_ == rhs.my_val_;
 }
 
-Assert::That(container1, EqualsContainer(container2, are_my_types_equal));
+AssertThat(container1, EqualsContainer(container2, are_my_types_equal));
 ```
 
 With a functor as predicate:
@@ -274,7 +274,7 @@ private:
     int delta_;
 };
 
-Assert::That(container1, Is().EqualToContainer(container1, within_delta(1));
+AssertThat(container1, Is().EqualToContainer(container1, within_delta(1));
 ```
 
 ###Exceptions
@@ -295,7 +295,7 @@ If AssertThrows succeeds, it will store the thrown exception so that you can mak
 
 ```cpp
 AssertThrows(std::logic_error, myObject.a_method(42));
-Assert::That(LastException<std::logic_error>().what(), Is().Containing("logic failure"));
+AssertThat(LastException<std::logic_error>().what(), Is().Containing("logic failure"));
 ```
 
 The LastException<> is available in the scope of the call to AssertThrows. An exception is not available between specs in order to avoid the result of one spec contaminating another.
@@ -329,8 +329,8 @@ std::ostream& operator<<(std::ostream& stm, const IsEvenNumber& )
 You can create the following constraints in Bandit:
 
 ```cpp
-Assert::That(42, Fulfills(IsEvenNumber()));
-Assert::That(42, Is().Fulfilling(IsEvenNumber()));
+AssertThat(42, Fulfills(IsEvenNumber()));
+AssertThat(42, Is().Fulfilling(IsEvenNumber()));
 ```
 
 Your custom matcher should implement a method called Matches() that takes a parameter of the type you expect and returns true if the passed parameter fulfills the constraint.
