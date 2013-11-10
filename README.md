@@ -336,3 +336,39 @@ AssertThat(42, Is().Fulfilling(IsEvenNumber()));
 Your custom matcher should implement a method called Matches() that takes a parameter of the type you expect and returns true if the passed parameter fulfills the constraint.
 
 To get more expressive failure messages, you should also implement the streaming operator as in the example above.
+
+##Getting better output for your types
+
+Whenever Snowhouse prints an error message for a type, it will use the stream operator for that type, otherwise it will print "[unsupported type]"
+as a placeholder.
+
+```cpp
+struct MyType { /*...*/ };
+
+AssertThat(myType, Fulfills(MyConstraint());
+```
+
+Will output the following if the constraint fails:
+
+```bash
+Expected: To fulfill my constraint
+Actual: [unsupported type]
+```
+
+If we add a stream operator:
+
+```cpp
+std::ostream& operator<<(std::ostream& stream, const MyType& a)
+{
+  stream << "MyType( x = " << a.x << " )";
+  return stream;
+}
+```
+
+the output will be a bit more readable:
+
+```bash
+Expected: To fullfill my constraint
+Actual: MyType( x = 23 )
+```
+
