@@ -106,6 +106,6 @@ void StringizeTests()
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 12\nActual: 12");
+    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 } 
