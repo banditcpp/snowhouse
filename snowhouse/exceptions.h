@@ -15,29 +15,62 @@ namespace snowhouse {
   class ExceptionStorage
   {
   public:
-    static std::auto_ptr<ExceptionType>& last_exception()
+    static void last_exception(ExceptionType*** e, bool clear=false)
     {
-      static std::auto_ptr<ExceptionType> last;
-      return last;
+      static ExceptionType* last = NULL;
+      if(clear && last)
+      {
+        delete last;
+        return;
+      }
+
+      *e = &last;
+      silly_warning_about_unused_arg(e);
+    }
+
+    static ExceptionType*** silly_warning_about_unused_arg(ExceptionType*** e)
+    {
+      return e;
+    }
+
+    static void store(const ExceptionType& e)
+    {
+      ExceptionType** last = NULL;
+      last_exception(&last);
+      if(*last)
+      {
+        delete *last;
+        *last = NULL;
+      }
+
+      *last = new ExceptionType(e);
     }
     
     void compiler_thinks_i_am_unused() {}
     
     ~ExceptionStorage()
     {
-      last_exception().reset(NULL);
+      ExceptionType** e = NULL;
+      last_exception(&e);
+      if(*e)
+      {
+        delete *e;
+        *e = NULL;
+      }
     }
   };
     
   template <typename ExceptionType>
   inline ExceptionType& LastException()
   {
-    if(ExceptionStorage<ExceptionType>::last_exception().get() == NULL)
+    ExceptionType** e = NULL;
+    ExceptionStorage<ExceptionType>::last_exception(&e);
+    if(*e == NULL)
     {
       Assert::Failure("No exception was stored");
     }
     
-    return *(ExceptionStorage<ExceptionType>::last_exception().get());
+    return **e;
   }  
 }
 
@@ -56,7 +89,7 @@ ExceptionStorage<EXCEPTION_TYPE> IGLOO_CONCAT(IGLOO_storage_, __LINE__); IGLOO_C
   } \
   catch (const EXCEPTION_TYPE& e) \
   { \
-    ExceptionStorage<EXCEPTION_TYPE>::last_exception() = std::auto_ptr<EXCEPTION_TYPE>(new EXCEPTION_TYPE(e)); \
+    ExceptionStorage<EXCEPTION_TYPE>::store(e); \
   } \
   catch(...) \
   { \
