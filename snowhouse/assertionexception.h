@@ -19,9 +19,11 @@ namespace snowhouse {
         : m_message(message), m_fileName(fileName), m_line(line)
       {}
 
-      virtual ~AssertionException() throw()
-      {
-      }
+      AssertionException(const AssertionException&) = default;
+      //   : m_message(ae.m_message), m_fileName(ae.m_fileName), m_line(ae.m_line)
+      // {}
+
+      virtual ~AssertionException() noexcept {}
 
       std::string GetMessage() const
       {

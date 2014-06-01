@@ -43,9 +43,6 @@ namespace snowhouse {
 
     const ExpectedType expected_;
     const BinaryPredicate predicate_;
-
-  private:
-	  EqualsContainerConstraint& operator=(const EqualsContainerConstraint&) { return *this; }
   };
 
   template< typename ExpectedType>
