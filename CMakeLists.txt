@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.8)
 
 project(snowhouse)
 
@@ -8,7 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 set(CMAKE_CXX_FLAGS "-Wfatal-errors -Wall -W -Wdeprecated -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
 
-if(${cfg} STREQUAL "C++11") 
+if(${cfg} STREQUAL "C++11")
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.7")
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
