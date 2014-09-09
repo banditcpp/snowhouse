@@ -9,7 +9,7 @@ function build_for {
   # BUILD_DIR=build-$CC-CXX
   # mkdir $BUILD_DIR
   # pushd $BUILD_DIR
-  # CC=$CC CXX=$CXX cmake -Dcfg=C++ ../..
+  # CC=$CC CXX=$CXX cmake ../..
   # make
   # STATUS="$STATUS\n$BUILD_DIR - Status: $?"
   # popd
@@ -17,7 +17,7 @@ function build_for {
   BUILD_DIR=build-$CC-CXX11
   mkdir $BUILD_DIR
   pushd $BUILD_DIR
-  CC=$CC CXX=$CXX cmake -Dcfg=C++11 ../..
+  CC=$CC CXX=$CXX cmake -DSNOWHOUSE_IS_CPP11=ON ../..
   make
   STATUS="$STATUS\n$BUILD_DIR - Status: $?"
   popd
