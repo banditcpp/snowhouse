@@ -4,7 +4,7 @@ project(snowhouse)
 
 option(SNOWHOUSE_BUILD_TESTS    "Build the Snowhouse tests"                 ON)
 option(SNOWHOUSE_RUN_TESTS      "Run the Snowhouse tests"                   ON)
-option(SNOWHOUSE_IS_CPP11       "Whether to build this as a C++11 project"  ON)
+option(SNOWHOUSE_IS_CPP11       "Whether to build this as a C++11 project"  OFF)
 
 include_directories("${PROJECT_SOURCE_DIR}")
 
