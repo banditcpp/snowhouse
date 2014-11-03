@@ -6,6 +6,8 @@ include_directories("${PROJECT_SOURCE_DIR}")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
+IF(NOT MSVC)
+
 set(CMAKE_CXX_FLAGS "-Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
 
 if(${cfg} STREQUAL "C++11") 
@@ -25,6 +27,7 @@ if(${cfg} STREQUAL "C++11")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
   endif()
 endif()
+ENDIF()
 
 message(${CMAKE_CXX_FLAGS})
 
