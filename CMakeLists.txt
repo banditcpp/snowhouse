@@ -38,3 +38,7 @@ add_custom_command(TARGET snowhouse-tests
                    POST_BUILD
                    COMMAND snowhouse-tests
                    WORKING_DIRECTORY ./bin)
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/snowhouse
+        DESTINATION include
+        FILES_MATCHING PATTERN "*.h")
