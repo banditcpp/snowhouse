@@ -3,6 +3,11 @@
 
 #define SNOWHOUSE_VERSION "1.0.2"
 
+#ifdef _MSC_VER
+// Visual Studio (including 2013) does not support the noexcept keyword
+#define noexcept
+#endif
+
 #include <iostream>
 #include <map>
 #include <vector>
