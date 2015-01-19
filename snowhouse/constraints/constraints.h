@@ -12,6 +12,7 @@
 #include "equalsconstraint.h"
 #include "haslengthconstraint.h"
 #include "isgreaterthanconstraint.h"
+#include "isgreaterthanorequaltoconstraint.h"
 #include "islessthanconstraint.h"
 #include "startswithconstraint.h"
 #include "fulfillsconstraint.h"
