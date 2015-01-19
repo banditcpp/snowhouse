@@ -121,6 +121,18 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     } 
     
+	template <typename ExpectedType>
+	ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<IsLessThanOrEqualToConstraint<ExpectedType> >, Nil> >::t>
+		LessThanOrEqualTo(const ExpectedType& expected)
+	{
+		typedef ConstraintAdapter<IsLessThanOrEqualToConstraint<ExpectedType> > ConstraintAdapterType;
+
+		typedef ExpressionBuilder< typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapterType, Nil> >::t > BuilderType;
+		ConstraintAdapterType constraint(expected);
+		ConstraintList<ConstraintAdapterType, Nil> node(constraint, Nil());
+		return BuilderType(Concatenate(m_constraint_list, node));
+	}
+
     template <typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<ContainsConstraint<ExpectedType> >, Nil> >::t> 
       Containing(const ExpectedType& expected)

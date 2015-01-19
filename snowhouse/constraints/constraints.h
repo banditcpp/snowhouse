@@ -14,6 +14,7 @@
 #include "isgreaterthanconstraint.h"
 #include "isgreaterthanorequaltoconstraint.h"
 #include "islessthanconstraint.h"
+#include "islessthanorequaltoconstraint.h"
 #include "startswithconstraint.h"
 #include "fulfillsconstraint.h"
 #include "equalswithdeltaconstraint.h"
