@@ -137,10 +137,22 @@ void BasicAssertions()
 	{
 		Assert::That(5, IsLessThan(6));
 	}
+
+  std::cout << "ShouldHandleLessThanOrEqualTo" << std::endl;
+	{
+		Assert::That(5, IsLessThanOrEqualTo(6));
+		Assert::That(6, IsLessThanOrEqualTo(6));
+	}
 	
   std::cout << "ShouldDetectWhenLessThanFails" << std::endl;
 	{
 		AssertTestFails(Assert::That(6, IsLessThan(5)),
         "Expected: less than 5\nActual: 6\n");
+	}
+
+  std::cout << "ShouldDetectWhenLessThanOrEqualToFails" << std::endl;
+	{
+		AssertTestFails(Assert::That(6, IsLessThanOrEqualTo(5)),
+			"Expected: less than or equal to 5\nActual: 6\n");
 	}
 }
