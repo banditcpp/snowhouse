@@ -111,6 +111,24 @@ AssertThat(x, IsLessThan(3));
 AssertThat(x, Is().LessThan(3));
 ```
 
+####GreaterThanOrEqualTo Constraint
+
+Used to verify that actual is greater than or equal to a value.
+
+```cpp
+AssertThat(x, IsGreaterThanOrEqualTo(5));
+AssertThat(x, Is().GreaterThanOrEqualTo(5));
+```
+
+####LessThanOrEqualTo Constraint
+
+Used to verify that actual is less than or equal to a value.
+
+```cpp
+AssertThat(x, IsLessThanOrEqualTo(6));
+AssertThat(x, Is().LessThanOrEqualTo(6));
+```
+
 ### String Constraints
 
 String assertions in Snowhouse are used to verify the values of STL strings (std::string).
