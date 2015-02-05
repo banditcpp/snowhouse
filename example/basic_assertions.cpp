@@ -1,6 +1,11 @@
+#include <stdexcept>
 #include <snowhouse/snowhouse.h>
 using namespace snowhouse;
 #include "tests.h"
+
+void throwRuntimeError() {
+   throw std::runtime_error("This is expected");
+}
 
 struct IgnoreErrors {
    template <class ExpectedType, class ActualType>
@@ -90,10 +95,16 @@ void BasicAssertions()
     Assert::That(file, Equals("filename"));
   }
 
+  std::cout << "ShouldEnsureExceptionIsThrown" << std::endl;  
+    {
+          
+      AssertThrows(std::runtime_error, throwRuntimeError());
+    }
+
   std::cout << "ShouldIgnoreTheError" << std::endl;  
-	{
-		ConfigurableAssert<IgnoreErrors>::That(1, Equals(2));		
-	}
+    {
+      ConfigurableAssert<IgnoreErrors>::That(1, Equals(2));
+    }
 
   std::cout << "================================================" << std::endl;
   std::cout << "    ASSERTIONS EXPRESSION TEMPLATES" << std::endl;
