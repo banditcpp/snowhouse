@@ -118,9 +118,6 @@ namespace snowhouse {
       {
          FailureHandler::Handle(message);
       }
-
-   private:
-      FailureHandler assertHandler;
    };
 
    typedef ConfigurableAssert<DefaultFailureHandler> Assert;
