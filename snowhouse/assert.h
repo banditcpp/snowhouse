@@ -15,7 +15,7 @@ namespace snowhouse {
    struct DefaultFailureHandler
    {
       template <class ExpectedType, class ActualType>
-      static void handle(const ExpectedType& expected, const ActualType& actual, const char* file_name, int line_number)
+      static void Handle(const ExpectedType& expected, const ActualType& actual, const char* file_name, int line_number)
       {
          std::ostringstream str;
 
@@ -25,7 +25,7 @@ namespace snowhouse {
          throw AssertionException(str.str(), file_name, line_number);
       }
 
-      static void handle(const std::string& message)
+      static void Handle(const std::string& message)
       {
          throw AssertionException(message);
       }
@@ -68,12 +68,12 @@ namespace snowhouse {
 
             if (!result.top())
             {
-               FailureHandler::handle(expression, actual, file_name, line_number);
+               FailureHandler::Handle(expression, actual, file_name, line_number);
             }      
          }
          catch (const InvalidExpressionException& e) 
          {
-            FailureHandler::handle("Malformed expression: \"" + snowhouse::Stringize(expression) + "\"\n" + e.Message());
+            FailureHandler::Handle("Malformed expression: \"" + snowhouse::Stringize(expression) + "\"\n" + e.Message());
          }
       }
 
@@ -96,7 +96,7 @@ namespace snowhouse {
       {
          if (!expression(actual))
          {
-            FailureHandler::handle(expression, actual, file_name, line_number);
+            FailureHandler::Handle(expression, actual, file_name, line_number);
          }
       }
 
@@ -110,13 +110,13 @@ namespace snowhouse {
       {
          if (!actual)
          {
-            FailureHandler::handle("Expected: true\nActual: false");
+            FailureHandler::Handle("Expected: true\nActual: false");
          }
       }
 
       static void Failure(const std::string& message)
       {
-         FailureHandler::handle(message);
+         FailureHandler::Handle(message);
       }
 
    private:
