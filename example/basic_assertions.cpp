@@ -4,11 +4,11 @@ using namespace snowhouse;
 
 struct IgnoreErrors {
    template <class ExpectedType, class ActualType>
-   static void handle(const ExpectedType&, const ActualType&, const char*, int)
+   static void Handle(const ExpectedType&, const ActualType&, const char*, int)
    {
    }
 
-   static void handle(const std::string&)
+   static void Handle(const std::string&)
    {
    }
 };
