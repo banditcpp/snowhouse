@@ -372,3 +372,7 @@ Expected: To fullfill my constraint
 Actual: MyType( x = 23 )
 ```
 
+##Configurable Failure Handlers
+
+You can provide Snowhouse with custom failure handlers, for example to call `std::terminate` instead of throwing an exception. See `DefaultFailureHandler` for an example of a failure handler. You can derive your own macros with custom failure handlers using `SNOWHOUSE_ASSERT_THAT` and `SNOWHOUSE_ASSERT_THROWS`. See the definitions of `AssertThat` and `AssertThrows` for an example of these. You can define `SNOWHOUSE_NO_MACROS` to disable the unprefixed macros `AssertThat` and `AssertThrows`.
+
