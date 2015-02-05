@@ -2,6 +2,17 @@
 using namespace snowhouse;
 #include "tests.h"
 
+struct IgnoreErrors {
+   template <class ExpectedType, class ActualType>
+   static void handle(const ExpectedType&, const ActualType&, const char*, int)
+   {
+   }
+
+   static void handle(const std::string&)
+   {
+   }
+};
+
 void BasicAssertions()
 {
   std::cout << "================================================" << std::endl;
@@ -78,6 +89,11 @@ void BasicAssertions()
     Assert::That(line, Equals(32));
     Assert::That(file, Equals("filename"));
   }
+
+  std::cout << "ShouldIgnoreTheError" << std::endl;  
+	{
+		ConfigurableAssert<IgnoreErrors>::That(1, Equals(2));		
+	}
 
   std::cout << "================================================" << std::endl;
   std::cout << "    ASSERTIONS EXPRESSION TEMPLATES" << std::endl;
