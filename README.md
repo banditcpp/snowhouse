@@ -390,3 +390,21 @@ Expected: To fullfill my constraint
 Actual: MyType( x = 23 )
 ```
 
+##Configurable Failure Handlers
+
+You can provide Snowhouse with custom failure handlers, for example to call `std::terminate` instead of throwing an exception. See `DefaultFailureHandler` for an example of a failure handler. You can derive your own macros with custom failure handlers using `SNOWHOUSE_ASSERT_THAT` and `SNOWHOUSE_ASSERT_THROWS`. See the definitions of `AssertThat` and `AssertThrows` for examples of these. Define `SNOWHOUSE_NO_MACROS` to disable the unprefixed macros `AssertThat` and `AssertThrows`.
+
+### Example Use Cases
+
+#### Assert Program State
+
+Log an error immediately as we may crash if we try to continue. Don't attempt to unwind the stack as we may be inside a destructor or `nothrow` function. We may want to call `std::terminate`, or attempt to muddle along with the rest of the program.
+
+#### Assert Program State in Safe Builds
+
+As above, but only in debug builds.
+
+#### Test Assert
+
+Assert that a test behaved as expected. Throw an exception and let our testing framework deal with the test failure.
+

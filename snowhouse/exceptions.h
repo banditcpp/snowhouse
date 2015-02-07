@@ -77,7 +77,7 @@ namespace snowhouse {
 #define IGLOO_CONCAT2(a, b) a##b
 #define IGLOO_CONCAT(a, b) IGLOO_CONCAT2(a, b)
 
-#define AssertThrows(EXCEPTION_TYPE, METHOD) \
+#define SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, METHOD, FAILURE_HANDLER_TYPE) \
 ExceptionStorage<EXCEPTION_TYPE> IGLOO_CONCAT(IGLOO_storage_, __LINE__); IGLOO_CONCAT(IGLOO_storage_, __LINE__).compiler_thinks_i_am_unused(); \
 { \
   bool wrong_exception = false; \
@@ -99,15 +99,21 @@ ExceptionStorage<EXCEPTION_TYPE> IGLOO_CONCAT(IGLOO_storage_, __LINE__); IGLOO_C
   { \
     std::ostringstream stm; \
     stm << "Expected " << #EXCEPTION_TYPE << ". No exception was thrown."; \
-    Assert::Failure(stm.str()); \
+    ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
   } \
   if(wrong_exception) \
   { \
     std::ostringstream stm; \
     stm << "Expected " << #EXCEPTION_TYPE << ". Wrong exception was thrown."; \
-    Assert::Failure(stm.str()); \
+    ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
   } \
 }
+
+#ifndef SNOWHOUSE_NO_MACROS
+
+#define AssertThrows(EXCEPTION_TYPE, METHOD) SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, (METHOD), DefaultFailureHandler)
+
+#endif // SNOWHOUSE_NO_MACROS
 
 #endif
 
