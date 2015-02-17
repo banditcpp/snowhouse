@@ -131,7 +131,7 @@ AssertThat(x, Is().LessThanOrEqualTo(6));
 
 ### Pointer Constraints
 
-Used to check for ''nullptr'' equality.
+Used to check for `nullptr` equality.
 
 ```cpp
 AssertThat(x, IsNull());
