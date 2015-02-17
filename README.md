@@ -129,6 +129,15 @@ AssertThat(x, IsLessThanOrEqualTo(6));
 AssertThat(x, Is().LessThanOrEqualTo(6));
 ```
 
+### Pointer Constraints
+
+Used to check for ''nullptr'' equality.
+
+```cpp
+AssertThat(x, IsNull());
+AssertThat(x, Is().Null());
+```
+
 ### String Constraints
 
 String assertions in Snowhouse are used to verify the values of STL strings (std::string).
@@ -138,7 +147,7 @@ String assertions in Snowhouse are used to verify the values of STL strings (std
 Used to verify that actual is equal to an expected value.
 
 ```cpp
-Assert:That(actual_str, Equals("foo")); 
+AssertThat(actual_str, Equals("foo")); 
 AssertThat(actual_str, Is().EqualTo("foo"));
 ```
 
