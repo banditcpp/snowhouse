@@ -7,6 +7,8 @@
 #ifndef IGLOO_EQUALSCONSTRAINT_H
 #define IGLOO_EQUALSCONSTRAINT_H
 
+#include <cstddef>
+
 #include "./expressions/expression.h"
 
 namespace snowhouse {
@@ -47,6 +49,11 @@ namespace snowhouse {
   inline EqualsConstraint<bool> IsTrue()
   {
     return EqualsConstraint<bool>(true);
+  }
+
+  inline EqualsConstraint<std::nullptr_t> IsNull()
+  {
+    return EqualsConstraint<std::nullptr_t>(nullptr);
   }
 
   template <>

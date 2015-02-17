@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <sstream>
 #include <snowhouse/snowhouse.h>
 using namespace snowhouse;
 #include "tests.h"
@@ -182,4 +183,43 @@ void BasicAssertions()
 		AssertTestFails(Assert::That(6, IsLessThanOrEqualTo(5)),
 			"Expected: less than or equal to 5\nActual: 6\n");
 	}
+
+  std::cout << "ShouldHandleNull" << std::endl;
+    {
+       Assert::That(nullptr, IsNull());
+    }
+
+  std::cout << "ShouldHandleNull" << std::endl;
+    {
+       Assert::That(nullptr, Is().Null());
+    }
+
+  std::cout << "ShouldHandleNotNull" << std::endl;
+    {
+       int anInt = 0;
+       Assert::That(&anInt, ! IsNull());
+    }
+
+  std::cout << "ShouldDetectWhenIsNullFails" << std::endl;
+    {
+       int anInt = 0;
+       std::ostringstream message;
+       message << "Expected: equal to nullptr\nActual: " << &anInt << "\n";
+       AssertTestFails(Assert::That(&anInt, IsNull()), message.str());
+    }
+
+  std::cout << "ShouldDetectWhenIsNullFails" << std::endl;
+    {
+       int anInt = 0;
+       std::ostringstream message;
+       message << "Expected: equal to nullptr\nActual: " << &anInt << "\n";
+       AssertTestFails(Assert::That(&anInt, Is().Null()), message.str());
+    }
+
+  std::cout << "ShouldDetectWhenIsNotNullFails" << std::endl;
+    {
+       std::ostringstream message;
+       message << "Expected: not equal to nullptr\nActual: nullptr\n";
+       AssertTestFails(Assert::That(nullptr, ! IsNull()), message.str());
+    }
 }
