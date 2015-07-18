@@ -1,7 +1,7 @@
 #ifndef _SNOWHOUSE_H_JK_2013_06_28
 #define _SNOWHOUSE_H_JK_2013_06_28
 
-#define SNOWHOUSE_VERSION "1.0.2"
+#define SNOWHOUSE_VERSION "2.0.0"
 
 #if __cplusplus > 199711L
 #ifdef _MSC_VER
