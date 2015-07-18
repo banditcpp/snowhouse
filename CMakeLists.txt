@@ -1,6 +1,10 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.8)
 
 project(snowhouse)
+
+option(SNOWHOUSE_BUILD_TESTS    "Build the Snowhouse tests"                 ON)
+option(SNOWHOUSE_RUN_TESTS      "Run the Snowhouse tests"                   ON)
+option(SNOWHOUSE_IS_CPP11       "Whether to build this as a C++11 project"  OFF)
 
 include_directories("${PROJECT_SOURCE_DIR}")
 
@@ -8,7 +12,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 set(CMAKE_CXX_FLAGS "-Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
 
-if(${cfg} STREQUAL "C++11") 
+if(SNOWHOUSE_IS_CPP11)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wdeprecated")
+
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.7")
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
@@ -28,10 +34,16 @@ endif()
 
 message(${CMAKE_CXX_FLAGS})
 
-FILE(GLOB SnowhouseSpecSourceFiles example/*.cpp)
-add_executable(snowhouse-tests ${SnowhouseSpecSourceFiles})
+if (SNOWHOUSE_BUILD_TESTS)
+    FILE(GLOB SnowhouseSpecSourceFiles example/*.cpp)
+    add_executable(snowhouse-tests ${SnowhouseSpecSourceFiles})
+endif()
 
-add_custom_command(TARGET snowhouse-tests
-                   POST_BUILD
-                   COMMAND snowhouse-tests
-                   WORKING_DIRECTORY ./bin)
+if (SNOWHOUSE_BUILD_TESTS AND SNOWHOUSE_RUN_TESTS)
+    add_custom_command(TARGET snowhouse-tests
+                       POST_BUILD
+                       COMMAND snowhouse-tests
+                       WORKING_DIRECTORY ./bin)
+elseif (SNOWHOUSE_RUN_TESTS)
+    message(WARNING "Unable to run snowhouse tests - set:\n  option(SNOWHOUSE_BUILD_TESTS, \"Build the Snowhouse tests\" ON)\nand clear your CMakeCache.txt")
+endif()
