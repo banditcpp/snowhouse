@@ -7,6 +7,8 @@
 #ifndef IGLOO_EXPRESSIONBUILDER_H
 #define IGLOO_EXPRESSIONBUILDER_H
 
+#include <cstddef>
+
 namespace snowhouse {
   
   // ---- Evaluation of list of constraints
@@ -78,6 +80,14 @@ namespace snowhouse {
     {
       return EqualTo<bool>(true);
     }
+
+#if __cplusplus > 199711L
+    ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<std::nullptr_t> >, Nil> >::t> 
+      Null()
+    {
+      return EqualTo<std::nullptr_t>(nullptr);
+    }
+#endif
 
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<std::string> >, Nil> >::t> 
       EqualTo(const char* expected)
