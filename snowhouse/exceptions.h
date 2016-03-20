@@ -10,7 +10,7 @@
 #include "assert.h"
 
 namespace snowhouse {
-   
+
   template <typename ExceptionType>
   class ExceptionStorage
   {
@@ -45,9 +45,9 @@ namespace snowhouse {
 
       *last = new ExceptionType(e);
     }
-    
+
     void compiler_thinks_i_am_unused() {}
-    
+
     ~ExceptionStorage()
     {
       ExceptionType** e = NULL;
@@ -59,7 +59,7 @@ namespace snowhouse {
       }
     }
   };
-    
+
   template <typename ExceptionType>
   inline ExceptionType& LastException()
   {
@@ -69,9 +69,9 @@ namespace snowhouse {
     {
       Assert::Failure("No exception was stored");
     }
-    
+
     return **e;
-  }  
+  }
 }
 
 #define IGLOO_CONCAT2(a, b) a##b
@@ -109,9 +109,27 @@ namespace snowhouse {
   } \
 }
 
+#define SNOWHOUSE_ASSERT_NOTHROW(METHOD, FAILURE_HANDLER_TYPE) \
+{ \
+  bool exception = false; \
+  try \
+  { \
+    METHOD; \
+  } \
+  catch(...) \
+  { \
+    exception = true; \
+  } \
+  if(exception) \
+  { \
+    ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure("Expected no exception to be thrown. An exception was thrown."); \
+  } \
+}
+
 #ifndef SNOWHOUSE_NO_MACROS
 
 #define AssertThrows(EXCEPTION_TYPE, METHOD) SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, (METHOD), ::snowhouse::DefaultFailureHandler)
+#define AssertNothrow(METHOD) SNOWHOUSE_ASSERT_NOTHROW((METHOD), ::snowhouse::DefaultFailureHandler)
 
 #endif // SNOWHOUSE_NO_MACROS
 
