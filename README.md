@@ -1,5 +1,6 @@
 snowhouse
 =========
+[![Build Status](https://travis-ci.org/banditcpp/snowhouse.svg)](https://travis-ci.org/banditcpp/snowhouse)
 
 An assertion library for C++
 
