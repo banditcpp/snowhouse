@@ -1,6 +1,7 @@
 snowhouse
 =========
 [![Build Status](https://travis-ci.org/banditcpp/snowhouse.svg)](https://travis-ci.org/banditcpp/snowhouse)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/banditcpp/snowhouse?branch=master&svg=true)](https://ci.appveyor.com/project/banditcpp/snowhouse)
 
 An assertion library for C++
 
