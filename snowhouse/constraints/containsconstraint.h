@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_CONTAINSCONSTRAINT_H
-#define IGLOO_CONTAINSCONSTRAINT_H
+#ifndef SNOWHOUSE_CONTAINSCONSTRAINT_H
+#define SNOWHOUSE_CONTAINSCONSTRAINT_H
 
 #include <algorithm>
 

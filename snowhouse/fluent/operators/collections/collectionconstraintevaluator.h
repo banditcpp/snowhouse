@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_COLLECTIONCONSTRAINTEVALUATOR_H
-#define IGLOO_COLLECTIONCONSTRAINTEVALUATOR_H
+#ifndef SNOWHOUSE_COLLECTIONCONSTRAINTEVALUATOR_H
+#define SNOWHOUSE_COLLECTIONCONSTRAINTEVALUATOR_H
 
 #include <string>
 #include "../invalidexpressionexception.h"

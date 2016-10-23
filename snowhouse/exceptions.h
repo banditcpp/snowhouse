@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_EXCEPTIONS_H
-#define IGLOO_EXCEPTIONS_H
+#ifndef SNOWHOUSE_EXCEPTIONS_H
+#define SNOWHOUSE_EXCEPTIONS_H
 
 #include "assert.h"
 
@@ -74,11 +74,11 @@ namespace snowhouse {
   }
 }
 
-#define IGLOO_CONCAT2(a, b) a##b
-#define IGLOO_CONCAT(a, b) IGLOO_CONCAT2(a, b)
+#define SNOWHOUSE_CONCAT2(a, b) a##b
+#define SNOWHOUSE_CONCAT(a, b) SNOWHOUSE_CONCAT2(a, b)
 
 #define SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, METHOD, FAILURE_HANDLER_TYPE) \
-::snowhouse::ExceptionStorage<EXCEPTION_TYPE> IGLOO_CONCAT(IGLOO_storage_, __LINE__); IGLOO_CONCAT(IGLOO_storage_, __LINE__).compiler_thinks_i_am_unused(); \
+::snowhouse::ExceptionStorage<EXCEPTION_TYPE> SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__); SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__).compiler_thinks_i_am_unused(); \
 { \
   bool wrong_exception = false; \
   bool no_exception = false; \

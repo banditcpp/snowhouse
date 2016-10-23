@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_OREXPRESSION_H
-#define IGLOO_OREXPRESSION_H
+#ifndef SNOWHOUSE_OREXPRESSION_H
+#define SNOWHOUSE_OREXPRESSION_H
 
 #include "./expression_fwd.h"
 

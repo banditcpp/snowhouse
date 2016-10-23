@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_HASLENGTHCONSTRAINT_H
-#define IGLOO_HASLENGTHCONSTRAINT_H
+#ifndef SNOWHOUSE_HASLENGTHCONSTRAINT_H
+#define SNOWHOUSE_HASLENGTHCONSTRAINT_H
 
 #include "./expressions/expression.h"
 

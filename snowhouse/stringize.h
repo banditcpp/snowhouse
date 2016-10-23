@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_STRINGIZE_H
-#define IGLOO_STRINGIZE_H
+#ifndef SNOWHOUSE_STRINGIZE_H
+#define SNOWHOUSE_STRINGIZE_H
 
 #include <cstddef>
 

@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_EXPRESSIONBUILDER_H
-#define IGLOO_EXPRESSIONBUILDER_H
+#ifndef SNOWHOUSE_EXPRESSIONBUILDER_H
+#define SNOWHOUSE_EXPRESSIONBUILDER_H
 
 #include <cstddef>
 

@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ANDEXPRESSION_H
-#define IGLOO_ANDEXPRESSION_H
+#ifndef SNOWHOUSE_ANDEXPRESSION_H
+#define SNOWHOUSE_ANDEXPRESSION_H
 
 #include "./expression_fwd.h"
 

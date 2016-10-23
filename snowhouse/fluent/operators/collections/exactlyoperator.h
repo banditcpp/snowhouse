@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_EXACTLYOPERATOR_H
-#define IGLOO_EXACTLYOPERATOR_H
+#ifndef SNOWHOUSE_EXACTLYOPERATOR_H
+#define SNOWHOUSE_EXACTLYOPERATOR_H
 
 namespace snowhouse {
 

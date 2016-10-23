@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ASSERT_H
-#define IGLOO_ASSERT_H
+#ifndef SNOWHOUSE_ASSERT_H
+#define SNOWHOUSE_ASSERT_H
 
 #include "stringize.h"
 #include "stringizers.h"
@@ -123,4 +123,4 @@ namespace snowhouse {
    typedef ConfigurableAssert<DefaultFailureHandler> Assert;
 }
 
-#endif	// IGLOO_ASSERT_H
+#endif	// SNOWHOUSE_ASSERT_H

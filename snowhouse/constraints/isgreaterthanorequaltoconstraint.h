@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ISGREATERTHANOREQUALTOCONSTRAINT_H
-#define IGLOO_ISGREATERTHANOREQUALTOCONSTRAINT_H
+#ifndef SNOWHOUSE_ISGREATERTHANOREQUALTOCONSTRAINT_H
+#define SNOWHOUSE_ISGREATERTHANOREQUALTOCONSTRAINT_H
 
 #include "./expressions/expression.h"
 

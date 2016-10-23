@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ATLEASTOPERATOR_H
-#define IGLOO_ATLEASTOPERATOR_H
+#ifndef SNOWHOUSE_ATLEASTOPERATOR_H
+#define SNOWHOUSE_ATLEASTOPERATOR_H
 
 #include "collectionoperator.h"
 

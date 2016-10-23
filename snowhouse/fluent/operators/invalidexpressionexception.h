@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_INVALUDEXPRESSIONEXCEPTION_H
-#define IGLOO_INVALUDEXPRESSIONEXCEPTION_H
+#ifndef SNOWHOUSE_INVALUDEXPRESSIONEXCEPTION_H
+#define SNOWHOUSE_INVALUDEXPRESSIONEXCEPTION_H
 
 namespace snowhouse {
 
@@ -25,4 +25,4 @@ namespace snowhouse {
 
 }
 
-#endif // IGLOO_INVALUDEXPRESSIONEXCEPTION_H
+#endif // SNOWHOUSE_INVALUDEXPRESSIONEXCEPTION_H

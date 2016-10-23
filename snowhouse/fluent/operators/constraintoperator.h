@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_CONTRAINTOPERATOR_H
-#define IGLOO_CONTRAINTOPERATOR_H
+#ifndef SNOWHOUSE_CONTRAINTOPERATOR_H
+#define SNOWHOUSE_CONTRAINTOPERATOR_H
 
 #include "invalidexpressionexception.h"
 

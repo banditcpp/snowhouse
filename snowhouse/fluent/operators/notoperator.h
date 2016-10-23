@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_NOTOPERATOR_H
-#define IGLOO_NOTOPERATOR_H
+#ifndef SNOWHOUSE_NOTOPERATOR_H
+#define SNOWHOUSE_NOTOPERATOR_H
 
 namespace snowhouse {
 

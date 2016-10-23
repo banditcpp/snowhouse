@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ATMOSTOPERATOR_H
-#define IGLOO_ATMOSTOPERATOR_H
+#ifndef SNOWHOUSE_ATMOSTOPERATOR_H
+#define SNOWHOUSE_ATMOSTOPERATOR_H
 
 namespace snowhouse {
 

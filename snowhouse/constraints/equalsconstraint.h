@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_EQUALSCONSTRAINT_H
-#define IGLOO_EQUALSCONSTRAINT_H
+#ifndef SNOWHOUSE_EQUALSCONSTRAINT_H
+#define SNOWHOUSE_EQUALSCONSTRAINT_H
 
 #include <cstddef>
 
