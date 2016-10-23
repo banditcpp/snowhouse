@@ -7,9 +7,9 @@
   { \
     assertion; \
   }  \
-  catch(const AssertionException& exception_from_igloo_assertion)  \
+  catch(const AssertionException& exception_from_snowhouse_assertion)  \
   {  \
-  SNOWHOUSE_INTERNAL_expected_error = exception_from_igloo_assertion.GetMessage();  \
+  SNOWHOUSE_INTERNAL_expected_error = exception_from_snowhouse_assertion.GetMessage();  \
   }  \
   Assert::That(SNOWHOUSE_INTERNAL_expected_error, Is().Containing(expected_error_text));
 
