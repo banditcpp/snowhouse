@@ -6,7 +6,7 @@
 
 #ifndef IGLOO_NOTEXPRESSION_H
 #define IGLOO_NOTEXPRESSION_H
-  
+
 #include "./expression_fwd.h"
 
 namespace snowhouse {

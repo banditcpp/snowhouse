@@ -8,7 +8,7 @@
 #define IGLOO_NOTOPERATOR_H
 
 namespace snowhouse {
-  
+
   struct NotOperator : public ConstraintOperator
   {
     template <typename ConstraintListType, typename ActualType>
@@ -17,29 +17,29 @@ namespace snowhouse {
       EvaluateOperatorsWithLessOrEqualPrecedence(*this, operators, result);
 
       operators.push(this);
-      
+
       EvaluateConstraintList(list.m_tail, result, operators, actual);
     }
-    
+
     void PerformOperation(ResultStack& result)
     {
       if(result.size() < 1)
       {
         throw InvalidExpressionException("The expression contains a not operator without any operand");
       }
-      
+
       bool right = result.top();
       result.pop();
-            
+
       result.push(!right);
     }
-    
+
     int Precedence() const
     {
       return 2;
     }
   };
-  
+
    template<>
    struct Stringizer<NotOperator>
    {

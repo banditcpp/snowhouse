@@ -10,7 +10,7 @@
 namespace snowhouse {
   class AssertionException : public std::exception
   {
-    public:  
+    public:
       AssertionException(const std::string& message)
         : m_message(message), m_fileName(""), m_line(0)
       {}
@@ -49,7 +49,7 @@ namespace snowhouse {
       }
 
     private:
-      std::string m_message;  
+      std::string m_message;
       std::string m_fileName;
       unsigned int m_line;
   };

@@ -14,23 +14,23 @@ namespace snowhouse {
   template <typename ExpectedType>
   struct StartsWithConstraint : Expression< StartsWithConstraint<ExpectedType> >
   {
-    StartsWithConstraint(const ExpectedType& expected) 
+    StartsWithConstraint(const ExpectedType& expected)
       : m_expected(expected) {}
-      
+
     bool operator()(const std::string& actual) const
     {
       return actual.find(m_expected) == 0;
-    } 
-    
+    }
+
     ExpectedType m_expected;
-  };              
+  };
 
   template< typename ExpectedType >
   inline StartsWithConstraint<ExpectedType> StartsWith(const ExpectedType& expected)
   {
     return StartsWithConstraint<ExpectedType>(expected);
   }
-  
+
   inline StartsWithConstraint<std::string> StartsWith(const char* expected)
   {
     return StartsWithConstraint<std::string>(expected);

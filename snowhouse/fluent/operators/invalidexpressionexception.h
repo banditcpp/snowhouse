@@ -8,7 +8,7 @@
 #define IGLOO_INVALUDEXPRESSIONEXCEPTION_H
 
 namespace snowhouse {
-  
+
   struct InvalidExpressionException
   {
     InvalidExpressionException(const std::string& message) : m_message(message)
@@ -22,7 +22,7 @@ namespace snowhouse {
 
     std::string m_message;
   };
-  
+
 }
 
 #endif // IGLOO_INVALUDEXPRESSIONEXCEPTION_H

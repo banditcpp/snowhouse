@@ -30,7 +30,7 @@ namespace snowhouse {
 
     // Two overloads to distinguish whether T supports a certain operator expression.
     // The first overload returns a reference to a two-element character array and is chosen if
-    // T does not support the expression, such as <<, whereas the second overload returns a char 
+    // T does not support the expression, such as <<, whereas the second overload returns a char
     // directly and is chosen if T supports the expression. So using sizeof(check(<expression>))
     // returns 2 for the first overload and 1 for the second overload.
     typedef char yes;
@@ -47,7 +47,7 @@ namespace snowhouse {
       static const T& x;
       static const bool value = sizeof(check(std::cout << x)) == sizeof(yes);
     };
-    
+
     template<typename T, bool type_is_streamable>
     struct DefaultStringizer
     {

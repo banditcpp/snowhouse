@@ -8,7 +8,7 @@
 #define IGLOO_OREXPRESSION_H
 
 #include "./expression_fwd.h"
-       
+
 namespace snowhouse {
 
   template< typename LeftExpression, typename RightExpression >

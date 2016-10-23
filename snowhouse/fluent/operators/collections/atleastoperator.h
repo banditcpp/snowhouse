@@ -20,7 +20,7 @@ namespace snowhouse {
       {
         unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
 
-         result.push(passed_elements >= m_expected); 
+         result.push(passed_elements >= m_expected);
       }
 
       unsigned int m_expected;

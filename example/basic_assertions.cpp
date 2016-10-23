@@ -25,53 +25,53 @@ void BasicAssertions()
   std::cout << "    ASSERTIONS " << std::endl;
   std::cout << "================================================" << std::endl;
 
-  std::cout << "ShouldHandleIntegerEquality" << std::endl;  
+  std::cout << "ShouldHandleIntegerEquality" << std::endl;
 	{
-		Assert::That(5, Is().EqualTo(5));		
+		Assert::That(5, Is().EqualTo(5));
 	}
-	
+
   std::cout << "ShouldDetectIntegerInequality" << std::endl;
 	{
 		AssertTestFails(Assert::That(5, Is().EqualTo(4)), "equal to 4");
 	}
-	
+
   std::cout << "ShouldDetectIfNotFails" << std::endl;
 	{
 		AssertTestFails(Assert::That(5, Is().Not().EqualTo(5)), "Expected: not equal to 5\nActual: 5\n");
 	}
-	
+
   std::cout << "ShouldHandleStrings" << std::endl;
 	{
 		Assert::That(std::string("joakim"), Is().EqualTo(std::string("joakim")));
 	}
-	
+
   std::cout << "ShouldHandleStringsWithoutExplicitTemplateSpecialization" << std::endl;
 	{
 		Assert::That("kim", Is().EqualTo("kim"));
 	}
-	
+
   std::cout << "ShouldHandleGreaterThan" << std::endl;
 	{
 		Assert::That(5, Is().GreaterThan(4));
 	}
-	
+
   std::cout << "ShouldDetectWhenGreaterThanFails" << std::endl;
 	{
 		AssertTestFails(Assert::That(5, Is().GreaterThan(5)),
         "Expected: greater than 5\nActual: 5\n");
 	}
-	
+
   std::cout << "ShouldHandleLessThan" << std::endl;
 	{
 		Assert::That(5, Is().LessThan(6));
 	}
-	
+
   std::cout << "ShouldDetectWhenLessThanFails" << std::endl;
 	{
 		AssertTestFails(Assert::That(6, Is().LessThan(5)),
         "Expected: less than 5\nActual: 6\n");
 	}
-	
+
   std::cout << "ShouldThrowExplicitFailureMessage" << std::endl;
 	{
 		AssertTestFails(Assert::Failure("foo"), "foo");
@@ -96,13 +96,13 @@ void BasicAssertions()
     Assert::That(file, Equals("filename"));
   }
 
-  std::cout << "ShouldEnsureExceptionIsThrown" << std::endl;  
+  std::cout << "ShouldEnsureExceptionIsThrown" << std::endl;
     {
-          
+
       AssertThrows(std::runtime_error, throwRuntimeError());
     }
 
-  std::cout << "ShouldIgnoreTheError" << std::endl;  
+  std::cout << "ShouldIgnoreTheError" << std::endl;
     {
       ConfigurableAssert<IgnoreErrors>::That(1, Equals(2));
     }
@@ -114,30 +114,30 @@ void BasicAssertions()
   std::cout << "ShouldHandleIntegerEquality" << std::endl;
 	{
 		Assert::That(5, Equals(5));
-	}                                                            
-	
+	}
+
   std::cout << "ShouldDetectIntegerInequality" << std::endl;
 	{
 		AssertTestFails(Assert::That(5, Equals(4)), "equal to 4");
 	}
-	
+
   std::cout << "ShouldDetectIfNotFails" << std::endl;
 	{
-		AssertTestFails(Assert::That(5, !Equals(5)), 
+		AssertTestFails(Assert::That(5, !Equals(5)),
         "Expected: not equal to 5\nActual: 5\n");
 	}
-	
+
   std::cout << "ShouldHandleStrings" << std::endl;
 	{
 		Assert::That(std::string("joakim"), Equals(std::string("joakim")));
 	}
-	
-  std::cout << "ShouldHandleStringsWithoutExplicitTemplateSpecialization" 
+
+  std::cout << "ShouldHandleStringsWithoutExplicitTemplateSpecialization"
     << std::endl;
 	{
 		Assert::That("kim", Equals("kim"));
 	}
-	
+
   std::cout << "ShouldHandleGreaterThan" << std::endl;
 	{
 		Assert::That(5, IsGreaterThan(4));
@@ -148,7 +148,7 @@ void BasicAssertions()
 		Assert::That(4, IsGreaterThanOrEqualTo(4));
 		Assert::That(5, IsGreaterThanOrEqualTo(4));
 	}
-	
+
   std::cout << "ShouldDetectWhenGreaterThanFails" << std::endl;
 	{
 		AssertTestFails(Assert::That(5, IsGreaterThan(5)),
@@ -171,7 +171,7 @@ void BasicAssertions()
 		Assert::That(5, IsLessThanOrEqualTo(6));
 		Assert::That(6, IsLessThanOrEqualTo(6));
 	}
-	
+
   std::cout << "ShouldDetectWhenLessThanFails" << std::endl;
 	{
 		AssertTestFails(Assert::That(6, IsLessThan(5)),

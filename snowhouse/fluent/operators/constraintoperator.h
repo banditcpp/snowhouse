@@ -43,28 +43,28 @@ namespace snowhouse {
       while(!operators.empty())
       {
         ConstraintOperator* op_from_stack = operators.top();
-        
+
         if(op_from_stack->Precedence() > op.Precedence())
         {
           break;
         }
-        
+
         op_from_stack->PerformOperation(result);
         operators.pop();
-      }      
+      }
     }
-    
+
     static void EvaluateAllOperatorsOnStack(OperatorStack& operators, ResultStack& result)
     {
       while(!operators.empty())
       {
         ConstraintOperator* op = operators.top();
-        op->PerformOperation(result);        
+        op->PerformOperation(result);
         operators.pop();
-      } 
+      }
     }
   };
-  
+
 }
 
 #endif

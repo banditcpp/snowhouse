@@ -10,7 +10,7 @@
 #include "assert.h"
 
 namespace snowhouse {
-   
+
   template <typename ExceptionType>
   class ExceptionStorage
   {
@@ -45,9 +45,9 @@ namespace snowhouse {
 
       *last = new ExceptionType(e);
     }
-    
+
     void compiler_thinks_i_am_unused() {}
-    
+
     ~ExceptionStorage()
     {
       ExceptionType** e = NULL;
@@ -59,7 +59,7 @@ namespace snowhouse {
       }
     }
   };
-    
+
   template <typename ExceptionType>
   inline ExceptionType& LastException()
   {
@@ -69,9 +69,9 @@ namespace snowhouse {
     {
       Assert::Failure("No exception was stored");
     }
-    
+
     return **e;
-  }  
+  }
 }
 
 #define IGLOO_CONCAT2(a, b) a##b

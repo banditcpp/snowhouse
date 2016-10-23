@@ -28,7 +28,7 @@ namespace
     {
     }
   };
-   
+
   std::ostream& operator<<(std::ostream& stream, const WithStreamOperator& a)
   {
     stream << a.m_id;
@@ -108,4 +108,4 @@ void StringizeTests()
     WithoutStreamOperatorButWithStringizer b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
-} 
+}
