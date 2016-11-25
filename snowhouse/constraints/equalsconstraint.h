@@ -1,4 +1,3 @@
-
 //          Copyright Joakim Karlsson & Kim Gräsman 2010-2012.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
@@ -6,8 +5,6 @@
 
 #ifndef SNOWHOUSE_EQUALSCONSTRAINT_H
 #define SNOWHOUSE_EQUALSCONSTRAINT_H
-
-#include <cstddef>
 
 #include "./expressions/expression.h"
 
