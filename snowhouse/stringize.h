@@ -1,4 +1,3 @@
-
 //          Copyright Joakim Karlsson & Kim Gräsman 2010-2012.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
@@ -7,7 +6,10 @@
 #ifndef SNOWHOUSE_STRINGIZE_H
 #define SNOWHOUSE_STRINGIZE_H
 
-#include <cstddef>
+#include <iostream>
+#include <sstream>
+
+#include "macros.h"
 
 namespace snowhouse {
   namespace detail {
