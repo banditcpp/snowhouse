@@ -8,7 +8,6 @@
 #include <memory>
 #include <algorithm>
 
-#include "stringize.h"
 #include "constraints/constraints.h"
 #include "fluent/fluent.h"
 #include "assertionexception.h"
