@@ -16,7 +16,7 @@ void StringTests()
   std::cout << "StringConstraintShouldHandleMatchAtBeginningOfString" << std::endl;
   {
     Assert::That("abcdef", Contains("a"));
-  }  
+  }
 
   std::cout << "ShouldDetectFailingContains" << std::endl;
   {

@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_HASLENGTHCONSTRAINT_H
-#define IGLOO_HASLENGTHCONSTRAINT_H
+#ifndef SNOWHOUSE_HASLENGTHCONSTRAINT_H
+#define SNOWHOUSE_HASLENGTHCONSTRAINT_H
 
 #include "./expressions/expression.h"
 
@@ -14,26 +14,26 @@ namespace snowhouse {
   template <typename ExpectedType>
   struct HasLengthConstraint : Expression< HasLengthConstraint<ExpectedType> >
   {
-    HasLengthConstraint(const ExpectedType& expected) 
+    HasLengthConstraint(const ExpectedType& expected)
       : m_expected(expected) {}
-      
+
     template <typename ActualType>
     bool operator()(const ActualType& actual) const
-    {                                    
+    {
       typedef typename ActualType::size_type SizeType;
       SizeType expectedSize = static_cast<SizeType>(m_expected);
       return (actual.size() == expectedSize);
-    } 
-    
+    }
+
     ExpectedType m_expected;
-  };              
+  };
 
   template< typename ExpectedType >
   inline HasLengthConstraint<ExpectedType> HasLength(const ExpectedType& expected)
   {
     return HasLengthConstraint<ExpectedType>(expected);
   }
-  
+
   inline HasLengthConstraint<int> IsEmpty()
   {
     return HasLength<int>(0);
@@ -55,6 +55,6 @@ namespace snowhouse {
       return builder.str();
     }
   };
-}      
+}
 
 #endif

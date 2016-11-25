@@ -4,13 +4,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ASSERTIONEXCEPTION_H
-#define IGLOO_ASSERTIONEXCEPTION_H
+#ifndef SNOWHOUSE_ASSERTIONEXCEPTION_H
+#define SNOWHOUSE_ASSERTIONEXCEPTION_H
 
 namespace snowhouse {
   class AssertionException : public std::exception
   {
-    public:  
+    public:
       AssertionException(const std::string& message)
         : m_message(message), m_fileName(""), m_line(0)
       {}
@@ -49,10 +49,10 @@ namespace snowhouse {
       }
 
     private:
-      std::string m_message;  
+      std::string m_message;
       std::string m_fileName;
       unsigned int m_line;
   };
 }
 
-#endif // IGLOO_ASSERTIONEXCEPTION_H
+#endif // SNOWHOUSE_ASSERTIONEXCEPTION_H

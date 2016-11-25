@@ -4,28 +4,28 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_CONSTRAINTADAPTER_H
-#define IGLOO_CONSTRAINTADAPTER_H
+#ifndef SNOWHOUSE_CONSTRAINTADAPTER_H
+#define SNOWHOUSE_CONSTRAINTADAPTER_H
 
 namespace snowhouse {
- 
+
   template <typename ConstraintType>
   struct ConstraintAdapter
   {
     ConstraintAdapter(const ConstraintType& constraint) : m_constraint(constraint)
     {
     }
-    
+
     template <typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
     {
       result.push(m_constraint(actual));
       EvaluateConstraintList(list.m_tail, result, operators, actual);
     }
-    
+
     ConstraintType m_constraint;
   };
-  
+
   template<typename ConstraintType>
   struct Stringizer< ConstraintAdapter<ConstraintType> >
   {
@@ -33,7 +33,7 @@ namespace snowhouse {
     {
       return snowhouse::Stringize(constraintAdapter.m_constraint);
     }
-  };  
+  };
 }
 
 #endif

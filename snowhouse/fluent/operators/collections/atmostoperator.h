@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ATMOSTOPERATOR_H
-#define IGLOO_ATMOSTOPERATOR_H
+#ifndef SNOWHOUSE_ATMOSTOPERATOR_H
+#define SNOWHOUSE_ATMOSTOPERATOR_H
 
 namespace snowhouse {
 
@@ -18,7 +18,7 @@ namespace snowhouse {
       {
         unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
 
-         result.push(passed_elements <= m_expected); 
+         result.push(passed_elements <= m_expected);
       }
 
       unsigned int m_expected;

@@ -4,14 +4,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_COLLECTIONOPERATOR_H
-#define IGLOO_COLLECTIONOPERATOR_H
+#ifndef SNOWHOUSE_COLLECTIONOPERATOR_H
+#define SNOWHOUSE_COLLECTIONOPERATOR_H
 
 namespace snowhouse {
    struct CollectionOperator : public ConstraintOperator
    {
       void PerformOperation(ResultStack&)
-      {   
+      {
       }
 
       int Precedence() const

@@ -12,7 +12,7 @@ struct IsEvenNumberNoStreamOperator
 {
   bool Matches(const int actual) const
   {
-    return (actual % 2) == 0; 
+    return (actual % 2) == 0;
   }
 };
 
@@ -20,14 +20,14 @@ struct IsEvenNumberWithStreamOperator
 {
   bool Matches(const int actual) const
   {
-    return (actual % 2) == 0; 
+    return (actual % 2) == 0;
   }
 
-  friend std::ostream& operator<<(std::ostream& stm, 
+  friend std::ostream& operator<<(std::ostream& stm,
       const IsEvenNumberWithStreamOperator& );
 };
 
-std::ostream& operator<<(std::ostream& stm, 
+std::ostream& operator<<(std::ostream& stm,
     const IsEvenNumberWithStreamOperator& )
 {
   stm << "An even number";
@@ -63,7 +63,7 @@ void CustomMatchers()
 
   std::cout << "ErrorMessageUsesCustomStreamOperatorIfAvailable" << std::endl;
   {
-    AssertTestFails(Assert::That(3, Fulfills(IsEvenNumberWithStreamOperator())), 
+    AssertTestFails(Assert::That(3, Fulfills(IsEvenNumberWithStreamOperator())),
         "Expected: An even number\nActual: 3");
   }
 }

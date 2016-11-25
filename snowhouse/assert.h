@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ASSERT_H
-#define IGLOO_ASSERT_H
+#ifndef SNOWHOUSE_ASSERT_H
+#define SNOWHOUSE_ASSERT_H
 
 #include "stringize.h"
 #include "stringizers.h"
@@ -44,11 +44,11 @@ namespace snowhouse {
 
         ConfigurableAssert<FailureHandler>::That(actual, expression, no_file, line_number);
       }
-      
+
       template <typename ActualType, typename ConstraintListType>
       static void That(const ActualType& actual, ExpressionBuilder<ConstraintListType> expression, const char* file_name, int line_number)
       {
-         try 
+         try
          {
             ResultStack result;
             OperatorStack operators;
@@ -69,9 +69,9 @@ namespace snowhouse {
             if (!result.top())
             {
                FailureHandler::Handle(expression, actual, file_name, line_number);
-            }      
+            }
          }
-         catch (const InvalidExpressionException& e) 
+         catch (const InvalidExpressionException& e)
          {
             FailureHandler::Handle("Malformed expression: \"" + snowhouse::Stringize(expression) + "\"\n" + e.Message());
          }
@@ -123,4 +123,4 @@ namespace snowhouse {
    typedef ConfigurableAssert<DefaultFailureHandler> Assert;
 }
 
-#endif	// IGLOO_ASSERT_H
+#endif	// SNOWHOUSE_ASSERT_H

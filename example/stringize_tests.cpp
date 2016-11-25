@@ -4,7 +4,7 @@ using namespace snowhouse;
 
 namespace
 {
-  // No overload for operator<<(std::ostream&) or specialization of igloo::Stringizer
+  // No overload for operator<<(std::ostream&) or specialization of snowhouse::Stringizer
   struct WithoutStreamOperator
   {
     WithoutStreamOperator(int id)
@@ -28,14 +28,14 @@ namespace
     {
     }
   };
-   
+
   std::ostream& operator<<(std::ostream& stream, const WithStreamOperator& a)
   {
     stream << a.m_id;
     return stream;
   }
 
-  // Has no operator<<(std::ostream&), but a specialization of igloo::Stringizer
+  // Has no operator<<(std::ostream&), but a specialization of snowhouse::Stringizer
   struct WithoutStreamOperatorButWithStringizer : public WithoutStreamOperator
   {
     WithoutStreamOperatorButWithStringizer(int id)
@@ -108,4 +108,4 @@ void StringizeTests()
     WithoutStreamOperatorButWithStringizer b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
-} 
+}

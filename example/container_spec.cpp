@@ -67,7 +67,7 @@ void ContainerConstraints()
     my_container_.push_back(my_type(1));
     my_container_.push_back(my_type(3));
 
-    AssertTestFails(Assert::That(my_container_, EqualsContainer(expected)), 
+    AssertTestFails(Assert::That(my_container_, EqualsContainer(expected)),
         "Expected: [ (my_type: my_val_=1 ), (my_type: my_val_=2 ) ]");
   }
 

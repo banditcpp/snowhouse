@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_STARTSWITHCONSTRAINT_H
-#define IGLOO_STARTSWITHCONSTRAINT_H
+#ifndef SNOWHOUSE_STARTSWITHCONSTRAINT_H
+#define SNOWHOUSE_STARTSWITHCONSTRAINT_H
 
 #include "./expressions/expression.h"
 
@@ -14,23 +14,23 @@ namespace snowhouse {
   template <typename ExpectedType>
   struct StartsWithConstraint : Expression< StartsWithConstraint<ExpectedType> >
   {
-    StartsWithConstraint(const ExpectedType& expected) 
+    StartsWithConstraint(const ExpectedType& expected)
       : m_expected(expected) {}
-      
+
     bool operator()(const std::string& actual) const
     {
       return actual.find(m_expected) == 0;
-    } 
-    
+    }
+
     ExpectedType m_expected;
-  };              
+  };
 
   template< typename ExpectedType >
   inline StartsWithConstraint<ExpectedType> StartsWith(const ExpectedType& expected)
   {
     return StartsWithConstraint<ExpectedType>(expected);
   }
-  
+
   inline StartsWithConstraint<std::string> StartsWith(const char* expected)
   {
     return StartsWithConstraint<std::string>(expected);

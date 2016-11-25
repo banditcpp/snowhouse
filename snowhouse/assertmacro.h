@@ -4,8 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef IGLOO_ASSERTMACRO_H
-#define IGLOO_ASSERTMACRO_H
+#ifndef SNOWHOUSE_ASSERTMACRO_H
+#define SNOWHOUSE_ASSERTMACRO_H
 
 #include "assert.h"
 
@@ -19,4 +19,4 @@
 
 #endif // SNOWHOUSE_NO_MACROS
 
-#endif	// IGLOO_ASSERTMACRO_H
+#endif	// SNOWHOUSE_ASSERTMACRO_H

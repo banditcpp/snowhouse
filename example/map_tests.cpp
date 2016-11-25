@@ -18,21 +18,21 @@ void MapTests()
   {
     Assert::That(ages, Is().Containing("joakim"));
   }
-  
+
   std::cout << "ShouldGiveAProperMessageWhenContainingFails" << std::endl;
   {
-    AssertTestFails(Assert::That(ages, Is().Not().Containing("hanna")), 
-        "Expected: not contains hanna"); 
+    AssertTestFails(Assert::That(ages, Is().Not().Containing("hanna")),
+        "Expected: not contains hanna");
   }
 
   std::cout << "ContainingShouldDetermineIfKeyExists" << std::endl;
   {
     Assert::That(ages, Contains("joakim"));
   }
-  
+
   std::cout << "ShouldGiveAProperMessageWhenContainingFails" << std::endl;
   {
-    AssertTestFails(Assert::That(ages, !Contains("hanna")), 
-        "Expected: not contains hanna"); 
+    AssertTestFails(Assert::That(ages, !Contains("hanna")),
+        "Expected: not contains hanna");
   }
 }
