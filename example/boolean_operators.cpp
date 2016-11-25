@@ -45,4 +45,3 @@ void BooleanOperators()
     Assert::That(true);
   }
 }
-
