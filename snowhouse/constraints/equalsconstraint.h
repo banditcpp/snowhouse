@@ -51,7 +51,7 @@ namespace snowhouse {
     return EqualsConstraint<bool>(true);
   }
 
-#if __cplusplus > 199711L
+#ifdef SNOWHOUSE_HAS_NULLPTR
   inline EqualsConstraint<std::nullptr_t> IsNull()
   {
     return EqualsConstraint<std::nullptr_t>(nullptr);
