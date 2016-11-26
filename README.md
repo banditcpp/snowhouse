@@ -196,7 +196,7 @@ AssertThat(actual_str, Is().OfLength(5));
 
 If you have a string that contains multiple lines, you can use the collection constraints to make assertions on the content of that string. This may be handy if you have a string that, for instance, represents the resulting content of a file or a network transmission.
 
-Snowhouse can handle both windows (CR+LF) and unix (LF) line endings
+Snowhouse can handle both Windows (CR+LF) and Unix (LF) line endings
 
 ```cpp
 std::string lines = "First line\r\nSecond line\r\nThird line";
