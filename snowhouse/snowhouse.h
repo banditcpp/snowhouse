@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "fluent/fluent.h"
-#include "assertionexception.h"
+#include "stringizers.h"
 #include "assert.h"
 #include "assertmacro.h"
 #include "exceptions.h"
