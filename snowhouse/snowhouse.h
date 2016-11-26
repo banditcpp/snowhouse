@@ -2,7 +2,6 @@
 #define SNOWHOUSE_H
 
 #include <vector>
-#include <stack>
 #include <list>
 #include <memory>
 
