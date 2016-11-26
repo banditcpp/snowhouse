@@ -14,131 +14,131 @@ void SequenceContainerActual()
   container.push_back(5);
   container.push_back(8);
 
-  it("ShouldHandleAllOperator");
+  it("should handle all operator");
   {
     Assert::That(container, Has().All().GreaterThan(1).Or().LessThan(4));
   }
 
-  it("ShouldHandleFailingAllOperator");
+  it("should handle failing all operator");
   {
     AssertTestFails(Assert::That(container, Has().All().GreaterThan(4)), std::string("Expected: all greater than 4") + ExpectedActual);
   }
 
-  it("SHouldHandleInvalidExpressionAfterAllOperator");
+  it("should handle invalid expression after all operator");
   {
     AssertTestFails(Assert::That(container, Has().All().Not()), "The expression contains a not operator without any operand");
   }
 
-  it("ShouldHandleNoExpressionAfterAllOperator");
+  it("should handle no expression after all operator");
   {
     AssertTestFails(Assert::That(container, Has().All()), "The expression after \"all\" operator does not yield any result");
   }
 
-  it("ShouldHandleAtLeastOperator");
+  it("should handle at least operator");
   {
     Assert::That(container, Has().AtLeast(1).LessThan(5));
   }
 
-  it("ShouldHandleFailingAtLeastOperator");
+  it("should handle failing at least operator");
   {
     AssertTestFails(Assert::That(container, Has().AtLeast(2).LessThan(2)), std::string("Expected: at least 2 less than 2") + ExpectedActual);
   }
 
-  it("ShouldHandleExactlyOperator");
+  it("should handle exactly operator");
   {
     Assert::That(container, Has().Exactly(1).EqualTo(3));
   }
 
-  it("ShouldHandleFailingExactlyOperator");
+  it("should handle failing exactly operator");
   {
     AssertTestFails(Assert::That(container, Has().Exactly(2).EqualTo(3)), std::string("Expected: exactly 2 equal to 3") + ExpectedActual);
   }
 
-  it("ShouldHandleAtMostOperator");
+  it("should handle at most operator");
   {
     Assert::That(container, Has().AtMost(1).EqualTo(5));
   }
 
-  it("ShouldHandleFailingAtMostOperator");
+  it("should handle failing at most operator");
   {
     AssertTestFails(Assert::That(container, Has().AtMost(1).EqualTo(3).Or().EqualTo(5)), std::string("Expected: at most 1 equal to 3 or equal to 5") + ExpectedActual);
   }
 
-  it("ShouldHandleNoneOperator");
+  it("should handle none operator");
   {
     Assert::That(container, Has().None().EqualTo(666));
   }
 
-  it("ShouldHandleFailingNoneOperator");
+  it("should handle failing none operator");
   {
     AssertTestFails(Assert::That(container, Has().None().EqualTo(5)), std::string("Expected: none equal to 5") + ExpectedActual);
   }
 
-  it("ShouldHandleContaining");
+  it("should handle containing");
   {
     Assert::That(container, Contains(3));
   }
 
-  it("ShouldDetectFailingContains");
+  it("should detect failing contains");
   {
     AssertTestFails(Assert::That(container, Contains(99)), std::string("contains 99") + ExpectedActual);
   }
 
-  it("ShouldHandleOfLength");
+  it("should handle of length");
   {
     Assert::That(container, HasLength(5));
   }
 
-  it("ShouldHandleFailingOfLength");
+  it("should handle failing of length");
   {
     AssertTestFails(Assert::That(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
   }
 
-  it("ShouldHandleContaining_ExpressionTemplates");
+  it("should handle containin_ expression templates");
   {
     Assert::That(container, Contains(3));
   }
 
-  it("ShouldDetectFailingContains_ExpressionTemplates");
+  it("should detect failing contains expression templates");
   {
     AssertTestFails(Assert::That(container, Contains(99)), std::string("contains 99") + ExpectedActual);
   }
 
-  it("ShouldHandleOfLength_ExpressionTemplates");
+  it("should handle length expression templates");
   {
     Assert::That(container, HasLength(5));
   }
 
-  it("ShouldHandleFailingOfLengthForVectors");
+  it("should handle failing of length for vectors");
   {
     AssertTestFails(Assert::That(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
   }
 
-  it("ShouldHandleIsEmpty");
+  it("should handle is empty");
   {
     T is_empty;
 
     Assert::That(is_empty, IsEmpty());
   }
 
-  it("ShouldHandleFailingIsEmpty");
+  it("should handle failing is empty");
   {
     AssertTestFails(Assert::That(container, IsEmpty()), "of length 0");
   }
 
-  it("ShouldHandleFluentIsEmpty");
+  it("should handle fluent is empty");
   {
     T is_empty;
 
     Assert::That(is_empty, Is().Empty());
   }
 
-  it("ShouldHandleFailingFluentIsEmpty");
+  it("should handle failing fluent is empty");
   {
     AssertTestFails(Assert::That(container, Is().Empty()), "of length 0");
   }
 
-  it("ShouldHandlerEqualsContainer");
+  it("should handler equals container");
   {
     std::list<int> expected;
     expected.assign(container.begin(), container.end());
@@ -146,7 +146,7 @@ void SequenceContainerActual()
     AssertThat(container, EqualsContainer(expected));
   }
 
-  it("ShouldHandleEqualsContainer_Fluent");
+  it("should handle equals container");
   {
     std::list<int> expected;
     expected.assign(container.begin(), container.end());
@@ -154,7 +154,7 @@ void SequenceContainerActual()
     AssertThat(container, Is().EqualToContainer(expected));
   }
 
-  it("ShouldHandleFailingEqualsContainer");
+  it("should handle failing equals container");
   {
     const int e[] = {4, 2, 4};
     std::list<int> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -162,7 +162,7 @@ void SequenceContainerActual()
     AssertTestFails(Assert::That(container, EqualsContainer(expected)), "Expected: [ 4, 2, 4 ]");
   }
 
-  it("ShouldHandleFailingEqualsContainer_Fluent");
+  it("should handle failing equals container");
   {
     const int e[] = {4, 2, 4};
     std::list<int> expected(e, e + sizeof(e) / sizeof(e[0]));

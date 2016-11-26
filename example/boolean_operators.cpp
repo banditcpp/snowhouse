@@ -5,39 +5,39 @@ void BooleanOperators()
 {
   describe("Boolean operators");
 
-  it("ShouldHandleIsFalseOperator");
+  it("should handle is false operator");
   {
     Assert::That(false, IsFalse());
   }
 
-  it("ShouldHandleWhenIsFalseFails");
+  it("should handle when is false fails");
   {
     AssertTestFails(Assert::That(true, IsFalse()), "Expected: false");
   }
 
-  it("ShouldHandleIsTrueOperator");
+  it("should handle is true operator");
   {
     Assert::That(true, IsTrue());
   }
 
-  it("ShouldHandleWhenIsTrueFails");
+  it("should handle when is true fails");
   {
     AssertTestFails(Assert::That(false, IsTrue()), "Expected: true");
   }
 
-  it("ShouldHandleFluentIsTrue");
+  it("should handle fluent is true");
   {
     Assert::That(true, Is().True());
     AssertTestFails(Assert::That(false, Is().True()), "Expected: true");
   }
 
-  it("ShouldHandleFluentIsFalse");
+  it("should handle fluent is false");
   {
     Assert::That(false, Is().False());
     AssertTestFails(Assert::That(true, Is().False()), "Expected: false");
   }
 
-  it("ShouldTreatAssertWithoutConstraintAsBooleanConstrains");
+  it("should treat assert without constraint as boolean constrains");
   {
     Assert::That(true);
   }

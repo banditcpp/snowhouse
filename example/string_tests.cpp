@@ -5,57 +5,57 @@ void StringTests()
 {
   describe("StringTests");
 
-  it("ShouldHandleStringContainsConstraint");
+  it("should handle string contains constraint");
   {
     Assert::That("abcdef", Contains("bcde"));
   }
 
-  it("StringConstraintShouldHandleMatchAtBeginningOfString");
+  it("should handle match at beginning of string");
   {
     Assert::That("abcdef", Contains("a"));
   }
 
-  it("ShouldDetectFailingContains");
+  it("should detect failing contains");
   {
     AssertTestFails(Assert::That("abcdef", Contains("hello")), "contains hello");
   }
 
-  it("ShouldHandleStringStartingWithConstraint");
+  it("should handle string starting with constraint");
   {
     Assert::That("abcdef", StartsWith("abc"));
   }
 
-  it("ShouldHandleStringEndingWithConstraint");
+  it("should handle string ending with constraint");
   {
     Assert::That("abcdef", EndsWith("def"));
   }
 
-  it("ShouldHandleOperatorsForStrings");
+  it("should handle operators for strings");
   {
     Assert::That("abcdef", StartsWith("ab") && EndsWith("ef"));
   }
 
-  it("ShouldHandleStringsWithMultipleOperators");
+  it("should handle strings with multiple operators");
   {
     Assert::That("abcdef", StartsWith("ab") && !EndsWith("qwqw"));
   }
 
-  it("ShouldHandleOfLength");
+  it("should handle of length");
   {
     Assert::That("12345", HasLength(5));
   }
 
-  it("ShouldHandleWeirdLongExpressions");
+  it("should handle weird long expressions");
   {
     Assert::That("12345", HasLength(5) && StartsWith("123") && !EndsWith("zyxxy"));
   }
 
-  it("ShouldHandleStdStrings");
+  it("should handle std strings");
   {
     Assert::That("12345", Contains(std::string("23")));
   }
 
-  it("ShouldHandleSimpleChar");
+  it("should handle simple char");
   {
     Assert::That("12345", StartsWith('1'));
   }
