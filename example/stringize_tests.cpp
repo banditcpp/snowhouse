@@ -1,6 +1,5 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 namespace
 {
@@ -59,50 +58,46 @@ namespace snowhouse {
 
 void StringizeTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringizeTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Stringize");
 
-  std::cout << "ShouldHandleTypesWithStreamOperators" << std::endl;
+  it("handles types with stream operators");
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  std::cout << "ShouldHandleTypesWithoutStreamOperators" << std::endl;
+  it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
-  std::cout << "ShouldHandleTypesWithTraits" << std::endl;
+  it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringizeTestsExpressionTemplates" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Stringize expression templates");
 
-  std::cout << "ShouldHandleTypesWithStreamOperators" << std::endl;
+  it("handles types with stream operators");
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
     AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  std::cout << "ShouldHandleTypesWithoutStreamOperators" << std::endl;
+  it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
     AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
-  std::cout << "ShouldHandleTypesWithTraits" << std::endl;
+  it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);

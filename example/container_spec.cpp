@@ -1,12 +1,10 @@
-
 //          Copyright Joakim Karlsson & Kim Gräsman 2010-2013.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 struct my_type
 {
@@ -44,11 +42,9 @@ static bool are_my_types_equal(const my_type& lhs, const my_type& rhs)
 
 void ContainerConstraints()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   ContainerContstraints" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Container contstraints");
 
-  std::cout << "it_should_be_able_to_compare_containers_of_custom_types" << std::endl;
+  it("is able to compare containers of custom types");
   {
     const my_type e[] = {my_type(1), my_type(3)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -59,7 +55,7 @@ void ContainerConstraints()
     AssertThat(my_container_, EqualsContainer(expected));
   }
 
-  std::cout << "it_should_handle_failing_comparisons" << std::endl;
+  it("handles failing comparisons");
   {
     const my_type e[] = {my_type(1), my_type(2)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -71,7 +67,7 @@ void ContainerConstraints()
         "Expected: [ (my_type: my_val_=1 ), (my_type: my_val_=2 ) ]");
   }
 
-  std::cout << "it_should_handle_comparison_with_a_predicate_function" << std::endl;
+  it("handles comparison with a predicate function");
   {
     const my_type e[] = {my_type(1), my_type(3)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));

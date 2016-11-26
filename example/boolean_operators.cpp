@@ -1,46 +1,43 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void BooleanOperators()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   Boolean operators" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Boolean operators");
 
-  std::cout << "ShouldHandleIsFalseOperator" << std::endl;
+  it("handles IsFalse()");
   {
     Assert::That(false, IsFalse());
   }
 
-  std::cout << "ShouldHandleWhenIsFalseFails" << std::endl;
+  it("handles failing IsFalse()");
   {
     AssertTestFails(Assert::That(true, IsFalse()), "Expected: false");
   }
 
-  std::cout << "ShouldHandleIsTrueOperator" << std::endl;
+  it("handles IsTrue()");
   {
     Assert::That(true, IsTrue());
   }
 
-  std::cout << "ShouldHandleWhenIsTrueFails" << std::endl;
+  it("handles failing IsTrue()");
   {
     AssertTestFails(Assert::That(false, IsTrue()), "Expected: true");
   }
 
-  std::cout << "ShouldHandleFluentIsTrue" << std::endl;
+  it("handles Is().True()");
   {
     Assert::That(true, Is().True());
     AssertTestFails(Assert::That(false, Is().True()), "Expected: true");
   }
 
-  std::cout << "ShouldHandleFluentIsFalse" << std::endl;
+  it("handles Is().False()");
   {
     Assert::That(false, Is().False());
     AssertTestFails(Assert::That(true, Is().False()), "Expected: false");
   }
 
-  std::cout << "ShouldTreatAssertWithoutConstraintAsBooleanConstrains" << std::endl;
+  it("treats assert without constraint as boolean constrains");
   {
     Assert::That(true);
   }
