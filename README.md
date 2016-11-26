@@ -5,9 +5,7 @@ snowhouse
 
 An assertion library for C++
 
-Snowhouse is a stand alone assertion framework for C++. It was originally
-developed as part of [Igloo](http://github.com/joakimkarlsson/igloo) and has
-been extracted to be usable in other contexts.
+Snowhouse is a stand alone assertion framework for C++.
 
 ## Usage
 
@@ -448,3 +446,16 @@ As above, but only in debug builds.
 #### Test Assert
 
 Assert that a test behaved as expected. Throw an exception and let our testing framework deal with the test failure.
+
+## Responsibilities
+
+Snowhouse was originally developed as part of the [Igloo](//github.com/joakimkarlsson/igloo)
+testing framework by [Joakim Karlsson](//github.com/joakimkarlsson).
+It has been extracted to be usable in other contexts, for example,
+[Bandit](//github.com/banditcpp/bandit).
+
+Snowhouse is maintained by [Stephan Beyer](//github.com/sbeyer) since
+[October 2016](//twitter.com/JHKarlsson/status/789332548799332352).
+
+Snowhouse is licensed under the Boost Software License.
+See LICENSE_1_0.txt for further information.
