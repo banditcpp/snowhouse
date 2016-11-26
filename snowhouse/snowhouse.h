@@ -6,7 +6,6 @@
 #include "fluent/fluent.h"
 #include "stringizers.h"
 #include "assert.h"
-#include "assertmacro.h"
 #include "exceptions.h"
 
 #endif
