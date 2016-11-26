@@ -1,8 +1,6 @@
 #include <stdexcept>
-#include <sstream>
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void throwRuntimeError() {
    throw std::runtime_error("This is expected");
@@ -21,9 +19,7 @@ struct IgnoreErrors {
 
 void BasicAssertions()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "    ASSERTIONS " << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("BasicAssertions");
 
   std::cout << "ShouldHandleIntegerEquality" << std::endl;
 	{
@@ -107,9 +103,8 @@ void BasicAssertions()
       ConfigurableAssert<IgnoreErrors>::That(1, Equals(2));
     }
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "    ASSERTIONS EXPRESSION TEMPLATES" << std::endl;
-  std::cout << "================================================" << std::endl;
+
+  describe("AssertionExpressionTemplates");
 
   std::cout << "ShouldHandleIntegerEquality" << std::endl;
 	{

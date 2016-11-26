@@ -1,12 +1,9 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void ExpressionErrorHandling()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   ExpressionErrorHandling" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("ExpressionErrorHandling");
 
   std::vector<int> collection;
   collection.push_back(1);

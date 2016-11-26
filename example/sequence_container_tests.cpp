@@ -1,7 +1,5 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
-
+using namespace snowhouse;
 
 template <typename T>
 void SequenceContainerActual()
@@ -175,18 +173,12 @@ void SequenceContainerActual()
 
 void SequenceContainerTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   SequenceContainerTests(vector)" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("SequenceContainerTests(vector)");
   SequenceContainerActual<std::vector<int> >();
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   SequenceContainerTests(list)" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("SequenceContainerTests(list)");
   SequenceContainerActual<std::list<int> >();
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   SequenceContainerTests(deque)" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("SequenceContainerTests(deque)");
   SequenceContainerActual<std::deque<int> >();
 }

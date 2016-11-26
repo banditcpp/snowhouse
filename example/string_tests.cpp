@@ -1,12 +1,9 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void StringTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("StringTests");
 
   std::cout << "ShouldHandleStringContainsConstraint" << std::endl;
   {

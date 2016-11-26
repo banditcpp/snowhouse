@@ -1,14 +1,12 @@
-
 //          Copyright Joakim Karlsson & Kim Gräsman 2010-2013.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <snowhouse/snowhouse.h>
 #include <stdexcept>
+#include "tests.h"
 using namespace snowhouse;
 
-#include "tests.h"
 
 class ClassWithExceptions
 {
@@ -32,10 +30,7 @@ void ExceptionTests()
 {
   ClassWithExceptions objectUnderTest;
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   ExceptionTests" << std::endl;
-  std::cout << "================================================" << std::endl;
-
+  describe("ExceptionTests");
 
   std::cout << "CanDetectExceptions" << std::endl;
   {

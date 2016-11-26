@@ -1,12 +1,9 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void BooleanOperators()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   Boolean operators" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Boolean operators");
 
   std::cout << "ShouldHandleIsFalseOperator" << std::endl;
   {

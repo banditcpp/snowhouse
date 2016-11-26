@@ -1,12 +1,9 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void MapTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   MapTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("MapTests");
 
   std::map<std::string, int> ages;
   ages["joakim"] = 38;

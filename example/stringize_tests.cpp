@@ -1,6 +1,5 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 namespace
 {
@@ -59,9 +58,7 @@ namespace snowhouse {
 
 void StringizeTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringizeTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("StringizeTests");
 
   std::cout << "ShouldHandleTypesWithStreamOperators" << std::endl;
   {
@@ -84,9 +81,7 @@ void StringizeTests()
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringizeTestsExpressionTemplates" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("StringizeTestsExpressionTemplates");
 
   std::cout << "ShouldHandleTypesWithStreamOperators" << std::endl;
   {

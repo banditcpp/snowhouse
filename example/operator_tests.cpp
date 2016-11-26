@@ -1,12 +1,9 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void OperatorTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   OperatorTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("OperatorTests");
 
   std::cout << "ShouldHandleAndOperatorExpressionTemplates" << std::endl;
   {

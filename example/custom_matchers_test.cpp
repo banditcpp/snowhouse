@@ -1,12 +1,10 @@
-
 //          Copyright Joakim Karlsson & Kim Gräsman 2010-2013.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 struct IsEvenNumberNoStreamOperator
 {
@@ -36,9 +34,7 @@ std::ostream& operator<<(std::ostream& stm,
 
 void CustomMatchers()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   CustomMatchersNoStreamOperator" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("CustomMatchersNoStreamOperator");
 
   std::cout << "CanHandleCustomMatcher" << std::endl;
   {
@@ -57,9 +53,7 @@ void CustomMatchers()
   }
 
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "CustomMatcherWithStreamOperator" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("CustomMatcherWithStreamOperator");
 
   std::cout << "ErrorMessageUsesCustomStreamOperatorIfAvailable" << std::endl;
   {

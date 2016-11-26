@@ -1,12 +1,9 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void StringLineTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringLineTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("StringLineTests");
 
   std::cout << "CanAssertThatAtLeastOneLineInAStreamMatches" << std::endl;
   {
@@ -64,10 +61,7 @@ void StringLineTests()
   }
 
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringLineParserTests" << std::endl;
-  std::cout << "================================================" << std::endl;
-
+  describe("StringLineParserTests");
 
   std::cout << "CanParseEmptyString" << std::endl;
   {

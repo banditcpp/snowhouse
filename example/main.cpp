@@ -1,6 +1,5 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+using namespace snowhouse;
 
 void BooleanOperators();
 void BasicAssertions();
