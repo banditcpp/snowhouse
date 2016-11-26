@@ -62,7 +62,7 @@ Composite expressions can be any combination of constraints and the standard log
 
 You can also add your own constraints to be used within composite expressions.
 
-####Fluent Expressions
+#### Fluent Expressions
 
 With fluent expressions, you can create assertions that better convey the intent of a test without exposing implementation-specific details. Fluent expressions aim to help you create tests that are not just by developers for developers, but rather can be read and understood by domain experts.
 
@@ -76,7 +76,7 @@ AssertThat(length, Is().GreaterThan(4).And().Not().EqualTo(10));
 
 ### Basic Constraints
 
-####Equality Constraint
+#### Equality Constraint
 
 Used to verify equality between actual and expected.
 
@@ -85,7 +85,7 @@ AssertThat(x, Equals(12));
 AssertThat(x, Is().EqualTo(12));
 ```
 
-####EqualityWithDelta Constraint
+#### EqualityWithDelta Constraint
 
 Used to verify equality between actual and expected, allowing the two to differ by a delta.
 
@@ -94,7 +94,7 @@ AssertThat(2.49, EqualsWithDelta(2.5, 0.1));
 AssertThat(2.49, Is().EqualToWithDelta(2.5, 0.1));
 ```
 
-####GreaterThan Constraint
+#### GreaterThan Constraint
 
 Used to verify that actual is greater than a value.
 
@@ -103,8 +103,7 @@ AssertThat(x, IsGreaterThan(4));
 AssertThat(x, Is().GreaterThan(4));
 ```
 
-
-####LessThan Constraint
+#### LessThan Constraint
 
 Used to verify that actual is less than a value.
 
@@ -113,7 +112,7 @@ AssertThat(x, IsLessThan(3));
 AssertThat(x, Is().LessThan(3));
 ```
 
-####GreaterThanOrEqualTo Constraint
+#### GreaterThanOrEqualTo Constraint
 
 Used to verify that actual is greater than or equal to a value.
 
@@ -122,7 +121,7 @@ AssertThat(x, IsGreaterThanOrEqualTo(5));
 AssertThat(x, Is().GreaterThanOrEqualTo(5));
 ```
 
-####LessThanOrEqualTo Constraint
+#### LessThanOrEqualTo Constraint
 
 Used to verify that actual is less than or equal to a value.
 
@@ -147,7 +146,7 @@ In this case, the `SNOWHOUSE_HAS_NULLPTR` macro is defined.
 
 String assertions in Snowhouse are used to verify the values of STL strings (std::string).
 
-####Equality Constraints
+#### Equality Constraints
 
 Used to verify that actual is equal to an expected value.
 
@@ -156,7 +155,7 @@ AssertThat(actual_str, Equals("foo"));
 AssertThat(actual_str, Is().EqualTo("foo"));
 ```
 
-####Contains Constraint
+#### Contains Constraint
 
 Used to verify that a string contains a substring.
 
@@ -165,7 +164,7 @@ AssertThat(actual_str, Contains("foo"));
 AssertThat(actual_str, Is().Containing("foo"));
 ```
 
-####EndsWith Constraint
+#### EndsWith Constraint
 
 Used to verify that a string ends with an expected substring.
 
@@ -174,7 +173,7 @@ AssertThat(actual_str, EndsWith("foo"));
 AssertThat(actual_str, Is().EndingWith("foo"));
 ```
 
-####StartsWith Constraint
+#### StartsWith Constraint
 
 Used to verify that a string starts with an expected substring.
 
@@ -183,7 +182,7 @@ AssertThat(actual_str, StartsWith("foo"));
 AssertThat(actual_str, Is().StartingWith("foo"));
 ```
 
-####HasLength Constraint
+#### HasLength Constraint
 
 Used to verify that a string is of the expected length.
 
@@ -192,7 +191,7 @@ AssertThat(actual_str, HasLength(5));
 AssertThat(actual_str, Is().OfLength(5));
 ```
 
-###Constraints on Multi Line Strings
+### Constraints on Multi Line Strings
 
 If you have a string that contains multiple lines, you can use the collection constraints to make assertions on the content of that string. This may be handy if you have a string that, for instance, represents the resulting content of a file or a network transmission.
 
@@ -203,11 +202,11 @@ std::string lines = "First line\r\nSecond line\r\nThird line";
 AssertThat(lines, Has().Exactly(1).StartingWith("Second"));
 ```
 
-###Container Constraints
+### Container Constraints
 
 The following constraints can be applied to containers in the standard template library:
 
-####Contains Constraint
+#### Contains Constraint
 
 Used to verify that a container contains an expected value.
 
@@ -216,7 +215,7 @@ AssertThat(container, Contains(12));
 AssertThat(container, Is().Containing(12));
 ```
 
-####HasLength Constraint
+#### HasLength Constraint
 
 Used to verify that a container has the expected length.
 
@@ -225,7 +224,7 @@ AssertThat(container, HasLength(3));
 AssertThat(container, Is().OfLength(3));
 ```
 
-####IsEmpty Constraint
+#### IsEmpty Constraint
 
 Used to verify that a container is empty.
 
@@ -234,7 +233,7 @@ AssertThat(container, IsEmpty());
 AssertThat(container, Is().Empty());
 ```
 
-####All
+#### All
 
 Used to verify that all elements of a STL sequence container matches an expectation.
 
@@ -242,7 +241,7 @@ Used to verify that all elements of a STL sequence container matches an expectat
 AssertThat(container, Has().All().LessThan(5).Or().EqualTo(66));
 ```
 
-####AtLeast
+#### AtLeast
 
 Used to verify that at least a specified amount of elements in a STL sequence container matches an expectation.
 
@@ -250,7 +249,7 @@ Used to verify that at least a specified amount of elements in a STL sequence co
 AssertThat(container, Has().AtLeast(3).StartingWith("foo"));
 ```
 
-####AtMost
+#### AtMost
 
 Used to verify that at most a specified amount of elements in a STL sequence container matches an expectation.
 
@@ -258,7 +257,7 @@ Used to verify that at most a specified amount of elements in a STL sequence con
 Assert:That(container, Has().AtMost(2).Not().Containing("failed"));
 ```
 
-####Exactly
+#### Exactly
 
 Used to verify that a STL sequence container has exactly a specified amount of elements that matches an expectation.
 
@@ -266,7 +265,7 @@ Used to verify that a STL sequence container has exactly a specified amount of e
 AssertThat(container, Has().Exactly(3).GreaterThan(10).And().LessThan(20));
 ```
 
-####EqualsContainer
+#### EqualsContainer
 
 Used to verify that two STL sequence containers are equal.
 
@@ -275,7 +274,7 @@ AssertThat(container1, EqualsContainer(container2));
 AssertThat(container1, Is().EqualToContainer(container2));
 ```
 
-#####Predicate functions
+##### Predicate functions
 
 You can supply a predicate function or a functor to EqualsContainer to customize how to compare the elements in the two containers.
 
@@ -309,11 +308,11 @@ private:
 AssertThat(container1, Is().EqualToContainer(container1, within_delta(1));
 ```
 
-###Exceptions
+### Exceptions
 
 Exception constraints can be used to verify that your code throws the correct exceptions.
 
-####AssertThrows
+#### AssertThrows
 
 AssertThrows succeeds if the exception thrown by the call is of the supplied type (or one of its subtypes).
 
@@ -321,7 +320,7 @@ AssertThrows succeeds if the exception thrown by the call is of the supplied typ
 AssertThrows(std::logic_error, myObject.a_method(42));
 ```
 
-####Making Assertions on the Thrown Exceptions
+#### Making Assertions on the Thrown Exceptions
 
 If AssertThrows succeeds, it will store the thrown exception so that you can make more detailed assertions on it.
 
@@ -332,11 +331,11 @@ AssertThat(LastException<std::logic_error>().what(), Is().Containing("logic fail
 
 The LastException<> is available in the scope of the call to AssertThrows. An exception is not available between specs in order to avoid the result of one spec contaminating another.
 
-###Custom Constraints
+### Custom Constraints
 
 You can add your own constraints to Snowhouse to create more expressive specifications.
 
-####Fulfills Constraints
+#### Fulfills Constraints
 
 By defining the following matcher
 
@@ -369,7 +368,7 @@ Your custom matcher should implement a method called Matches() that takes a para
 
 To get more expressive failure messages, you should also implement the streaming operator as in the example above.
 
-##Getting better output for your types
+## Getting better output for your types
 
 Whenever Snowhouse prints an error message for a type, it will use the stream operator for that type, otherwise it will print "[unsupported type]"
 as a placeholder.
@@ -382,7 +381,7 @@ AssertThat(myType, Fulfills(MyConstraint());
 
 Will output the following if the constraint fails:
 
-```bash
+```
 Expected: To fulfill my constraint
 Actual: [unsupported type]
 ```
@@ -399,12 +398,12 @@ std::ostream& operator<<(std::ostream& stream, const MyType& a)
 
 the output will be a bit more readable:
 
-```bash
+```
 Expected: To fullfill my constraint
 Actual: MyType( x = 23 )
 ```
 
-##Configurable Failure Handlers
+## Configurable Failure Handlers
 
 You can provide Snowhouse with custom failure handlers, for example to call `std::terminate` instead of throwing an exception. See `DefaultFailureHandler` for an example of a failure handler. You can derive your own macros with custom failure handlers using `SNOWHOUSE_ASSERT_THAT` and `SNOWHOUSE_ASSERT_THROWS`. See the definitions of `AssertThat` and `AssertThrows` for examples of these. Define `SNOWHOUSE_NO_MACROS` to disable the unprefixed macros `AssertThat` and `AssertThrows`.
 
