@@ -75,43 +75,38 @@ namespace snowhouse {
 
 #define SNOWHOUSE_CONCAT2(a, b) a##b
 #define SNOWHOUSE_CONCAT(a, b) SNOWHOUSE_CONCAT2(a, b)
+#define SNOWHOUSE_LINESUFFIX(a) SNOWHOUSE_CONCAT(a, __LINE__)
+#define SNOWHOUSE_TEMPVAR(a) SNOWHOUSE_CONCAT(SNOWHOUSE_, SNOWHOUSE_LINESUFFIX(a ## _))
 
 #define SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, METHOD, FAILURE_HANDLER_TYPE) \
-::snowhouse::ExceptionStorage<EXCEPTION_TYPE> SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__); SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__).compiler_thinks_i_am_unused(); \
-{ \
-  bool wrong_exception = false; \
-  bool no_exception = false; \
-  try \
-  { \
+  ::snowhouse::ExceptionStorage<EXCEPTION_TYPE> SNOWHOUSE_TEMPVAR(storage); \
+  SNOWHOUSE_TEMPVAR(storage).compiler_thinks_i_am_unused(); \
+  bool SNOWHOUSE_TEMPVAR(wrong_exception) = false; \
+  bool SNOWHOUSE_TEMPVAR(no_exception) = false; \
+  try { \
     METHOD; \
-    no_exception = true; \
-  } \
-  catch (const EXCEPTION_TYPE& e) \
-  { \
+    SNOWHOUSE_TEMPVAR(no_exception) = true; \
+  } catch (const EXCEPTION_TYPE& e) { \
     ::snowhouse::ExceptionStorage<EXCEPTION_TYPE>::store(e); \
+  } catch (...) { \
+    SNOWHOUSE_TEMPVAR(wrong_exception) = true; \
   } \
-  catch(...) \
-  { \
-    wrong_exception = true; \
-  } \
-  if(no_exception) \
-  { \
+  if (SNOWHOUSE_TEMPVAR(no_exception)) { \
     std::ostringstream stm; \
-    stm << "Expected " << #EXCEPTION_TYPE << ". No exception was thrown."; \
+    stm << "Expected " #EXCEPTION_TYPE ". No exception was thrown."; \
     ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
   } \
-  if(wrong_exception) \
+  if (SNOWHOUSE_TEMPVAR(wrong_exception)) \
   { \
     std::ostringstream stm; \
-    stm << "Expected " << #EXCEPTION_TYPE << ". Wrong exception was thrown."; \
+    stm << "Expected " #EXCEPTION_TYPE ". Wrong exception was thrown."; \
     ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
   } \
-}
+  do { } while (false)
 
 #ifndef SNOWHOUSE_NO_MACROS
-
-#define AssertThrows(EXCEPTION_TYPE, METHOD) SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, (METHOD), ::snowhouse::DefaultFailureHandler)
-
-#endif // SNOWHOUSE_NO_MACROS
+#  define AssertThrows(EXCEPTION_TYPE, METHOD) \
+     SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, (METHOD), ::snowhouse::DefaultFailureHandler)
+#endif
 
 #endif
