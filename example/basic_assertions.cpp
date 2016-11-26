@@ -178,7 +178,7 @@ void BasicAssertions()
 			"Expected: less than or equal to 5\nActual: 6\n");
 	}
 
-#if __cplusplus > 199711L
+#ifdef SNOWHOUSE_HAS_NULLPTR
   it("should handle null");
     {
        Assert::That(nullptr, IsNull());

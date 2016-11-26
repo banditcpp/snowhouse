@@ -81,7 +81,7 @@ namespace snowhouse {
       return EqualTo<bool>(true);
     }
 
-#if __cplusplus > 199711L
+#ifdef SNOWHOUSE_HAS_NULLPTR
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<std::nullptr_t> >, Nil> >::t>
       Null()
     {

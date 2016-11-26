@@ -88,7 +88,7 @@ namespace snowhouse {
     }
   };
 
-#if __cplusplus > 199711L
+#ifdef SNOWHOUSE_HAS_NULLPTR
   // We need this because nullptr_t has ambiguous overloads of operator<< in the standard library.
   template<>
   struct Stringizer<std::nullptr_t>
