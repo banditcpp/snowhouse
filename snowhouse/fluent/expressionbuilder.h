@@ -1,4 +1,3 @@
-
 //          Copyright Joakim Karlsson & Kim Gräsman 2010-2012.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
@@ -7,7 +6,16 @@
 #ifndef SNOWHOUSE_EXPRESSIONBUILDER_H
 #define SNOWHOUSE_EXPRESSIONBUILDER_H
 
-#include <cstddef>
+#include "../constraints/constraints.h"
+#include "constraintadapter.h"
+#include "operators/andoperator.h"
+#include "operators/notoperator.h"
+#include "operators/oroperator.h"
+#include "operators/collections/alloperator.h"
+#include "operators/collections/noneoperator.h"
+#include "operators/collections/atleastoperator.h"
+#include "operators/collections/exactlyoperator.h"
+#include "operators/collections/atmostoperator.h"
 
 namespace snowhouse {
 
