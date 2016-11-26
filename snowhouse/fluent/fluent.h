@@ -6,15 +6,6 @@
 #ifndef SNOWHOUSE_FLUENT_H
 #define SNOWHOUSE_FLUENT_H
 
-#include "constraintadapter.h"
-#include "operators/andoperator.h"
-#include "operators/notoperator.h"
-#include "operators/oroperator.h"
-#include "operators/collections/alloperator.h"
-#include "operators/collections/noneoperator.h"
-#include "operators/collections/atleastoperator.h"
-#include "operators/collections/exactlyoperator.h"
-#include "operators/collections/atmostoperator.h"
 #include "expressionbuilder.h"
 
 namespace snowhouse {

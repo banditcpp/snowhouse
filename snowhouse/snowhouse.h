@@ -4,7 +4,6 @@
 #include <list>
 #include <memory>
 
-#include "constraints/constraints.h"
 #include "fluent/fluent.h"
 #include "assertionexception.h"
 #include "assert.h"
