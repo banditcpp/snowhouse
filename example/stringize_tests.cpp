@@ -58,46 +58,46 @@ namespace snowhouse {
 
 void StringizeTests()
 {
-  describe("StringizeTests");
+  describe("Stringize");
 
-  it("should handle types with stream operators");
+  it("handles types with stream operators");
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  it("should handle types without stream operators");
+  it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
-  it("should handle types with traits");
+  it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
     AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  describe("StringizeTestsExpressionTemplates");
+  describe("Stringize expression templates");
 
-  it("should handle types with stream operators");
+  it("handles types with stream operators");
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
     AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  it("should handle types without stream operators");
+  it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
     AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
-  it("should handle types with traits");
+  it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);

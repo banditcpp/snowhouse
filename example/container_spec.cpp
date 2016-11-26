@@ -42,9 +42,9 @@ static bool are_my_types_equal(const my_type& lhs, const my_type& rhs)
 
 void ContainerConstraints()
 {
-  describe("ContainerContstraints");
+  describe("Container contstraints");
 
-  it("should be able to compare containers of custom types");
+  it("is able to compare containers of custom types");
   {
     const my_type e[] = {my_type(1), my_type(3)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -55,7 +55,7 @@ void ContainerConstraints()
     AssertThat(my_container_, EqualsContainer(expected));
   }
 
-  it("should handle failing comparisons");
+  it("handles failing comparisons");
   {
     const my_type e[] = {my_type(1), my_type(2)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -67,7 +67,7 @@ void ContainerConstraints()
         "Expected: [ (my_type: my_val_=1 ), (my_type: my_val_=2 ) ]");
   }
 
-  it("should handle comparison with a predicate function");
+  it("handles comparison with a predicate function");
   {
     const my_type e[] = {my_type(1), my_type(3)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));

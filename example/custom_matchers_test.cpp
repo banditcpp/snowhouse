@@ -34,14 +34,14 @@ std::ostream& operator<<(std::ostream& stm,
 
 void CustomMatchers()
 {
-  describe("CustomMatchersNoStreamOperator");
+  describe("Custom matchers");
 
-  it("can handle custom matcher");
+  it("handles custom matcher");
   {
     Assert::That(2, Fulfills(IsEvenNumberNoStreamOperator()));
   }
 
-  it("can handle custom matcher with fluent");
+  it("handles custom matcher with fluent");
   {
     Assert::That(2, Is().Fulfilling(IsEvenNumberNoStreamOperator()));
   }
@@ -52,10 +52,7 @@ void CustomMatchers()
         "Expected: [unsupported type]\nActual: 3");
   }
 
-
-  describe("CustomMatcherWithStreamOperator");
-
-  it("error message uses custom stream operator if available");
+  it("outputs correct message when custom stream operator is defined");
   {
     AssertTestFails(Assert::That(3, Fulfills(IsEvenNumberWithStreamOperator())),
         "Expected: An even number\nActual: 3");

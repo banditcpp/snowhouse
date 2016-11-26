@@ -30,30 +30,30 @@ void ExceptionTests()
 {
   ClassWithExceptions objectUnderTest;
 
-  describe("ExceptionTests");
+  describe("Exceptions");
 
-  it("can detect exceptions");
+  it("detects exceptions");
   {
     AssertThrows(std::exception, objectUnderTest.LogicError());
   }
 
-  it("can assert on last exception");
+  it("asserts on LastException()");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
-  it("can detect when wrong exception is thrown");
+  it("detects when wrong exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.RangeError()), "Wrong exception");
   }
 
-  it("can print expected exception type when wrong exception is thrown");
+  it("prints expected exception type when wrong exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.RangeError()), "Expected std::logic_error");
   }
 
-  it("can have several exception assertions in same spec");
+  it("has several exception assertions in same spec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
@@ -62,7 +62,7 @@ void ExceptionTests()
     Assert::That(LastException<std::range_error>().what(), Contains("range error!"));
   }
 
-  it("can have several exception assertion for the same exception in same spec");
+  it("has several exception assertion for the same exception in same spec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
@@ -71,12 +71,12 @@ void ExceptionTests()
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
-  it("can detect when no exception is thrown");
+  it("detects when no exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.NoError()), "No exception");
   }
 
-  it("can print expected exception when no exception is thrown");
+  it("prints expected exception when no exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.NoError()), "Expected std::logic_error");
   }

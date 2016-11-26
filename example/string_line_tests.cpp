@@ -3,67 +3,66 @@ using namespace snowhouse;
 
 void StringLineTests()
 {
-  describe("StringLineTests");
+  describe("String lines");
 
-  it("can assert that at least one line in a stream matches");
+  it("asserts that at least one line in a stream matches");
   {
     Assert::That("First line\n", Has().AtLeast(1).EqualTo("First line"));
   }
 
-  it("can detect when assertion fails");
+  it("detects when assertion fails");
   {
     AssertTestFails(Assert::That("First line\n", Has().AtLeast(1).EqualTo("Second line")), "Expected: at least 1 equal to Second line");
   }
 
-  it("can handle line missing newline");
+  it("handles line missing newline");
   {
     Assert::That("First line", Has().AtLeast(1).EqualTo("First line"));
   }
 
-  it("can handle several lines");
+  it("handles several lines");
   {
     std::string lines = "First line\nSecond line";
     Assert::That(lines, Has().Exactly(2).EndingWith("line"));
   }
 
-  it("can handle windows line endings");
+  it("handles Windows line endings");
   {
     std::string lines = "First line\r\nSecond line\r\nThird line";
     Assert::That(lines, Has().Exactly(3).EndingWith("line"));
   }
 
-  it("can match beginning of lines with windows line endings");
+  it("matches beginning of lines with Windows line endings");
   {
     std::string lines = "First line\nSecond line\r\nThird line";
     Assert::That(lines, Has().Exactly(1).StartingWith("Second"));
   }
 
-  it("can handle empty lines when using windows line endings");
+  it("handles empty lines when using Windows line endings");
   {
     std::string lines = "\r\nSecond line\r\n\r\n";
     Assert::That(lines, Has().Exactly(2).OfLength(0));
   }
 
-  it("can handle last line missing newline for windows line endings");
+  it("handles last line missing newline for Windows line endings");
   {
     std::string lines = "First line\r\nSecond line";
     Assert::That(lines, Has().Exactly(2).EndingWith("line"));
   }
 
-  it("can handle all empty lines");
+  it("handles all empty lines");
   {
     Assert::That("\n\n\n\n\n\n", Has().Exactly(6).OfLength(0));
   }
 
-  it("can handle all empty lines with windows line endings");
+  it("handles all empty lines with Windows line endings");
   {
     Assert::That("\r\n\r\n\r\n", Has().Exactly(3).OfLength(0));
   }
 
+  describe("StringLineParser");
 
-  describe("StringLineParserTests");
-
-  it("can parse empty string");
+  it("parses an empty string");
   {
     std::vector<std::string> res;
 
@@ -72,7 +71,7 @@ void StringLineTests()
     Assert::That(res, HasLength(0));
   }
 
-  it("can parse single line");
+  it("parses a single line");
   {
     std::vector<std::string> res;
 
@@ -82,7 +81,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(1).EqualTo("Simple line"));
   }
 
-  it("can parse two lines");
+  it("parses two lines");
   {
     std::vector<std::string> res;
 
@@ -93,7 +92,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(1).EqualTo("Two lines"));
   }
 
-  it("can parse three lines");
+  it("parses three lines");
   {
     std::vector<std::string> res;
 
@@ -105,7 +104,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(1).EqualTo("Three lines"));
   }
 
-  it("can handle string ending with newline");
+  it("handles string ending with newline");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("One line\n", res);
@@ -113,7 +112,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(1).EqualTo("One line"));
   }
 
-  it("can handle single line with windows line ending");
+  it("handles single line with Windows line ending");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("One line\r\n", res);
@@ -121,7 +120,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(1).EqualTo("One line"));
   }
 
-  it("can handle two lines with windows line endings");
+  it("handles two lines with Windows line endings");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("One line\r\nTwo lines", res);
@@ -130,14 +129,14 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(1).EqualTo("Two lines"));
   }
 
-  it("can handle empty line with newline");
+  it("handles empty line with newline");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("\n", res);
     Assert::That(res, Is().OfLength(1).And().Exactly(1).OfLength(0));
   }
 
-  it("can handle two empty lines");
+  it("handles two empty lines");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("\n\n", res);
@@ -145,7 +144,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(2).OfLength(0));
   }
 
-  it("can handle two empty lines with windows line endings");
+  it("handles two empty lines with Windows line endings");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("\r\n\r\n", res);
@@ -153,7 +152,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(2).OfLength(0));
   }
 
-  it("can handle carriage return only");
+  it("handles carriage return only");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("One line\rTwo lines", res);
@@ -162,7 +161,7 @@ void StringLineTests()
     Assert::That(res, Has().Exactly(1).EqualTo("Two lines"));
   }
 
-  it("can handle carriage return only at end of string");
+  it("handles carriage return only at end of string");
   {
     std::vector<std::string> res;
     StringLineParser::Parse("One line\r\nTwo lines\r", res);

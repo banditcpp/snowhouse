@@ -3,7 +3,7 @@ using namespace snowhouse;
 
 void MapTests()
 {
-  describe("MapContaining");
+  describe("Containing (std::map)");
 
   std::map<std::string, int> ages;
   ages["joakim"] = 38;
@@ -11,23 +11,23 @@ void MapTests()
   ages["hanna"] = 6;
   ages["moa"] = 4;
 
-  it("should determine if key exists");
+  it("determines if key exists");
   {
     Assert::That(ages, Is().Containing("joakim"));
   }
 
-  it("should give a proper message when fails");
+  it("gives a proper message when fails");
   {
     AssertTestFails(Assert::That(ages, Is().Not().Containing("hanna")),
         "Expected: not contains hanna");
   }
 
-  it("should determine if key exists");
+  it("determines if key exists");
   {
     Assert::That(ages, Contains("joakim"));
   }
 
-  it("should give a proper message when containing fails");
+  it("gives a proper message when Contains() fails");
   {
     AssertTestFails(Assert::That(ages, !Contains("hanna")),
         "Expected: not contains hanna");
