@@ -5,57 +5,57 @@ void StringTests()
 {
   describe("StringTests");
 
-  std::cout << "ShouldHandleStringContainsConstraint" << std::endl;
+  it("ShouldHandleStringContainsConstraint");
   {
     Assert::That("abcdef", Contains("bcde"));
   }
 
-  std::cout << "StringConstraintShouldHandleMatchAtBeginningOfString" << std::endl;
+  it("StringConstraintShouldHandleMatchAtBeginningOfString");
   {
     Assert::That("abcdef", Contains("a"));
   }
 
-  std::cout << "ShouldDetectFailingContains" << std::endl;
+  it("ShouldDetectFailingContains");
   {
     AssertTestFails(Assert::That("abcdef", Contains("hello")), "contains hello");
   }
 
-  std::cout << "ShouldHandleStringStartingWithConstraint" << std::endl;
+  it("ShouldHandleStringStartingWithConstraint");
   {
     Assert::That("abcdef", StartsWith("abc"));
   }
 
-  std::cout << "ShouldHandleStringEndingWithConstraint" << std::endl;
+  it("ShouldHandleStringEndingWithConstraint");
   {
     Assert::That("abcdef", EndsWith("def"));
   }
 
-  std::cout << "ShouldHandleOperatorsForStrings" << std::endl;
+  it("ShouldHandleOperatorsForStrings");
   {
     Assert::That("abcdef", StartsWith("ab") && EndsWith("ef"));
   }
 
-  std::cout << "ShouldHandleStringsWithMultipleOperators" << std::endl;
+  it("ShouldHandleStringsWithMultipleOperators");
   {
     Assert::That("abcdef", StartsWith("ab") && !EndsWith("qwqw"));
   }
 
-  std::cout << "ShouldHandleOfLength" << std::endl;
+  it("ShouldHandleOfLength");
   {
     Assert::That("12345", HasLength(5));
   }
 
-  std::cout << "ShouldHandleWeirdLongExpressions" << std::endl;
+  it("ShouldHandleWeirdLongExpressions");
   {
     Assert::That("12345", HasLength(5) && StartsWith("123") && !EndsWith("zyxxy"));
   }
 
-  std::cout << "ShouldHandleStdStrings" << std::endl;
+  it("ShouldHandleStdStrings");
   {
     Assert::That("12345", Contains(std::string("23")));
   }
 
-  std::cout << "ShouldHandleSimpleChar" << std::endl;
+  it("ShouldHandleSimpleChar");
   {
     Assert::That("12345", StartsWith('1'));
   }

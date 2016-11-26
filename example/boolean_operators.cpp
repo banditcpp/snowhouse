@@ -5,39 +5,39 @@ void BooleanOperators()
 {
   describe("Boolean operators");
 
-  std::cout << "ShouldHandleIsFalseOperator" << std::endl;
+  it("ShouldHandleIsFalseOperator");
   {
     Assert::That(false, IsFalse());
   }
 
-  std::cout << "ShouldHandleWhenIsFalseFails" << std::endl;
+  it("ShouldHandleWhenIsFalseFails");
   {
     AssertTestFails(Assert::That(true, IsFalse()), "Expected: false");
   }
 
-  std::cout << "ShouldHandleIsTrueOperator" << std::endl;
+  it("ShouldHandleIsTrueOperator");
   {
     Assert::That(true, IsTrue());
   }
 
-  std::cout << "ShouldHandleWhenIsTrueFails" << std::endl;
+  it("ShouldHandleWhenIsTrueFails");
   {
     AssertTestFails(Assert::That(false, IsTrue()), "Expected: true");
   }
 
-  std::cout << "ShouldHandleFluentIsTrue" << std::endl;
+  it("ShouldHandleFluentIsTrue");
   {
     Assert::That(true, Is().True());
     AssertTestFails(Assert::That(false, Is().True()), "Expected: true");
   }
 
-  std::cout << "ShouldHandleFluentIsFalse" << std::endl;
+  it("ShouldHandleFluentIsFalse");
   {
     Assert::That(false, Is().False());
     AssertTestFails(Assert::That(true, Is().False()), "Expected: false");
   }
 
-  std::cout << "ShouldTreatAssertWithoutConstraintAsBooleanConstrains" << std::endl;
+  it("ShouldTreatAssertWithoutConstraintAsBooleanConstrains");
   {
     Assert::That(true);
   }

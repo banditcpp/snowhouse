@@ -23,4 +23,9 @@ inline void describe(const char *title)
     << "================================================" << std::endl;
 }
 
+inline void it(const char *title)
+{
+  std::cout << title << std::endl;
+}
+
 #endif

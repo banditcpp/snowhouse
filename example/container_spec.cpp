@@ -44,7 +44,7 @@ void ContainerConstraints()
 {
   describe("ContainerContstraints");
 
-  std::cout << "it_should_be_able_to_compare_containers_of_custom_types" << std::endl;
+  it("ShouldBeAbleToCompareContainersOfCustomTypes");
   {
     const my_type e[] = {my_type(1), my_type(3)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -55,7 +55,7 @@ void ContainerConstraints()
     AssertThat(my_container_, EqualsContainer(expected));
   }
 
-  std::cout << "it_should_handle_failing_comparisons" << std::endl;
+  it("ShouldHandleFailingComparisons");
   {
     const my_type e[] = {my_type(1), my_type(2)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -67,7 +67,7 @@ void ContainerConstraints()
         "Expected: [ (my_type: my_val_=1 ), (my_type: my_val_=2 ) ]");
   }
 
-  std::cout << "it_should_handle_comparison_with_a_predicate_function" << std::endl;
+  it("ShouldHandleComparisonWithAPredicateFunction");
   {
     const my_type e[] = {my_type(1), my_type(3)};
     const std::list<my_type> expected(e, e + sizeof(e) / sizeof(e[0]));

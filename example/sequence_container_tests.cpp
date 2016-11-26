@@ -14,131 +14,131 @@ void SequenceContainerActual()
   container.push_back(5);
   container.push_back(8);
 
-  std::cout << "ShouldHandleAllOperator" << std::endl;
+  it("ShouldHandleAllOperator");
   {
     Assert::That(container, Has().All().GreaterThan(1).Or().LessThan(4));
   }
 
-  std::cout << "ShouldHandleFailingAllOperator" << std::endl;
+  it("ShouldHandleFailingAllOperator");
   {
     AssertTestFails(Assert::That(container, Has().All().GreaterThan(4)), std::string("Expected: all greater than 4") + ExpectedActual);
   }
 
-  std::cout << "SHouldHandleInvalidExpressionAfterAllOperator" << std::endl;
+  it("SHouldHandleInvalidExpressionAfterAllOperator");
   {
     AssertTestFails(Assert::That(container, Has().All().Not()), "The expression contains a not operator without any operand");
   }
 
-  std::cout << "ShouldHandleNoExpressionAfterAllOperator" << std::endl;
+  it("ShouldHandleNoExpressionAfterAllOperator");
   {
     AssertTestFails(Assert::That(container, Has().All()), "The expression after \"all\" operator does not yield any result");
   }
 
-  std::cout << "ShouldHandleAtLeastOperator" << std::endl;
+  it("ShouldHandleAtLeastOperator");
   {
     Assert::That(container, Has().AtLeast(1).LessThan(5));
   }
 
-  std::cout << "ShouldHandleFailingAtLeastOperator" << std::endl;
+  it("ShouldHandleFailingAtLeastOperator");
   {
     AssertTestFails(Assert::That(container, Has().AtLeast(2).LessThan(2)), std::string("Expected: at least 2 less than 2") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleExactlyOperator" << std::endl;
+  it("ShouldHandleExactlyOperator");
   {
     Assert::That(container, Has().Exactly(1).EqualTo(3));
   }
 
-  std::cout << "ShouldHandleFailingExactlyOperator" << std::endl;
+  it("ShouldHandleFailingExactlyOperator");
   {
     AssertTestFails(Assert::That(container, Has().Exactly(2).EqualTo(3)), std::string("Expected: exactly 2 equal to 3") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleAtMostOperator" << std::endl;
+  it("ShouldHandleAtMostOperator");
   {
     Assert::That(container, Has().AtMost(1).EqualTo(5));
   }
 
-  std::cout << "ShouldHandleFailingAtMostOperator" << std::endl;
+  it("ShouldHandleFailingAtMostOperator");
   {
     AssertTestFails(Assert::That(container, Has().AtMost(1).EqualTo(3).Or().EqualTo(5)), std::string("Expected: at most 1 equal to 3 or equal to 5") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleNoneOperator" << std::endl;
+  it("ShouldHandleNoneOperator");
   {
     Assert::That(container, Has().None().EqualTo(666));
   }
 
-  std::cout << "ShouldHandleFailingNoneOperator" << std::endl;
+  it("ShouldHandleFailingNoneOperator");
   {
     AssertTestFails(Assert::That(container, Has().None().EqualTo(5)), std::string("Expected: none equal to 5") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleContaining" << std::endl;
+  it("ShouldHandleContaining");
   {
     Assert::That(container, Contains(3));
   }
 
-  std::cout << "ShouldDetectFailingContains" << std::endl;
+  it("ShouldDetectFailingContains");
   {
     AssertTestFails(Assert::That(container, Contains(99)), std::string("contains 99") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleOfLength" << std::endl;
+  it("ShouldHandleOfLength");
   {
     Assert::That(container, HasLength(5));
   }
 
-  std::cout << "ShouldHandleFailingOfLength" << std::endl;
+  it("ShouldHandleFailingOfLength");
   {
     AssertTestFails(Assert::That(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleContaining_ExpressionTemplates" << std::endl;
+  it("ShouldHandleContaining_ExpressionTemplates");
   {
     Assert::That(container, Contains(3));
   }
 
-  std::cout << "ShouldDetectFailingContains_ExpressionTemplates" << std::endl;
+  it("ShouldDetectFailingContains_ExpressionTemplates");
   {
     AssertTestFails(Assert::That(container, Contains(99)), std::string("contains 99") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleOfLength_ExpressionTemplates" << std::endl;
+  it("ShouldHandleOfLength_ExpressionTemplates");
   {
     Assert::That(container, HasLength(5));
   }
 
-  std::cout << "ShouldHandleFailingOfLengthForVectors" << std::endl;
+  it("ShouldHandleFailingOfLengthForVectors");
   {
     AssertTestFails(Assert::That(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
   }
 
-  std::cout << "ShouldHandleIsEmpty" << std::endl;
+  it("ShouldHandleIsEmpty");
   {
     T is_empty;
 
     Assert::That(is_empty, IsEmpty());
   }
 
-  std::cout << "ShouldHandleFailingIsEmpty" << std::endl;
+  it("ShouldHandleFailingIsEmpty");
   {
     AssertTestFails(Assert::That(container, IsEmpty()), "of length 0");
   }
 
-  std::cout << "ShouldHandleFluentIsEmpty" << std::endl;
+  it("ShouldHandleFluentIsEmpty");
   {
     T is_empty;
 
     Assert::That(is_empty, Is().Empty());
   }
 
-  std::cout << "ShouldHandleFailingFluentIsEmpty" << std::endl;
+  it("ShouldHandleFailingFluentIsEmpty");
   {
     AssertTestFails(Assert::That(container, Is().Empty()), "of length 0");
   }
 
-  std::cout << "ShouldHandlerEqualsContainer" << std::endl;
+  it("ShouldHandlerEqualsContainer");
   {
     std::list<int> expected;
     expected.assign(container.begin(), container.end());
@@ -146,7 +146,7 @@ void SequenceContainerActual()
     AssertThat(container, EqualsContainer(expected));
   }
 
-  std::cout << "ShouldHandleEqualsContainer_Fluent" << std::endl;
+  it("ShouldHandleEqualsContainer_Fluent");
   {
     std::list<int> expected;
     expected.assign(container.begin(), container.end());
@@ -154,7 +154,7 @@ void SequenceContainerActual()
     AssertThat(container, Is().EqualToContainer(expected));
   }
 
-  std::cout << "ShouldHandleFailingEqualsContainer" << std::endl;
+  it("ShouldHandleFailingEqualsContainer");
   {
     const int e[] = {4, 2, 4};
     std::list<int> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -162,7 +162,7 @@ void SequenceContainerActual()
     AssertTestFails(Assert::That(container, EqualsContainer(expected)), "Expected: [ 4, 2, 4 ]");
   }
 
-  std::cout << "ShouldHandleFailingEqualsContainer_Fluent" << std::endl;
+  it("ShouldHandleFailingEqualsContainer_Fluent");
   {
     const int e[] = {4, 2, 4};
     std::list<int> expected(e, e + sizeof(e) / sizeof(e[0]));

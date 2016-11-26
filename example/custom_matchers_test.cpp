@@ -36,17 +36,17 @@ void CustomMatchers()
 {
   describe("CustomMatchersNoStreamOperator");
 
-  std::cout << "CanHandleCustomMatcher" << std::endl;
+  it("CanHandleCustomMatcher");
   {
     Assert::That(2, Fulfills(IsEvenNumberNoStreamOperator()));
   }
 
-  std::cout << "CustomMatcherWithFluent" << std::endl;
+  it("CustomMatcherWithFluent");
   {
     Assert::That(2, Is().Fulfilling(IsEvenNumberNoStreamOperator()));
   }
 
-  std::cout << "OutputsCorrectMessageWhenFails" << std::endl;
+  it("OutputsCorrectMessageWhenFails");
   {
     AssertTestFails(Assert::That(3, Fulfills(IsEvenNumberNoStreamOperator())),
         "Expected: [unsupported type]\nActual: 3");
@@ -55,7 +55,7 @@ void CustomMatchers()
 
   describe("CustomMatcherWithStreamOperator");
 
-  std::cout << "ErrorMessageUsesCustomStreamOperatorIfAvailable" << std::endl;
+  it("ErrorMessageUsesCustomStreamOperatorIfAvailable");
   {
     AssertTestFails(Assert::That(3, Fulfills(IsEvenNumberWithStreamOperator())),
         "Expected: An even number\nActual: 3");

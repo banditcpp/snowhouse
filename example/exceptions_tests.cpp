@@ -32,28 +32,28 @@ void ExceptionTests()
 
   describe("ExceptionTests");
 
-  std::cout << "CanDetectExceptions" << std::endl;
+  it("CanDetectExceptions");
   {
     AssertThrows(std::exception, objectUnderTest.LogicError());
   }
 
-  std::cout << "CanAssertOnLastException" << std::endl;
+  it("CanAssertOnLastException");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
-  std::cout << "CanDetectWhenWrongExceptionIsThrown" << std::endl;
+  it("CanDetectWhenWrongExceptionIsThrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.RangeError()), "Wrong exception");
   }
 
-  std::cout << "CanPrintExpectedExceptionTypeWhenWrongExceptionIsThrown" << std::endl;
+  it("CanPrintExpectedExceptionTypeWhenWrongExceptionIsThrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.RangeError()), "Expected std::logic_error");
   }
 
-  std::cout << "CanHaveSeveralExceptionAssertionsInSameSpec" << std::endl;
+  it("CanHaveSeveralExceptionAssertionsInSameSpec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
@@ -62,7 +62,7 @@ void ExceptionTests()
     Assert::That(LastException<std::range_error>().what(), Contains("range error!"));
   }
 
-  std::cout << "CanHaveSeveralExceptionAssertionForTheSameExceptionInSameSpec" << std::endl;
+  it("CanHaveSeveralExceptionAssertionForTheSameExceptionInSameSpec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
@@ -71,17 +71,17 @@ void ExceptionTests()
     Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
-  std::cout << "CanDetectWhenNoExceptionIsThrown" << std::endl;
+  it("CanDetectWhenNoExceptionIsThrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.NoError()), "No exception");
   }
 
-  std::cout << "CanPrintExpectedExceptionWhenNoExceptionIsThrown" << std::endl;
+  it("CanPrintExpectedExceptionWhenNoExceptionIsThrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.NoError()), "Expected std::logic_error");
   }
 
-  std::cout << "ExceptionsAreDestoryedWhenWeExitScope" << std::endl;
+  it("ExceptionsAreDestoryedWhenWeExitScope");
   {
     {
       AssertThrows(std::logic_error, objectUnderTest.LogicError());
