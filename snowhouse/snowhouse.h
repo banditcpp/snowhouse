@@ -1,7 +1,6 @@
 #ifndef SNOWHOUSE_H
 #define SNOWHOUSE_H
 
-#include <list>
 #include <memory>
 
 #include "fluent/fluent.h"
