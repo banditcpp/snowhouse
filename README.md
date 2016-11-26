@@ -483,6 +483,14 @@ As above, but only in debug builds.
 Assert that a test behaved as expected.
 Throw an exception and let our testing framework deal with the test failure.
 
+## Versioning
+
+Snowhouse uses [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html) since
+version 3.0.0.
+The macros `SNOWHOUSE_MAJOR`, `SNOWHOUSE_MINOR` and `SNOWHOUSE_PATCH` are defined
+accordingly and `SNOWHOUSE_VERSION` contains the version string.
+Note that in prior versions `SNOWHOUSE_VERSION` was the only defined macro.
+
 ## Responsibilities
 
 Snowhouse was originally developed as part of the [Igloo](//github.com/joakimkarlsson/igloo)
