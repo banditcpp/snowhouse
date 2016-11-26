@@ -1,7 +1,6 @@
 #ifndef SNOWHOUSE_H
 #define SNOWHOUSE_H
 
-#include <vector>
 #include <list>
 #include <memory>
 

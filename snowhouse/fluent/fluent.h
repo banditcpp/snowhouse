@@ -10,7 +10,6 @@
 #include "operators/andoperator.h"
 #include "operators/notoperator.h"
 #include "operators/oroperator.h"
-#include "operators/collections/collectionconstraintevaluator.h"
 #include "operators/collections/alloperator.h"
 #include "operators/collections/noneoperator.h"
 #include "operators/collections/atleastoperator.h"
