@@ -41,18 +41,8 @@ namespace snowhouse {
    class ConfigurableAssert
    {
    public:
-
       template <typename ActualType, typename ConstraintListType>
-      static void That(const ActualType& actual, ExpressionBuilder<ConstraintListType> expression)
-      {
-        const char* no_file = "";
-        int line_number = 0;
-
-        ConfigurableAssert<FailureHandler>::That(actual, expression, no_file, line_number);
-      }
-
-      template <typename ActualType, typename ConstraintListType>
-      static void That(const ActualType& actual, ExpressionBuilder<ConstraintListType> expression, const char* file_name, int line_number)
+      static void That(const ActualType& actual, ExpressionBuilder<ConstraintListType> expression, const char* file_name = "", int line_number = 0)
       {
          try
          {
@@ -84,21 +74,13 @@ namespace snowhouse {
       }
 
       template <typename ConstraintListType>
-      static void That(const char* actual, ExpressionBuilder<ConstraintListType> expression)
+      static void That(const char* actual, ExpressionBuilder<ConstraintListType> expression, const char* file_name = "", int line_number = 0)
       {
-         return That(std::string(actual), expression);
+         return That(std::string(actual), expression, file_name, line_number);
       }
 
       template <typename ActualType, typename ExpressionType>
-      static void That(const ActualType& actual, const ExpressionType& expression)
-      {
-        const char* no_file = "";
-        int no_line = 0;
-        That(actual, expression, no_file, no_line);
-      }
-
-      template <typename ActualType, typename ExpressionType>
-      static void That(const ActualType& actual, const ExpressionType& expression, const char* file_name, int line_number)
+      static void That(const ActualType& actual, const ExpressionType& expression, const char* file_name = "", int line_number = 0)
       {
          if (!expression(actual))
          {
@@ -107,9 +89,9 @@ namespace snowhouse {
       }
 
       template <typename ExpressionType>
-      static void That(const char* actual, const ExpressionType& expression)
+      static void That(const char* actual, const ExpressionType& expression, const char* file_name = "", int line_number = 0)
       {
-         return That(std::string(actual), expression);
+         return That(std::string(actual), expression, file_name, line_number);
       }
 
       static void That(bool actual)
