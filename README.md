@@ -230,7 +230,7 @@ AssertThat(container, Is().OfLength(3));
 Used to verify that a container is empty.
 
 ```cpp
-AssertThat(contatiner, IsEmpty());
+AssertThat(container, IsEmpty());
 AssertThat(container, Is().Empty());
 ```
 
