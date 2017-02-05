@@ -63,7 +63,7 @@ void ContainerConstraints()
     my_container_.push_back(my_type(1));
     my_container_.push_back(my_type(3));
 
-    AssertTestFails(Assert::That(my_container_, EqualsContainer(expected)),
+    AssertTestFails(AssertThat(my_container_, EqualsContainer(expected)),
         "Expected: [ (my_type: my_val_=1 ), (my_type: my_val_=2 ) ]");
   }
 
@@ -75,7 +75,7 @@ void ContainerConstraints()
     my_container_.push_back(my_type(1));
     my_container_.push_back(my_type(3));
 
-    Assert::That(my_container_, EqualsContainer(expected, are_my_types_equal));
-    Assert::That(my_container_, Is().EqualToContainer(expected, are_my_types_equal));
+    AssertThat(my_container_, EqualsContainer(expected, are_my_types_equal));
+    AssertThat(my_container_, Is().EqualToContainer(expected, are_my_types_equal));
   }
 }

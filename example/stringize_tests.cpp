@@ -64,21 +64,21 @@ void StringizeTests()
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
   it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
   it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
   describe("Stringize expression templates");
@@ -87,20 +87,20 @@ void StringizeTests()
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Equals(b)), "Expected: equal to 13\nActual: 12");
   }
 
   it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
+    AssertTestFails(AssertThat(a, Equals(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
   it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 }

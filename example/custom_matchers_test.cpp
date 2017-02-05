@@ -38,23 +38,23 @@ void CustomMatchers()
 
   it("handles custom matcher");
   {
-    Assert::That(2, Fulfills(IsEvenNumberNoStreamOperator()));
+    AssertThat(2, Fulfills(IsEvenNumberNoStreamOperator()));
   }
 
   it("handles custom matcher with fluent");
   {
-    Assert::That(2, Is().Fulfilling(IsEvenNumberNoStreamOperator()));
+    AssertThat(2, Is().Fulfilling(IsEvenNumberNoStreamOperator()));
   }
 
   it("outputs correct message when fails");
   {
-    AssertTestFails(Assert::That(3, Fulfills(IsEvenNumberNoStreamOperator())),
+    AssertTestFails(AssertThat(3, Fulfills(IsEvenNumberNoStreamOperator())),
         "Expected: [unsupported type]\nActual: 3");
   }
 
   it("outputs correct message when custom stream operator is defined");
   {
-    AssertTestFails(Assert::That(3, Fulfills(IsEvenNumberWithStreamOperator())),
+    AssertTestFails(AssertThat(3, Fulfills(IsEvenNumberWithStreamOperator())),
         "Expected: An even number\nActual: 3");
   }
 }

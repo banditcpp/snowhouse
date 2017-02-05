@@ -13,7 +13,7 @@
   {  \
   SNOWHOUSE_INTERNAL_expected_error = exception_from_snowhouse_assertion.GetMessage();  \
   }  \
-  Assert::That(SNOWHOUSE_INTERNAL_expected_error, Is().Containing(expected_error_text));
+  AssertThat(SNOWHOUSE_INTERNAL_expected_error, Is().Containing(expected_error_text));
 
 inline void describe(const char *title)
 {

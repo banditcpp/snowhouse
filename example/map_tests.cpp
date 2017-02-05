@@ -13,23 +13,23 @@ void MapTests()
 
   it("determines if key exists");
   {
-    Assert::That(ages, Is().Containing("joakim"));
+    AssertThat(ages, Is().Containing("joakim"));
   }
 
   it("gives a proper message when fails");
   {
-    AssertTestFails(Assert::That(ages, Is().Not().Containing("hanna")),
+    AssertTestFails(AssertThat(ages, Is().Not().Containing("hanna")),
         "Expected: not contains hanna");
   }
 
   it("determines if key exists");
   {
-    Assert::That(ages, Contains("joakim"));
+    AssertThat(ages, Contains("joakim"));
   }
 
   it("gives a proper message when Contains() fails");
   {
-    AssertTestFails(Assert::That(ages, !Contains("hanna")),
+    AssertTestFails(AssertThat(ages, !Contains("hanna")),
         "Expected: not contains hanna");
   }
 }

@@ -40,7 +40,7 @@ void ExceptionTests()
   it("asserts on LastException()");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
   it("detects when wrong exception is thrown");
@@ -56,19 +56,19 @@ void ExceptionTests()
   it("has several exception assertions in same spec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
 
     AssertThrows(std::range_error, objectUnderTest.RangeError());
-    Assert::That(LastException<std::range_error>().what(), Contains("range error!"));
+    AssertThat(LastException<std::range_error>().what(), Contains("range error!"));
   }
 
   it("has several exception assertion for the same exception in same spec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
 
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
   it("detects when no exception is thrown");
@@ -87,6 +87,6 @@ void ExceptionTests()
       AssertThrows(std::logic_error, objectUnderTest.LogicError());
     }
     AssertThrows(AssertionException, LastException<std::logic_error>());
-    Assert::That(LastException<AssertionException>().GetMessage(), Contains("No exception was stored"));
+    AssertThat(LastException<AssertionException>().GetMessage(), Contains("No exception was stored"));
   }
 }

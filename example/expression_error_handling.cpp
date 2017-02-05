@@ -12,13 +12,13 @@ void ExpressionErrorHandling()
 
   it("reports an invalid All() properly");
   {
-    AssertTestFails(Assert::That(collection, Has().All()),
+    AssertTestFails(AssertThat(collection, Has().All()),
         "The expression after \"all\" operator does not yield any result");
   }
 
   it("reports an invalid AtLeast() properly");
   {
-    AssertTestFails(Assert::That(collection, Has().AtLeast(2)),
+    AssertTestFails(AssertThat(collection, Has().AtLeast(2)),
         "The expression after \"at least 2\" operator does not yield any result");
   }
 
