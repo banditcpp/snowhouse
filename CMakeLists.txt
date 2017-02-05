@@ -37,7 +37,7 @@ else()
   endif()
 endif()
 
-message(${CMAKE_CXX_FLAGS})
+message(STATUS ${CMAKE_CXX_FLAGS})
 
 if (SNOWHOUSE_BUILD_TESTS)
     FILE(GLOB SnowhouseSpecSourceFiles example/*.cpp)
