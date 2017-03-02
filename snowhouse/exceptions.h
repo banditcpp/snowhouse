@@ -86,9 +86,9 @@ namespace snowhouse {
     METHOD; \
     no_exception = true; \
   } \
-  catch (const EXCEPTION_TYPE& e) \
+  catch (const EXCEPTION_TYPE& snowhouse_exception) \
   { \
-    ::snowhouse::ExceptionStorage<EXCEPTION_TYPE>::store(e); \
+    ::snowhouse::ExceptionStorage<EXCEPTION_TYPE>::store(snowhouse_exception); \
   } \
   catch(...) \
   { \
