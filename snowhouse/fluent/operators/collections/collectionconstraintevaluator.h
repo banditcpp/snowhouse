@@ -25,12 +25,12 @@ struct CollectionConstraintEvaluator
 
     unsigned int passed_elements = 0;
     typename ActualType::const_iterator it;
-    for(it = actual.begin(); it != actual.end(); it++)
+    for(it = actual.begin(); it != actual.end(); ++it)
     {
       if(ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression,
           *it))
       {
-        passed_elements++;
+        ++passed_elements;
       }
     }
 
