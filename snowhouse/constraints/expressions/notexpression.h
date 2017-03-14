@@ -14,7 +14,7 @@ namespace snowhouse {
   template< typename ExpressionType >
   struct NotExpression : Expression< NotExpression<ExpressionType> >
   {
-    NotExpression(const ExpressionType& expression)
+    explicit NotExpression(const ExpressionType& expression)
       : m_expression(expression)
     {
     }

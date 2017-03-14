@@ -6,7 +6,7 @@ namespace
   // No overload for operator<<(std::ostream&) or specialization of snowhouse::Stringizer
   struct WithoutStreamOperator
   {
-    WithoutStreamOperator(int id)
+    explicit WithoutStreamOperator(int id)
     : m_id(id)
     {
     }
@@ -22,7 +22,7 @@ namespace
   // Has operator<<(std::ostream&)
   struct WithStreamOperator : public WithoutStreamOperator
   {
-    WithStreamOperator(int id)
+    explicit WithStreamOperator(int id)
     : WithoutStreamOperator(id)
     {
     }
@@ -37,7 +37,7 @@ namespace
   // Has no operator<<(std::ostream&), but a specialization of snowhouse::Stringizer
   struct WithoutStreamOperatorButWithStringizer : public WithoutStreamOperator
   {
-    WithoutStreamOperatorButWithStringizer(int id)
+    explicit WithoutStreamOperatorButWithStringizer(int id)
     : WithoutStreamOperator(id)
     {
     }

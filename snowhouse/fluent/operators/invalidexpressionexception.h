@@ -12,7 +12,7 @@ namespace snowhouse {
 
   struct InvalidExpressionException
   {
-    InvalidExpressionException(const std::string& message) : m_message(message)
+    explicit InvalidExpressionException(const std::string& message) : m_message(message)
     {
     }
 

@@ -34,7 +34,7 @@ namespace snowhouse {
   template <typename ConstraintListType>
   struct ExpressionBuilder
   {
-    ExpressionBuilder(const ConstraintListType& list) : m_constraint_list(list)
+    explicit ExpressionBuilder(const ConstraintListType& list) : m_constraint_list(list)
     {
     }
 

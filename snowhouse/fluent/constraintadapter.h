@@ -14,7 +14,7 @@ namespace snowhouse {
   template <typename ConstraintType>
   struct ConstraintAdapter
   {
-    ConstraintAdapter(const ConstraintType& constraint) : m_constraint(constraint)
+    explicit ConstraintAdapter(const ConstraintType& constraint) : m_constraint(constraint)
     {
     }
 

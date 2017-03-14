@@ -15,7 +15,7 @@ namespace snowhouse {
   class AssertionException : public std::exception
   {
     public:
-      AssertionException(const std::string& message)
+      explicit AssertionException(const std::string& message)
         : m_message(message), m_fileName(""), m_line(0)
       {}
 

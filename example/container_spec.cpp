@@ -8,7 +8,7 @@ using namespace snowhouse;
 
 struct my_type
 {
-  my_type(int my_val)
+  explicit my_type(int my_val)
     : my_val_(my_val)
   {}
 
