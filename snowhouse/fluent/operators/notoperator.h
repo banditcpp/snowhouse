@@ -41,14 +41,14 @@ namespace snowhouse {
     }
   };
 
-   template<>
-   struct Stringizer<NotOperator>
-   {
-      static std::string ToString(const NotOperator&)
-      {
-         return "not";
-      }
-   };
+  template<>
+  struct Stringizer<NotOperator>
+  {
+    static std::string ToString(const NotOperator&)
+    {
+      return "not";
+    }
+  };
 }
 
 #endif

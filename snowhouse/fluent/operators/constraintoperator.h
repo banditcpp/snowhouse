@@ -25,18 +25,18 @@ namespace snowhouse {
     template <typename ConstraintListType, typename ActualType>
     static bool EvaluateElementAgainstRestOfExpression(ConstraintListType& list, const ActualType& actual)
     {
-       ResultStack innerResult;
-       OperatorStack innerOperators;
+      ResultStack innerResult;
+      OperatorStack innerOperators;
 
-       EvaluateConstraintList(list.m_tail, innerResult, innerOperators, actual);
-       EvaluateAllOperatorsOnStack(innerOperators, innerResult);
+      EvaluateConstraintList(list.m_tail, innerResult, innerOperators, actual);
+      EvaluateAllOperatorsOnStack(innerOperators, innerResult);
 
-       if(innerResult.empty())
-       {
-         throw InvalidExpressionException("The expression after \"" + snowhouse::Stringize(list.m_head) + "\" operator does not yield any result");
-       }
+      if(innerResult.empty())
+      {
+        throw InvalidExpressionException("The expression after \"" + snowhouse::Stringize(list.m_head) + "\" operator does not yield any result");
+      }
 
-       return innerResult.top();
+      return innerResult.top();
     }
 
     static void EvaluateOperatorsWithLessOrEqualPrecedence(const ConstraintOperator& op, OperatorStack& operators, ResultStack& result)

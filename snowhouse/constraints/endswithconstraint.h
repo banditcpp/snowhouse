@@ -42,7 +42,7 @@ namespace snowhouse {
     static std::string ToString(const EndsWithConstraint<ExpectedType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "ends with " << snowhouse::Stringize(constraint.m_expected);
+      builder << "ends with " << snowhouse::Stringize(constraint.m_expected);
 
       return builder.str();
     }

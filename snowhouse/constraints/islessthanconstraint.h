@@ -44,7 +44,7 @@ namespace snowhouse {
     static std::string ToString(const IsLessThanConstraint<ExpectedType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "less than " << snowhouse::Stringize(constraint.m_expected);
+      builder << "less than " << snowhouse::Stringize(constraint.m_expected);
 
       return builder.str();
     }

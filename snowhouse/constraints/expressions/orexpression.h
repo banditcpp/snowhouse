@@ -36,7 +36,7 @@ namespace snowhouse {
     static std::string ToString(const OrExpression<LeftExpression, RightExpression>& expression)
     {
       std::ostringstream builder;
-	  builder << snowhouse::Stringize(expression.m_left) << " or " << snowhouse::Stringize(expression.m_right);
+      builder << snowhouse::Stringize(expression.m_left) << " or " << snowhouse::Stringize(expression.m_right);
 
       return builder.str();
     }

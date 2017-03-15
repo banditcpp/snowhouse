@@ -37,7 +37,7 @@ namespace snowhouse {
   struct ContainsConstraint : Expression< ContainsConstraint<ExpectedType> >
   {
     ContainsConstraint(const ExpectedType& expected)
-    : m_expected(expected) {}
+      : m_expected(expected) {}
 
     template <typename ActualType>
     bool operator()(const ActualType& actual) const
@@ -70,7 +70,7 @@ namespace snowhouse {
     static std::string ToString(const ContainsConstraint<ExpectedType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "contains " << snowhouse::Stringize(constraint.m_expected);
+      builder << "contains " << snowhouse::Stringize(constraint.m_expected);
 
       return builder.str();
     }

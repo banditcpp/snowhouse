@@ -302,7 +302,7 @@ struct within_delta
   }
 
 private:
-    int delta_;
+  int delta_;
 };
 
 AssertThat(container1, Is().EqualToContainer(container1, within_delta(1));

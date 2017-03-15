@@ -40,7 +40,7 @@ namespace snowhouse {
     static std::string ToString(const EqualsWithDeltaConstraint<ExpectedType, DeltaType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "equal to " << snowhouse::Stringize(constraint.m_expected) << " (+/- " << snowhouse::Stringize(constraint.m_delta) << ")";
+      builder << "equal to " << snowhouse::Stringize(constraint.m_expected) << " (+/- " << snowhouse::Stringize(constraint.m_delta) << ")";
 
       return builder.str();
     }

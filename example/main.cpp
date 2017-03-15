@@ -18,18 +18,18 @@ int main()
 {
   try
   {
-  BasicAssertions();
-  BooleanOperators();
-  ContainerConstraints();
-  CustomMatchers();
-  ExceptionTests();
-  ExpressionErrorHandling();
-  MapTests();
-  OperatorTests();
-  SequenceContainerTests();
-  StringLineTests();
-  StringTests();
-  StringizeTests();
+    BasicAssertions();
+    BooleanOperators();
+    ContainerConstraints();
+    CustomMatchers();
+    ExceptionTests();
+    ExpressionErrorHandling();
+    MapTests();
+    OperatorTests();
+    SequenceContainerTests();
+    StringLineTests();
+    StringTests();
+    StringizeTests();
   }
   catch(const AssertionException& e)
   {

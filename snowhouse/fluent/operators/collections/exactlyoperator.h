@@ -18,7 +18,7 @@ namespace snowhouse {
       template <typename ConstraintListType, typename ActualType>
       void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
       {
-        unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
+         unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
 
          result.push(passed_elements == m_expected);
       }
@@ -26,16 +26,16 @@ namespace snowhouse {
       unsigned int m_expected;
    };
 
-  template<>
-  struct Stringizer< ExactlyOperator >
-  {
-    static std::string ToString(const ExactlyOperator& op)
-    {
-      std::ostringstream stm;
-      stm << "exactly " << op.m_expected;
-      return stm.str();
-    }
-  };
+   template<>
+   struct Stringizer< ExactlyOperator >
+   {
+      static std::string ToString(const ExactlyOperator& op)
+      {
+         std::ostringstream stm;
+         stm << "exactly " << op.m_expected;
+         return stm.str();
+      }
+   };
 }
 
 #endif

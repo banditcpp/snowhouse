@@ -41,7 +41,7 @@ namespace snowhouse {
     static std::string ToString(const StartsWithConstraint<ExpectedType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "starts with " << snowhouse::Stringize(constraint.m_expected);
+      builder << "starts with " << snowhouse::Stringize(constraint.m_expected);
 
       return builder.str();
     }

@@ -34,7 +34,7 @@ namespace snowhouse {
     static std::string ToString(const NotExpression<ExpressionType>& expression)
     {
       std::ostringstream builder;
-	  builder << "not " << snowhouse::Stringize(expression.m_expression);
+      builder << "not " << snowhouse::Stringize(expression.m_expression);
 
       return builder.str();
     }

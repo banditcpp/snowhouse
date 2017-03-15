@@ -17,7 +17,7 @@ namespace snowhouse {
 
   inline ExpressionBuilder<Nil> Has()
   {
-     return ExpressionBuilder<Nil>(Nil());
+    return ExpressionBuilder<Nil>(Nil());
   }
 
 }
