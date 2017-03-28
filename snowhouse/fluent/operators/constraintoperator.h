@@ -22,7 +22,7 @@ namespace snowhouse {
     virtual void PerformOperation(ResultStack& result) = 0;
     virtual int Precedence() const = 0;
 
-    template <typename ConstraintListType, typename ActualType>
+    template<typename ConstraintListType, typename ActualType>
     static bool EvaluateElementAgainstRestOfExpression(ConstraintListType& list, const ActualType& actual)
     {
       ResultStack innerResult;

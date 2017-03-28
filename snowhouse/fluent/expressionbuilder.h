@@ -21,24 +21,24 @@ namespace snowhouse {
 
   // ---- Evaluation of list of constraints
 
-  template <typename ConstraintListType, typename ActualType>
+  template<typename ConstraintListType, typename ActualType>
   inline void EvaluateConstraintList(ConstraintListType& constraint_list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
   {
     constraint_list.m_head.Evaluate(constraint_list, result, operators, actual);
   }
 
-  template <typename ActualType>
+  template<typename ActualType>
   inline void EvaluateConstraintList(Nil&, ResultStack&, OperatorStack&, const ActualType&) {}
 
 
-  template <typename ConstraintListType>
+  template<typename ConstraintListType>
   struct ExpressionBuilder
   {
     explicit ExpressionBuilder(const ConstraintListType& list) : m_constraint_list(list)
     {
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<ExpectedType> >, Nil> >::t>
       EqualTo(const ExpectedType& expected)
     {
@@ -51,7 +51,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ExpectedType, typename DeltaType>
+    template<typename ExpectedType, typename DeltaType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsWithDeltaConstraint<ExpectedType, DeltaType> >, Nil> >::t>
       EqualToWithDelta(const ExpectedType& expected, const DeltaType& delta)
     {
@@ -64,7 +64,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename MatcherType>
+    template<typename MatcherType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<FulfillsConstraint<MatcherType> >, Nil> >::t>
       Fulfilling(const MatcherType& matcher)
     {
@@ -103,7 +103,7 @@ namespace snowhouse {
       return EqualTo<std::string>(std::string(expected));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<IsGreaterThanConstraint<ExpectedType> >, Nil> >::t>
       GreaterThan(const ExpectedType& expected)
     {
@@ -115,7 +115,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<IsGreaterThanOrEqualToConstraint<ExpectedType> >, Nil> >::t>
       GreaterThanOrEqualTo(const ExpectedType& expected)
     {
@@ -127,7 +127,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<IsLessThanConstraint<ExpectedType> >, Nil> >::t>
       LessThan(const ExpectedType& expected)
     {
@@ -139,7 +139,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<IsLessThanOrEqualToConstraint<ExpectedType> >, Nil> >::t>
       LessThanOrEqualTo(const ExpectedType& expected)
     {
@@ -151,7 +151,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<ContainsConstraint<ExpectedType> >, Nil> >::t>
       Containing(const ExpectedType& expected)
     {
@@ -169,7 +169,7 @@ namespace snowhouse {
       return Containing<std::string>(std::string(expected));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EndsWithConstraint<ExpectedType> >, Nil> >::t>
       EndingWith(const ExpectedType& expected)
     {
@@ -187,7 +187,7 @@ namespace snowhouse {
       return EndingWith(std::string(expected));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<StartsWithConstraint<ExpectedType> >, Nil> >::t>
       StartingWith(const ExpectedType& expected)
     {
@@ -205,7 +205,7 @@ namespace snowhouse {
       return StartingWith(std::string(expected));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<HasLengthConstraint<ExpectedType> >, Nil> >::t>
       OfLength(const ExpectedType& expected)
     {
@@ -228,7 +228,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsContainerConstraint<ExpectedType, bool (*)(const typename ExpectedType::value_type&, const typename ExpectedType::value_type&)> >, Nil> >::t>
       EqualToContainer(const ExpectedType& expected)
     {
@@ -241,7 +241,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ExpectedType, typename BinaryPredicate>
+    template<typename ExpectedType, typename BinaryPredicate>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsContainerConstraint<ExpectedType, BinaryPredicate> >, Nil> >::t>
       EqualToContainer(const ExpectedType& expected, const BinaryPredicate predicate)
     {
@@ -326,7 +326,7 @@ namespace snowhouse {
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    template <typename ActualType>
+    template<typename ActualType>
     void Evaluate(ResultStack& result, OperatorStack& operators, const ActualType& actual)
     {
       EvaluateConstraintList(m_constraint_list, result, operators, actual);
@@ -335,7 +335,7 @@ namespace snowhouse {
     ConstraintListType m_constraint_list;
   };
 
-  template <typename T>
+  template<typename T>
   inline void StringizeConstraintList(const T& list, std::ostringstream& stm)
   {
     if (stm.tellp() > 0)

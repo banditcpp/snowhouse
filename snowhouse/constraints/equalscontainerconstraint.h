@@ -18,7 +18,7 @@ namespace snowhouse {
     }
   }
 
-  template< typename ExpectedType, typename BinaryPredicate>
+  template<typename ExpectedType, typename BinaryPredicate>
     struct EqualsContainerConstraint : Expression< EqualsContainerConstraint<ExpectedType, BinaryPredicate> >
   {
     EqualsContainerConstraint(const ExpectedType& expected, const BinaryPredicate predicate)
@@ -54,19 +54,19 @@ namespace snowhouse {
 
   };
 
-  template< typename ExpectedType>
+  template<typename ExpectedType>
     inline EqualsContainerConstraint<ExpectedType, bool (*)(const typename ExpectedType::value_type&, const typename ExpectedType::value_type&)> EqualsContainer(const ExpectedType& expected)
     {
       return EqualsContainerConstraint<ExpectedType, bool (*)(const typename ExpectedType::value_type&, const typename ExpectedType::value_type&)>(expected, constraint_internal::default_comparer);
     }
 
-  template< typename ExpectedType, typename BinaryPredicate >
+  template<typename ExpectedType, typename BinaryPredicate>
     inline EqualsContainerConstraint<ExpectedType, BinaryPredicate> EqualsContainer(const ExpectedType& expected, const BinaryPredicate predicate)
     {
       return EqualsContainerConstraint<ExpectedType, BinaryPredicate>(expected, predicate);
     }
 
-  template< typename ExpectedType, typename BinaryPredicate >
+  template<typename ExpectedType, typename BinaryPredicate>
     struct Stringizer< EqualsContainerConstraint<ExpectedType, BinaryPredicate> >
     {
       static std::string ToString(const EqualsContainerConstraint<ExpectedType, BinaryPredicate>& constraint)

@@ -10,7 +10,7 @@
 
 namespace snowhouse {
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   struct IsGreaterThanConstraint : Expression< IsGreaterThanConstraint<ExpectedType> >
   {
     IsGreaterThanConstraint(const ExpectedType& expected)
@@ -27,7 +27,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline IsGreaterThanConstraint<ExpectedType> IsGreaterThan(const ExpectedType& expected)
   {
     return IsGreaterThanConstraint<ExpectedType>(expected);
@@ -38,7 +38,7 @@ namespace snowhouse {
     return IsGreaterThanConstraint<std::string>(expected);
   }
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   struct Stringizer< IsGreaterThanConstraint< ExpectedType > >
   {
     static std::string ToString(const IsGreaterThanConstraint<ExpectedType>& constraint)

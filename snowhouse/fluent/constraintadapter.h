@@ -11,14 +11,14 @@
 
 namespace snowhouse {
 
-  template <typename ConstraintType>
+  template<typename ConstraintType>
   struct ConstraintAdapter
   {
     explicit ConstraintAdapter(const ConstraintType& constraint) : m_constraint(constraint)
     {
     }
 
-    template <typename ConstraintListType, typename ActualType>
+    template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
     {
       result.push(m_constraint(actual));

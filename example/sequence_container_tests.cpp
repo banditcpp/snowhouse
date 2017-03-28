@@ -1,7 +1,7 @@
 #include "tests.h"
 using namespace snowhouse;
 
-template <typename T>
+template<typename T>
 void SequenceContainerActual()
 {
   const char* ExpectedActual = "\nActual: [ 1, 2, 3, 5, 8 ]";

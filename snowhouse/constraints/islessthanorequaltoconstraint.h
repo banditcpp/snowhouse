@@ -10,7 +10,7 @@
 
 namespace snowhouse {
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   struct IsLessThanOrEqualToConstraint : Expression < IsLessThanOrEqualToConstraint<ExpectedType> >
   {
     IsLessThanOrEqualToConstraint(const ExpectedType& expected)
@@ -27,7 +27,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline IsLessThanOrEqualToConstraint<ExpectedType> IsLessThanOrEqualTo(const ExpectedType& expected)
   {
     return IsLessThanOrEqualToConstraint<ExpectedType>(expected);
@@ -38,7 +38,7 @@ namespace snowhouse {
     return IsLessThanOrEqualToConstraint<std::string>(expected);
   }
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   struct Stringizer < IsLessThanOrEqualToConstraint< ExpectedType > >
   {
     static std::string ToString(const IsLessThanOrEqualToConstraint<ExpectedType>& constraint)

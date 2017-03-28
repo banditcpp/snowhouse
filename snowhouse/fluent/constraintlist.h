@@ -14,7 +14,7 @@ namespace snowhouse {
   typedef std::stack<bool> ResultStack;
   typedef std::stack<ConstraintOperator*> OperatorStack;
 
-  template <typename HT, typename TT>
+  template<typename HT, typename TT>
   struct ConstraintList
   {
     typedef HT HeadType;
@@ -37,20 +37,20 @@ namespace snowhouse {
 
 
   // ---- These structs defines the resulting types of list concatenation operations
-  template <typename L1, typename L2>
+  template<typename L1, typename L2>
   struct type_concat
   {
     typedef ConstraintList<typename L1::HeadType, typename type_concat<typename L1::TailType, L2>::t> t;
   };
 
-  template <typename L2> struct type_concat<Nil, L2> { typedef L2 t; };
+  template<typename L2> struct type_concat<Nil, L2> { typedef L2 t; };
 
-  template <typename L3> inline L3 tr_concat(const Nil&, const Nil&) { return Nil(); }
+  template<typename L3> inline L3 tr_concat(const Nil&, const Nil&) { return Nil(); }
 
 
   // ---- These structs define the concatenation operations.
 
-  template <typename LeftList, typename RightList, typename ResultList>
+  template<typename LeftList, typename RightList, typename ResultList>
   struct ListConcat
   {
     static ResultList Concatenate(const LeftList& left, const RightList& right)
@@ -60,7 +60,7 @@ namespace snowhouse {
   };
 
   // Concatenating an empty list with a second list yields the second list
-  template <typename RightList, typename ResultList>
+  template<typename RightList, typename ResultList>
   struct ListConcat<Nil, RightList, ResultList>
   {
     static ResultList Concatenate(const Nil&, const RightList& right)
@@ -71,7 +71,7 @@ namespace snowhouse {
   };
 
   // Concatenating two empty lists yields an empty list
-  template <typename ResultList>
+  template<typename ResultList>
   struct ListConcat<Nil, Nil, ResultList>
   {
     static ResultList Concatenate(const Nil&, const Nil&)
@@ -82,7 +82,7 @@ namespace snowhouse {
 
   // ---- The concatenation operation
 
-  template <typename L1, typename L2>
+  template<typename L1, typename L2>
   inline typename type_concat<L1, L2>::t Concatenate(const L1& list1, const L2& list2)
   {
     return ListConcat<L1, L2, typename type_concat<L1, L2>::t>::Concatenate(list1, list2);

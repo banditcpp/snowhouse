@@ -20,7 +20,7 @@ namespace snowhouse {
 
   struct DefaultFailureHandler
   {
-    template <typename ExpectedType, typename ActualType>
+    template<typename ExpectedType, typename ActualType>
     static void Handle(const ExpectedType& expected, const ActualType& actual, const char* file_name, int line_number)
     {
       std::ostringstream str;
@@ -40,7 +40,7 @@ namespace snowhouse {
   template<typename FailureHandler>
   struct ConfigurableAssert
   {
-    template <typename ActualType, typename ConstraintListType>
+    template<typename ActualType, typename ConstraintListType>
     static void That(const ActualType& actual, ExpressionBuilder<ConstraintListType> expression, const char* file_name = "", int line_number = 0)
     {
       try
@@ -72,13 +72,13 @@ namespace snowhouse {
       }
     }
 
-    template <typename ConstraintListType>
+    template<typename ConstraintListType>
     static void That(const char* actual, ExpressionBuilder<ConstraintListType> expression, const char* file_name = "", int line_number = 0)
     {
       return That(std::string(actual), expression, file_name, line_number);
     }
 
-    template <typename ActualType, typename ExpressionType>
+    template<typename ActualType, typename ExpressionType>
     static void That(const ActualType& actual, const ExpressionType& expression, const char* file_name = "", int line_number = 0)
     {
       if (!expression(actual))
@@ -87,7 +87,7 @@ namespace snowhouse {
       }
     }
 
-    template <typename ExpressionType>
+    template<typename ExpressionType>
     static void That(const char* actual, const ExpressionType& expression, const char* file_name = "", int line_number = 0)
     {
       return That(std::string(actual), expression, file_name, line_number);

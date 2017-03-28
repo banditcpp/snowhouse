@@ -13,33 +13,33 @@
 
 namespace snowhouse {
 
-  template <typename ContainerType>
+  template<typename ContainerType>
   struct find_in_container_traits
   {
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     static bool find(const ContainerType& container, const ExpectedType& expected)
     {
       return std::find(container.begin(), container.end(), expected) != container.end();
     }
   };
 
-  template <typename KeyType, typename ValueType>
+  template<typename KeyType, typename ValueType>
   struct find_in_container_traits<std::map<KeyType, ValueType> >
   {
-    template <typename ExpectedType>
+    template<typename ExpectedType>
     static bool find(const std::map<KeyType, ValueType>& container, const ExpectedType& expected)
     {
       return container.find(expected) != container.end();
     }
   };
 
-  template <typename ExpectedType>
+  template<typename ExpectedType>
   struct ContainsConstraint : Expression< ContainsConstraint<ExpectedType> >
   {
     ContainsConstraint(const ExpectedType& expected)
       : m_expected(expected) {}
 
-    template <typename ActualType>
+    template<typename ActualType>
     bool operator()(const ActualType& actual) const
     {
       return find_in_container_traits<ActualType>::find(actual, m_expected);
@@ -53,7 +53,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline ContainsConstraint<ExpectedType> Contains(const ExpectedType& expected)
   {
     return ContainsConstraint<ExpectedType>(expected);
@@ -64,7 +64,7 @@ namespace snowhouse {
     return ContainsConstraint<std::string>(expected);
   }
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   struct Stringizer< ContainsConstraint< ExpectedType > >
   {
     static std::string ToString(const ContainsConstraint<ExpectedType>& constraint)

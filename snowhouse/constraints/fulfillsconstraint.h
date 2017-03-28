@@ -10,7 +10,7 @@
 
 namespace snowhouse {
 
-  template< typename MatcherType >
+  template<typename MatcherType>
   struct FulfillsConstraint : Expression< FulfillsConstraint<MatcherType> >
   {
     FulfillsConstraint(const MatcherType& matcher)
@@ -27,13 +27,13 @@ namespace snowhouse {
     MatcherType m_matcher;
   };
 
-  template< typename MatcherType >
+  template<typename MatcherType>
   inline FulfillsConstraint<MatcherType> Fulfills(const MatcherType& matcher)
   {
     return FulfillsConstraint<MatcherType>(matcher);
   }
 
-  template< typename MatcherType >
+  template<typename MatcherType>
   struct Stringizer< FulfillsConstraint< MatcherType > >
   {
     static std::string ToString(const FulfillsConstraint<MatcherType>& constraint)

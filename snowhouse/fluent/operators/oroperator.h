@@ -12,7 +12,7 @@ namespace snowhouse {
 
   struct OrOperator : public ConstraintOperator
   {
-    template <typename ConstraintListType, typename ActualType>
+    template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
     {
       EvaluateOperatorsWithLessOrEqualPrecedence(*this, operators, result);

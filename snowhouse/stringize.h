@@ -19,7 +19,7 @@ namespace snowhouse {
     struct any
     {
       // Conversion constructor for any type.
-      template <typename T>
+      template<typename T>
       any(T const&);
     };
 
@@ -40,10 +40,10 @@ namespace snowhouse {
 
     no check(tag);
 
-    template <typename T>
+    template<typename T>
     yes check(T const&);
 
-    template <typename T>
+    template<typename T>
     struct is_output_streamable
     {
       static const T& x;

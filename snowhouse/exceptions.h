@@ -10,7 +10,7 @@
 
 namespace snowhouse {
 
-  template <typename ExceptionType>
+  template<typename ExceptionType>
   struct ExceptionStorage
   {
     static void last_exception(ExceptionType*** e, bool clear=false)
@@ -58,7 +58,7 @@ namespace snowhouse {
     }
   };
 
-  template <typename ExceptionType>
+  template<typename ExceptionType>
   inline ExceptionType& LastException()
   {
     ExceptionType** e = NULL;

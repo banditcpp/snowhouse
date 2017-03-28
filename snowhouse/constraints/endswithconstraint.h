@@ -10,7 +10,7 @@
 
 namespace snowhouse {
 
-  template <typename ExpectedType>
+  template<typename ExpectedType>
   struct EndsWithConstraint : Expression< EndsWithConstraint<ExpectedType> >
   {
     EndsWithConstraint(const ExpectedType& expected)
@@ -25,7 +25,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline EndsWithConstraint<ExpectedType> EndsWith(const ExpectedType& expected)
   {
     return EndsWithConstraint<ExpectedType>(expected);
@@ -36,7 +36,7 @@ namespace snowhouse {
     return EndsWithConstraint<std::string>(expected);
   }
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   struct Stringizer< EndsWithConstraint< ExpectedType > >
   {
     static std::string ToString(const EndsWithConstraint<ExpectedType>& constraint)

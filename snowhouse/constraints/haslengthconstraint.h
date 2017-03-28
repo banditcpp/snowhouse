@@ -10,13 +10,13 @@
 
 namespace snowhouse {
 
-  template <typename ExpectedType>
+  template<typename ExpectedType>
   struct HasLengthConstraint : Expression< HasLengthConstraint<ExpectedType> >
   {
     HasLengthConstraint(const ExpectedType& expected)
       : m_expected(expected) {}
 
-    template <typename ActualType>
+    template<typename ActualType>
     bool operator()(const ActualType& actual) const
     {
       typedef typename ActualType::size_type SizeType;
@@ -27,7 +27,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline HasLengthConstraint<ExpectedType> HasLength(const ExpectedType& expected)
   {
     return HasLengthConstraint<ExpectedType>(expected);
@@ -43,7 +43,7 @@ namespace snowhouse {
     return HasLengthConstraint<std::string>(expected);
   }
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   struct Stringizer< HasLengthConstraint< ExpectedType > >
   {
     static std::string ToString(const HasLengthConstraint<ExpectedType>& constraint)
