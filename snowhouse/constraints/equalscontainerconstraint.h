@@ -52,7 +52,6 @@ namespace snowhouse {
       return *this;
     }
 #endif
-
   };
 
   template<typename ExpectedType>

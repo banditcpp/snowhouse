@@ -7,7 +7,6 @@
 #include "tests.h"
 using namespace snowhouse;
 
-
 struct ClassWithExceptions
 {
   int LogicError()

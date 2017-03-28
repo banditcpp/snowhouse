@@ -30,7 +30,6 @@ namespace snowhouse {
   template<typename ActualType>
   inline void EvaluateConstraintList(Nil&, ResultStack&, OperatorStack&, const ActualType&) {}
 
-
   template<typename ConstraintListType>
   struct ExpressionBuilder
   {

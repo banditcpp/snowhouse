@@ -42,7 +42,6 @@ namespace snowhouse {
       return builder.str();
     }
   };
-
 }
 
 #endif

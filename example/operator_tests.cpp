@@ -128,5 +128,4 @@ void OperatorTests()
   {
     AssertThat(2, Is().EqualToWithDelta(1.9, 0.1));
   }
-
 }

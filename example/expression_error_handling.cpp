@@ -21,5 +21,4 @@ void ExpressionErrorHandling()
     AssertTestFails(AssertThat(collection, Has().AtLeast(2)),
         "The expression after \"at least 2\" operator does not yield any result");
   }
-
 }

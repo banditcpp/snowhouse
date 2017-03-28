@@ -65,7 +65,6 @@ namespace snowhouse {
       }
     }
   };
-
 }
 
 #endif

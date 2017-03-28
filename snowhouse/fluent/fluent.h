@@ -19,7 +19,6 @@ namespace snowhouse {
   {
     return ExpressionBuilder<Nil>(Nil());
   }
-
 }
 
 #endif

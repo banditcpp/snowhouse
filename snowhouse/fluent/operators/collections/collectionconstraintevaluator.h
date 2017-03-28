@@ -106,7 +106,6 @@ namespace snowhouse {
       return CollectionConstraintEvaluator<ConstraintListType, std::vector<std::string> >::Evaluate(op, expression, result, operators, lines);
     }
   };
-
 }
 
 #endif

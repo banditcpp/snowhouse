@@ -33,7 +33,6 @@ namespace snowhouse {
     Nil(const Nil&) {}
   };
 
-
   // ---- These structs defines the resulting types of list concatenation operations
   template<typename L1, typename L2>
   struct type_concat
@@ -52,7 +51,6 @@ namespace snowhouse {
   {
     return Nil();
   }
-
 
   // ---- These structs define the concatenation operations.
 
@@ -73,7 +71,6 @@ namespace snowhouse {
     {
       return right;
     }
-
   };
 
   // Concatenating two empty lists yields an empty list

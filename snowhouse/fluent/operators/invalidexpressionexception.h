@@ -22,7 +22,6 @@ namespace snowhouse {
 
     std::string m_message;
   };
-
 }
 
 #endif // SNOWHOUSE_INVALUDEXPRESSIONEXCEPTION_H
