@@ -19,47 +19,47 @@ namespace snowhouse
   {
 
     template<typename Container>
-      struct SequentialContainerStringizer
+    struct SequentialContainerStringizer
+    {
+      static std::string
+      ToString(const Container& cont)
       {
-        static std::string
-        ToString(const Container& cont)
+        std::ostringstream stm;
+        typedef typename Container::const_iterator Iterator;
+
+        stm << "[ ";
+        for (Iterator it = cont.begin(); it != cont.end();)
         {
-          std::ostringstream stm;
-          typedef typename Container::const_iterator Iterator;
+          stm << snowhouse::Stringize(*it);
 
-          stm << "[ ";
-          for (Iterator it = cont.begin(); it != cont.end();)
+          if (++it != cont.end())
           {
-            stm << snowhouse::Stringize(*it);
-
-            if (++it != cont.end())
-            {
-              stm << ", ";
-            }
+            stm << ", ";
           }
-          stm << " ]";
-          return stm.str();
         }
-      };
+        stm << " ]";
+        return stm.str();
+      }
+    };
   }
 
   template<typename T>
-    struct Stringizer<std::vector<T> > : detail::SequentialContainerStringizer<
-        std::vector<T> >
-    {
-    };
+  struct Stringizer<std::vector<T> > : detail::SequentialContainerStringizer<
+      std::vector<T> >
+  {
+  };
 
   template<typename T>
-    struct Stringizer<std::deque<T> > : detail::SequentialContainerStringizer<
-        std::deque<T> >
-    {
-    };
+  struct Stringizer<std::deque<T> > : detail::SequentialContainerStringizer<
+      std::deque<T> >
+  {
+  };
 
   template<typename T>
-    struct Stringizer<std::list<T> > : detail::SequentialContainerStringizer<
-        std::list<T> >
-    {
-    };
+  struct Stringizer<std::list<T> > : detail::SequentialContainerStringizer<
+      std::list<T> >
+  {
+  };
 }
 
 #endif
