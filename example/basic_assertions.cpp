@@ -7,7 +7,7 @@ void throwRuntimeError() {
 }
 
 struct IgnoreErrors {
-  template <class ExpectedType, class ActualType>
+  template <typename ExpectedType, typename ActualType>
   static void Handle(const ExpectedType&, const ActualType&, const char*, int)
   {
   }

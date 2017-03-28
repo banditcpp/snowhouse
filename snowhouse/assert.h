@@ -20,7 +20,7 @@ namespace snowhouse {
 
   struct DefaultFailureHandler
   {
-    template <class ExpectedType, class ActualType>
+    template <typename ExpectedType, typename ActualType>
     static void Handle(const ExpectedType& expected, const ActualType& actual, const char* file_name, int line_number)
     {
       std::ostringstream str;
