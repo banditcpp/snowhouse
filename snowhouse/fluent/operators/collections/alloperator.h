@@ -11,25 +11,25 @@
 
 namespace snowhouse {
 
-   struct AllOperator : public CollectionOperator
-   {
-      template <typename ConstraintListType, typename ActualType>
-      void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
-      {
-         unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
+  struct AllOperator : public CollectionOperator
+  {
+    template <typename ConstraintListType, typename ActualType>
+    void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
+    {
+      unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
 
-         result.push(passed_elements == actual.size());
-      }
-   };
+      result.push(passed_elements == actual.size());
+    }
+  };
 
-   template<>
-   struct Stringizer<AllOperator>
-   {
-      static std::string ToString(const AllOperator&)
-      {
-         return "all";
-      }
-   };
+  template<>
+  struct Stringizer<AllOperator>
+  {
+    static std::string ToString(const AllOperator&)
+    {
+      return "all";
+    }
+  };
 }
 
 #endif
