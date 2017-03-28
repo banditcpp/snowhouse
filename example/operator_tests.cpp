@@ -86,7 +86,7 @@ void OperatorTests()
 
   it("handles both left and right associative operators expression templates");
   {
-    AssertThat(5, IsGreaterThan(4)&& !IsLessThan(3));
+    AssertThat(5, IsGreaterThan(4) && !IsLessThan(3));
   }
 
   it("yields error on malformed expression");

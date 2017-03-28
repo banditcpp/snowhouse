@@ -22,11 +22,11 @@ struct IsEvenNumberWithStreamOperator
   }
 
   friend std::ostream& operator<<(std::ostream& stm,
-      const IsEvenNumberWithStreamOperator& );
+      const IsEvenNumberWithStreamOperator&);
 };
 
 std::ostream& operator<<(std::ostream& stm,
-    const IsEvenNumberWithStreamOperator& )
+    const IsEvenNumberWithStreamOperator&)
 {
   stm << "An even number";
   return stm;

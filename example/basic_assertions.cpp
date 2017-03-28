@@ -188,7 +188,7 @@ void BasicAssertions()
   it("handles !IsNull()");
   {
     int anInt = 0;
-    AssertThat(&anInt, ! IsNull());
+    AssertThat(&anInt, !IsNull());
   }
 
   it("detects when IsNull() fails (real address)");
@@ -212,7 +212,7 @@ void BasicAssertions()
     std::ostringstream message;
     message << "Expected: not equal to nullptr\nActual: nullptr\n";
 
-    AssertTestFails(AssertThat(nullptr, ! IsNull()), message.str());
+    AssertTestFails(AssertThat(nullptr, !IsNull()), message.str());
   }
 #endif
 }
