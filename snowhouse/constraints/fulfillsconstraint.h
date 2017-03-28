@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FULFILLSCONSTRAINT_H
-#define FULFILLSCONSTRAINT_H
+#ifndef SNOWHOUSE_FULFILLSCONSTRAINT_H
+#define SNOWHOUSE_FULFILLSCONSTRAINT_H
 
 #include "./expressions/expression.h"
 

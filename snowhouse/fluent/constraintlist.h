@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef SNOWHOUSE_CONSTRAINT_H
-#define SNOWHOUSE_CONSTRAINT_H
+#ifndef SNOWHOUSE_CONSTRAINTLIST_H
+#define SNOWHOUSE_CONSTRAINTLIST_H
 
 #include <stack>
 
