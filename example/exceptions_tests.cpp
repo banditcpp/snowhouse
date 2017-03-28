@@ -8,9 +8,8 @@
 using namespace snowhouse;
 
 
-class ClassWithExceptions
+struct ClassWithExceptions
 {
-public:
   int LogicError()
   {
     throw std::logic_error("not logical!");

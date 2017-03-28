@@ -38,9 +38,8 @@ namespace snowhouse {
   };
 
   template<typename FailureHandler>
-  class ConfigurableAssert
+  struct ConfigurableAssert
   {
-  public:
     template <typename ActualType, typename ConstraintListType>
     static void That(const ActualType& actual, ExpressionBuilder<ConstraintListType> expression, const char* file_name = "", int line_number = 0)
     {

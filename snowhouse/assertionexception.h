@@ -12,9 +12,8 @@
 #include "macros.h"
 
 namespace snowhouse {
-  class AssertionException : public std::exception
+  struct AssertionException : public std::exception
   {
-  public:
     explicit AssertionException(const std::string& message)
       : m_message(message), m_fileName(""), m_line(0)
     {}

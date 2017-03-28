@@ -11,9 +11,8 @@
 namespace snowhouse {
 
   template <typename ExceptionType>
-  class ExceptionStorage
+  struct ExceptionStorage
   {
-  public:
     static void last_exception(ExceptionType*** e, bool clear=false)
     {
       static ExceptionType* last = NULL;
