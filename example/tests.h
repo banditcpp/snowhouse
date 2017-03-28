@@ -15,12 +15,12 @@
   }  \
   AssertThat(SNOWHOUSE_INTERNAL_expected_error, Is().Containing(expected_error_text));
 
-inline void describe(const char *title)
+inline void describe(const char* title)
 {
   std::cout << std::endl << title << ":" << std::endl;
 }
 
-inline void it(const char *title)
+inline void it(const char* title)
 {
   std::cout << " - " << title << std::endl;
 }
