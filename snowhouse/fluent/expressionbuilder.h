@@ -34,9 +34,8 @@ namespace snowhouse {
   template<typename ConstraintListType>
   struct ExpressionBuilder
   {
-    explicit ExpressionBuilder(const ConstraintListType& list) : m_constraint_list(list)
-    {
-    }
+    explicit ExpressionBuilder(const ConstraintListType& list)
+      : m_constraint_list(list) {}
 
     template<typename ExpectedType>
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<ExpectedType> >, Nil> >::t>
@@ -345,9 +344,7 @@ namespace snowhouse {
     StringizeConstraintList(list.m_tail, stm);
   }
 
-  inline void StringizeConstraintList(const Nil&, std::ostringstream&)
-  {
-  }
+  inline void StringizeConstraintList(const Nil&, std::ostringstream&) {}
 
   template<typename ConstraintListType>
   struct Stringizer<ExpressionBuilder<ConstraintListType> >

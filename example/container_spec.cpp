@@ -9,8 +9,7 @@ using namespace snowhouse;
 struct my_type
 {
   explicit my_type(int my_val)
-    : my_val_(my_val)
-  {}
+    : my_val_(my_val) {}
 
   friend bool operator==(const my_type&, const my_type&);
   friend bool operator!=(const my_type&, const my_type&);

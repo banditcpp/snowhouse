@@ -11,9 +11,7 @@
 namespace snowhouse {
   struct CollectionOperator : public ConstraintOperator
   {
-    void PerformOperation(ResultStack&)
-    {
-    }
+    void PerformOperation(ResultStack&) {}
 
     int Precedence() const
     {
