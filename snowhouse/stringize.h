@@ -86,7 +86,7 @@ namespace snowhouse {
   {
     static std::string ToString(const T& value)
     {
-      return detail::DefaultStringizer< T, detail::is_output_streamable<T>::value >::ToString(value);
+      return detail::DefaultStringizer<T, detail::is_output_streamable<T>::value>::ToString(value);
     }
   };
 

@@ -11,7 +11,7 @@
 namespace snowhouse {
 
   template<typename ExpectedType>
-  struct EqualsConstraint : Expression< EqualsConstraint<ExpectedType> >
+  struct EqualsConstraint : Expression<EqualsConstraint<ExpectedType> >
   {
     EqualsConstraint(const ExpectedType& expected)
       : m_expected(expected)
@@ -56,7 +56,7 @@ namespace snowhouse {
 #endif
 
   template<>
-  struct Stringizer< EqualsConstraint< bool > >
+  struct Stringizer<EqualsConstraint<bool> >
   {
     static std::string ToString(const EqualsConstraint<bool>& constraint)
     {
@@ -65,7 +65,7 @@ namespace snowhouse {
   };
 
   template<typename ExpectedType>
-  struct Stringizer< EqualsConstraint< ExpectedType > >
+  struct Stringizer<EqualsConstraint<ExpectedType> >
   {
     static std::string ToString(const EqualsConstraint<ExpectedType>& constraint)
     {

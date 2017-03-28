@@ -12,7 +12,7 @@
 namespace snowhouse {
 
   template<typename LeftExpression, typename RightExpression>
-  struct OrExpression : Expression< OrExpression<LeftExpression, RightExpression> >
+  struct OrExpression : Expression<OrExpression<LeftExpression, RightExpression> >
   {
     OrExpression(const LeftExpression& left, const RightExpression& right)
       : m_left(left)
@@ -31,7 +31,7 @@ namespace snowhouse {
   };
 
   template<typename LeftExpression, typename RightExpression>
-  struct Stringizer< OrExpression<LeftExpression, RightExpression> >
+  struct Stringizer<OrExpression<LeftExpression, RightExpression> >
   {
     static std::string ToString(const OrExpression<LeftExpression, RightExpression>& expression)
     {

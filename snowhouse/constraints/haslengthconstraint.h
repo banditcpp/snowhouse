@@ -11,7 +11,7 @@
 namespace snowhouse {
 
   template<typename ExpectedType>
-  struct HasLengthConstraint : Expression< HasLengthConstraint<ExpectedType> >
+  struct HasLengthConstraint : Expression<HasLengthConstraint<ExpectedType> >
   {
     HasLengthConstraint(const ExpectedType& expected)
       : m_expected(expected) {}
@@ -44,7 +44,7 @@ namespace snowhouse {
   }
 
   template<typename ExpectedType>
-  struct Stringizer< HasLengthConstraint< ExpectedType > >
+  struct Stringizer<HasLengthConstraint<ExpectedType> >
   {
     static std::string ToString(const HasLengthConstraint<ExpectedType>& constraint)
     {

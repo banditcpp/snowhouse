@@ -27,7 +27,7 @@ namespace snowhouse {
   };
 
   template<>
-  struct Stringizer< ExactlyOperator >
+  struct Stringizer<ExactlyOperator>
   {
     static std::string ToString(const ExactlyOperator& op)
     {

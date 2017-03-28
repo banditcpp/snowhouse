@@ -12,7 +12,7 @@
 namespace snowhouse {
 
   template<typename LeftExpression, typename RightExpression>
-  struct AndExpression : Expression< AndExpression<LeftExpression, RightExpression> >
+  struct AndExpression : Expression<AndExpression<LeftExpression, RightExpression> >
   {
     AndExpression(const LeftExpression& left, const RightExpression& right)
       : m_left(left)
@@ -31,7 +31,7 @@ namespace snowhouse {
   };
 
   template<typename LeftExpression, typename RightExpression>
-  struct Stringizer< AndExpression<LeftExpression, RightExpression> >
+  struct Stringizer<AndExpression<LeftExpression, RightExpression> >
   {
     static std::string ToString(const AndExpression<LeftExpression, RightExpression>& expression)
     {

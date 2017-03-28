@@ -47,7 +47,7 @@ namespace
 namespace snowhouse {
 
   template<>
-  struct Stringizer< WithoutStreamOperatorButWithStringizer >
+  struct Stringizer<WithoutStreamOperatorButWithStringizer>
   {
     static std::string ToString(const WithoutStreamOperatorButWithStringizer& value)
     {

@@ -12,7 +12,7 @@
 namespace snowhouse {
 
   template<typename ExpressionType>
-  struct NotExpression : Expression< NotExpression<ExpressionType> >
+  struct NotExpression : Expression<NotExpression<ExpressionType> >
   {
     explicit NotExpression(const ExpressionType& expression)
       : m_expression(expression)
@@ -29,7 +29,7 @@ namespace snowhouse {
   };
 
   template<typename ExpressionType>
-  struct Stringizer< NotExpression<ExpressionType> >
+  struct Stringizer<NotExpression<ExpressionType> >
   {
     static std::string ToString(const NotExpression<ExpressionType>& expression)
     {
