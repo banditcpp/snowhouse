@@ -12,6 +12,7 @@
 #include "macros.h"
 
 namespace snowhouse {
+
   namespace detail {
 
     // This type soaks up any implicit conversions and makes the following operator<<

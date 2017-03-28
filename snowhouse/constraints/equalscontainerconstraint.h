@@ -11,6 +11,7 @@
 namespace snowhouse {
 
   namespace constraint_internal {
+
     template<typename T>
     inline bool default_comparer(const T& lhs, const T& rhs)
     {
