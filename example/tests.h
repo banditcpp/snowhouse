@@ -9,7 +9,7 @@
   { \
     assertion; \
   }  \
-  catch(const AssertionException& exception_from_snowhouse_assertion)  \
+  catch (const AssertionException& exception_from_snowhouse_assertion)  \
   {  \
   SNOWHOUSE_INTERNAL_expected_error = exception_from_snowhouse_assertion.GetMessage();  \
   }  \

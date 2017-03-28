@@ -24,10 +24,9 @@ namespace snowhouse {
 
       unsigned int passed_elements = 0;
       typename ActualType::const_iterator it;
-      for(it = actual.begin(); it != actual.end(); ++it)
+      for (it = actual.begin(); it != actual.end(); ++it)
       {
-        if(ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression,
-            *it))
+        if (ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression, *it))
         {
           ++passed_elements;
         }
@@ -44,14 +43,14 @@ namespace snowhouse {
       size_t start = 0;
       size_t newline = FindNewline(str, start);
 
-      while(newline != std::string::npos)
+      while (newline != std::string::npos)
       {
         StoreLine(str, start, newline, res);
         start = MoveToNextLine(str, newline);
         newline = FindNewline(str, start);
       }
 
-      if(start < str.size())
+      if (start < str.size())
       {
         StoreLine(str, start, std::string::npos, res);
       }
@@ -72,17 +71,17 @@ namespace snowhouse {
 
     static size_t MoveToNextLine(const std::string& str, size_t newline)
     {
-      if(str.find("\r\n", newline) == newline)
+      if (str.find("\r\n", newline) == newline)
       {
         return newline + 2;
       }
 
-      if(str.find("\n", newline) == newline)
+      if (str.find("\n", newline) == newline)
       {
         return newline + 1;
       }
 
-      if(str.find("\r", newline) == newline)
+      if (str.find("\r", newline) == newline)
       {
         return newline + 1;
       }

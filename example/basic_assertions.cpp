@@ -80,7 +80,7 @@ void BasicAssertions()
     {
       Assert::That(5, Equals(2), "filename", 32);
     }
-    catch(const AssertionException& e)
+    catch (const AssertionException& e)
     {
       line = e.GetLineNumber();
       file = e.GetFilename();

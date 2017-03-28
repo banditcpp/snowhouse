@@ -16,7 +16,7 @@ namespace snowhouse {
     static void last_exception(ExceptionType*** e, bool clear = false)
     {
       static ExceptionType* last = NULL;
-      if(clear && last)
+      if (clear && last)
       {
         delete last;
         return;
@@ -35,7 +35,7 @@ namespace snowhouse {
     {
       ExceptionType** last = NULL;
       last_exception(&last);
-      if(*last)
+      if (*last)
       {
         delete *last;
         *last = NULL;
@@ -50,7 +50,7 @@ namespace snowhouse {
     {
       ExceptionType** e = NULL;
       last_exception(&e);
-      if(*e)
+      if (*e)
       {
         delete *e;
         *e = NULL;
@@ -63,7 +63,7 @@ namespace snowhouse {
   {
     ExceptionType** e = NULL;
     ExceptionStorage<ExceptionType>::last_exception(&e);
-    if(*e == NULL)
+    if (*e == NULL)
     {
       Assert::Failure("No exception was stored");
     }
@@ -89,17 +89,17 @@ namespace snowhouse {
   { \
     ::snowhouse::ExceptionStorage<EXCEPTION_TYPE>::store(snowhouse_exception); \
   } \
-  catch(...) \
+  catch (...) \
   { \
     wrong_exception = true; \
   } \
-  if(no_exception) \
+  if (no_exception) \
   { \
     std::ostringstream stm; \
     stm << "Expected " << #EXCEPTION_TYPE << ". No exception was thrown."; \
     ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
   } \
-  if(wrong_exception) \
+  if (wrong_exception) \
   { \
     std::ostringstream stm; \
     stm << "Expected " << #EXCEPTION_TYPE << ". Wrong exception was thrown."; \

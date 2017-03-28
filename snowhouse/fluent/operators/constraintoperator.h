@@ -31,7 +31,7 @@ namespace snowhouse {
       EvaluateConstraintList(list.m_tail, innerResult, innerOperators, actual);
       EvaluateAllOperatorsOnStack(innerOperators, innerResult);
 
-      if(innerResult.empty())
+      if (innerResult.empty())
       {
         throw InvalidExpressionException("The expression after \"" + snowhouse::Stringize(list.m_head) + "\" operator does not yield any result");
       }
@@ -41,11 +41,11 @@ namespace snowhouse {
 
     static void EvaluateOperatorsWithLessOrEqualPrecedence(const ConstraintOperator& op, OperatorStack& operators, ResultStack& result)
     {
-      while(!operators.empty())
+      while (!operators.empty())
       {
         ConstraintOperator* op_from_stack = operators.top();
 
-        if(op_from_stack->Precedence() > op.Precedence())
+        if (op_from_stack->Precedence() > op.Precedence())
         {
           break;
         }
@@ -57,7 +57,7 @@ namespace snowhouse {
 
     static void EvaluateAllOperatorsOnStack(OperatorStack& operators, ResultStack& result)
     {
-      while(!operators.empty())
+      while (!operators.empty())
       {
         ConstraintOperator* op = operators.top();
         op->PerformOperation(result);

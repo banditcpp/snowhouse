@@ -31,7 +31,7 @@ int main()
     StringTests();
     StringizeTests();
   }
-  catch(const AssertionException& e)
+  catch (const AssertionException& e)
   {
     std::cout << "Tests failed!" << std::endl;
     std::cout << e.GetMessage() << std::endl;
