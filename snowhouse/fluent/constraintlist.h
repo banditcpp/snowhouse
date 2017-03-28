@@ -43,9 +43,14 @@ namespace snowhouse {
     typedef ConstraintList<typename L1::HeadType, typename type_concat<typename L1::TailType, L2>::t> t;
   };
 
-  template<typename L2> struct type_concat<Nil, L2> { typedef L2 t; };
+  template<typename L2>
+  struct type_concat<Nil, L2>
+  {
+    typedef L2 t;
+  };
 
-  template<typename L3> inline L3 tr_concat(const Nil&, const Nil&) { return Nil(); }
+  template<typename L3>
+  inline L3 tr_concat(const Nil&, const Nil&) { return Nil(); }
 
 
   // ---- These structs define the concatenation operations.
