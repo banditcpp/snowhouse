@@ -24,4 +24,4 @@ namespace snowhouse {
   };
 }
 
-#endif // SNOWHOUSE_INVALUDEXPRESSIONEXCEPTION_H
+#endif

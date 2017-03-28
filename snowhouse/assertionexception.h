@@ -53,4 +53,4 @@ namespace snowhouse {
   };
 }
 
-#endif // SNOWHOUSE_ASSERTIONEXCEPTION_H
+#endif

@@ -110,4 +110,4 @@ namespace snowhouse {
   typedef ConfigurableAssert<DefaultFailureHandler> Assert;
 }
 
-#endif // SNOWHOUSE_ASSERT_H
+#endif
