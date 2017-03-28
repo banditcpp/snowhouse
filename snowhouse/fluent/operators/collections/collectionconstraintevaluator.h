@@ -10,8 +10,7 @@
 
 #include "../constraintoperator.h"
 
-namespace snowhouse
-{
+namespace snowhouse {
 
 template<typename ConstraintListType, typename ActualType>
 struct CollectionConstraintEvaluator

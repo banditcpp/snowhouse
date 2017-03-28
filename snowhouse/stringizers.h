@@ -12,11 +12,9 @@
 
 #include "stringize.h"
 
-namespace snowhouse
-{
+namespace snowhouse {
 
-  namespace detail
-  {
+  namespace detail {
 
     template<typename Container>
     struct SequentialContainerStringizer
