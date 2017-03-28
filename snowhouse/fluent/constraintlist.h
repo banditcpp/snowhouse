@@ -50,7 +50,10 @@ namespace snowhouse {
   };
 
   template<typename L3>
-  inline L3 tr_concat(const Nil&, const Nil&) { return Nil(); }
+  inline L3 tr_concat(const Nil&, const Nil&)
+  {
+    return Nil();
+  }
 
 
   // ---- These structs define the concatenation operations.

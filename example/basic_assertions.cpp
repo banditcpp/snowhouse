@@ -2,11 +2,13 @@
 #include "tests.h"
 using namespace snowhouse;
 
-void throwRuntimeError() {
+void throwRuntimeError()
+{
   throw std::runtime_error("This is expected");
 }
 
-struct IgnoreErrors {
+struct IgnoreErrors
+{
   template<typename ExpectedType, typename ActualType>
   static void Handle(const ExpectedType&, const ActualType&, const char*, int)
   {

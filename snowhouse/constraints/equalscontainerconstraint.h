@@ -46,10 +46,11 @@ namespace snowhouse {
     const BinaryPredicate predicate_;
 
   private:
-
-#if __cplusplus > 199711L
-#else
-    EqualsContainerConstraint& operator=(const EqualsContainerConstraint&) { return *this; }
+#if __cplusplus <= 199711L
+    EqualsContainerConstraint& operator=(const EqualsContainerConstraint&)
+    {
+      return *this;
+    }
 #endif
 
   };
