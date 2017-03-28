@@ -76,41 +76,40 @@ namespace snowhouse {
 #define SNOWHOUSE_CONCAT(a, b) SNOWHOUSE_CONCAT2(a, b)
 
 #define SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, METHOD, FAILURE_HANDLER_TYPE) \
-::snowhouse::ExceptionStorage<EXCEPTION_TYPE> SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__); SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__).compiler_thinks_i_am_unused(); \
-{ \
-  bool wrong_exception = false; \
-  bool no_exception = false; \
-  try \
+  ::snowhouse::ExceptionStorage<EXCEPTION_TYPE> SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__); SNOWHOUSE_CONCAT(SNOWHOUSE_storage_, __LINE__).compiler_thinks_i_am_unused(); \
   { \
-    METHOD; \
-    no_exception = true; \
-  } \
-  catch (const EXCEPTION_TYPE& snowhouse_exception) \
-  { \
-    ::snowhouse::ExceptionStorage<EXCEPTION_TYPE>::store(snowhouse_exception); \
-  } \
-  catch (...) \
-  { \
-    wrong_exception = true; \
-  } \
-  if (no_exception) \
-  { \
-    std::ostringstream stm; \
-    stm << "Expected " << #EXCEPTION_TYPE << ". No exception was thrown."; \
-    ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
-  } \
-  if (wrong_exception) \
-  { \
-    std::ostringstream stm; \
-    stm << "Expected " << #EXCEPTION_TYPE << ". Wrong exception was thrown."; \
-    ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
-  } \
-}
+    bool wrong_exception = false; \
+    bool no_exception = false; \
+    try \
+    { \
+      METHOD; \
+      no_exception = true; \
+    } \
+    catch (const EXCEPTION_TYPE& snowhouse_exception) \
+    { \
+      ::snowhouse::ExceptionStorage<EXCEPTION_TYPE>::store(snowhouse_exception); \
+    } \
+    catch (...) \
+    { \
+      wrong_exception = true; \
+    } \
+    if (no_exception) \
+    { \
+      std::ostringstream stm; \
+      stm << "Expected " << #EXCEPTION_TYPE << ". No exception was thrown."; \
+      ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
+    } \
+    if (wrong_exception) \
+    { \
+      std::ostringstream stm; \
+      stm << "Expected " << #EXCEPTION_TYPE << ". Wrong exception was thrown."; \
+      ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
+    } \
+  }
 
 #ifndef SNOWHOUSE_NO_MACROS
-
-#define AssertThrows(EXCEPTION_TYPE, METHOD) SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, (METHOD), ::snowhouse::DefaultFailureHandler)
-
-#endif // SNOWHOUSE_NO_MACROS
+# define AssertThrows(EXCEPTION_TYPE, METHOD) \
+  SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, (METHOD), ::snowhouse::DefaultFailureHandler)
+#endif
 
 #endif
