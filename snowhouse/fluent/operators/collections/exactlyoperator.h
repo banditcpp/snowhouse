@@ -9,25 +9,28 @@
 #include "collectionoperator.h"
 #include "collectionconstraintevaluator.h"
 
-namespace snowhouse {
+namespace snowhouse
+{
+  struct ExactlyOperator : public CollectionOperator
+  {
+    explicit ExactlyOperator(unsigned int expected)
+        : m_expected(expected)
+    {
+    }
 
-   struct ExactlyOperator : public CollectionOperator
-   {
-      ExactlyOperator(unsigned int expected) : m_expected(expected) {}
+    template<typename ConstraintListType, typename ActualType>
+    void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
+    {
+      unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
 
-      template <typename ConstraintListType, typename ActualType>
-      void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
-      {
-        unsigned int passed_elements = CollectionConstraintEvaluator<ConstraintListType, ActualType>::Evaluate(*this, list, result, operators, actual);
+      result.push(passed_elements == m_expected);
+    }
 
-         result.push(passed_elements == m_expected);
-      }
-
-      unsigned int m_expected;
-   };
+    unsigned int m_expected;
+  };
 
   template<>
-  struct Stringizer< ExactlyOperator >
+  struct Stringizer<ExactlyOperator>
   {
     static std::string ToString(const ExactlyOperator& op)
     {

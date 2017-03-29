@@ -11,21 +11,24 @@
 
 #include "macros.h"
 
-namespace snowhouse {
-  namespace detail {
-
+namespace snowhouse
+{
+  namespace detail
+  {
     // This type soaks up any implicit conversions and makes the following operator<<
     // less preferred than any other such operator found via ADL.
     struct any
     {
       // Conversion constructor for any type.
-      template <class T>
+      template<typename T>
       any(T const&);
     };
 
     // A tag type returned by operator<< for the any struct in this namespace
     // when T does not support <<.
-    struct tag {};
+    struct tag
+    {
+    };
 
     // Fallback operator<< for types T that don't support <<.
     tag operator<<(std::ostream&, any const&);
@@ -40,10 +43,10 @@ namespace snowhouse {
 
     no check(tag);
 
-    template <class T>
+    template<typename T>
     yes check(T const&);
 
-    template <class T>
+    template<typename T>
     struct is_output_streamable
     {
       static const T& x;
@@ -86,7 +89,7 @@ namespace snowhouse {
   {
     static std::string ToString(const T& value)
     {
-      return detail::DefaultStringizer< T, detail::is_output_streamable<T>::value >::ToString(value);
+      return detail::DefaultStringizer<T, detail::is_output_streamable<T>::value>::ToString(value);
     }
   };
 

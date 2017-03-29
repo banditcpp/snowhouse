@@ -7,15 +7,15 @@
 #define SNOWHOUSE_NOTEXPRESSION_H
 
 #include "../../stringize.h"
-#include "./expression_fwd.h"
+#include "expression_fwd.h"
 
-namespace snowhouse {
-
-  template< typename ExpressionType >
-  struct NotExpression : Expression< NotExpression<ExpressionType> >
+namespace snowhouse
+{
+  template<typename ExpressionType>
+  struct NotExpression : Expression<NotExpression<ExpressionType> >
   {
-    NotExpression(const ExpressionType& expression)
-      : m_expression(expression)
+    explicit NotExpression(const ExpressionType& expression)
+        : m_expression(expression)
     {
     }
 
@@ -28,13 +28,13 @@ namespace snowhouse {
     ExpressionType m_expression;
   };
 
-  template< typename ExpressionType >
-  struct Stringizer< NotExpression<ExpressionType> >
+  template<typename ExpressionType>
+  struct Stringizer<NotExpression<ExpressionType> >
   {
     static std::string ToString(const NotExpression<ExpressionType>& expression)
     {
       std::ostringstream builder;
-	  builder << "not " << snowhouse::Stringize(expression.m_expression);
+      builder << "not " << snowhouse::Stringize(expression.m_expression);
 
       return builder.str();
     }

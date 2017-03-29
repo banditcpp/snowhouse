@@ -1,18 +1,16 @@
-
 //          Copyright Joakim Karlsson & Kim Gräsman 2010-2013.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <snowhouse/snowhouse.h>
 #include <stdexcept>
-using namespace snowhouse;
 
 #include "tests.h"
 
-class ClassWithExceptions
+using namespace snowhouse;
+
+struct ClassWithExceptions
 {
-public:
   int LogicError()
   {
     throw std::logic_error("not logical!");
@@ -32,66 +30,63 @@ void ExceptionTests()
 {
   ClassWithExceptions objectUnderTest;
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   ExceptionTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Exceptions");
 
-
-  std::cout << "CanDetectExceptions" << std::endl;
+  it("detects exceptions");
   {
     AssertThrows(std::exception, objectUnderTest.LogicError());
   }
 
-  std::cout << "CanAssertOnLastException" << std::endl;
+  it("asserts on LastException()");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
-  std::cout << "CanDetectWhenWrongExceptionIsThrown" << std::endl;
+  it("detects when wrong exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.RangeError()), "Wrong exception");
   }
 
-  std::cout << "CanPrintExpectedExceptionTypeWhenWrongExceptionIsThrown" << std::endl;
+  it("prints expected exception type when wrong exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.RangeError()), "Expected std::logic_error");
   }
 
-  std::cout << "CanHaveSeveralExceptionAssertionsInSameSpec" << std::endl;
+  it("has several exception assertions in same spec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
 
     AssertThrows(std::range_error, objectUnderTest.RangeError());
-    Assert::That(LastException<std::range_error>().what(), Contains("range error!"));
+    AssertThat(LastException<std::range_error>().what(), Contains("range error!"));
   }
 
-  std::cout << "CanHaveSeveralExceptionAssertionForTheSameExceptionInSameSpec" << std::endl;
+  it("has several exception assertion for the same exception in same spec");
   {
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
 
     AssertThrows(std::logic_error, objectUnderTest.LogicError());
-    Assert::That(LastException<std::logic_error>().what(), Contains("not logical!"));
+    AssertThat(LastException<std::logic_error>().what(), Contains("not logical!"));
   }
 
-  std::cout << "CanDetectWhenNoExceptionIsThrown" << std::endl;
+  it("detects when no exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.NoError()), "No exception");
   }
 
-  std::cout << "CanPrintExpectedExceptionWhenNoExceptionIsThrown" << std::endl;
+  it("prints expected exception when no exception is thrown");
   {
     AssertTestFails(AssertThrows(std::logic_error, objectUnderTest.NoError()), "Expected std::logic_error");
   }
 
-  std::cout << "ExceptionsAreDestoryedWhenWeExitScope" << std::endl;
+  it("destroys exceptions when out-of-scope");
   {
     {
       AssertThrows(std::logic_error, objectUnderTest.LogicError());
     }
     AssertThrows(AssertionException, LastException<std::logic_error>());
-    Assert::That(LastException<AssertionException>().GetMessage(), Contains("No exception was stored"));
+    AssertThat(LastException<AssertionException>().GetMessage(), Contains("No exception was stored"));
   }
 }

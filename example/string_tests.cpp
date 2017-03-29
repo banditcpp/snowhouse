@@ -1,65 +1,63 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+
+using namespace snowhouse;
 
 void StringTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Strings");
 
-  std::cout << "ShouldHandleStringContainsConstraint" << std::endl;
+  it("handles string Contains()");
   {
-    Assert::That("abcdef", Contains("bcde"));
+    AssertThat("abcdef", Contains("bcde"));
   }
 
-  std::cout << "StringConstraintShouldHandleMatchAtBeginningOfString" << std::endl;
+  it("handles match at beginning of string");
   {
-    Assert::That("abcdef", Contains("a"));
+    AssertThat("abcdef", Contains("a"));
   }
 
-  std::cout << "ShouldDetectFailingContains" << std::endl;
+  it("detects failing Contains()");
   {
-    AssertTestFails(Assert::That("abcdef", Contains("hello")), "contains hello");
+    AssertTestFails(AssertThat("abcdef", Contains("hello")), "contains hello");
   }
 
-  std::cout << "ShouldHandleStringStartingWithConstraint" << std::endl;
+  it("handles string StartsWith()");
   {
-    Assert::That("abcdef", StartsWith("abc"));
+    AssertThat("abcdef", StartsWith("abc"));
   }
 
-  std::cout << "ShouldHandleStringEndingWithConstraint" << std::endl;
+  it("handles string EndsWith()");
   {
-    Assert::That("abcdef", EndsWith("def"));
+    AssertThat("abcdef", EndsWith("def"));
   }
 
-  std::cout << "ShouldHandleOperatorsForStrings" << std::endl;
+  it("handles operators for strings");
   {
-    Assert::That("abcdef", StartsWith("ab") && EndsWith("ef"));
+    AssertThat("abcdef", StartsWith("ab") && EndsWith("ef"));
   }
 
-  std::cout << "ShouldHandleStringsWithMultipleOperators" << std::endl;
+  it("handles strings with multiple operators");
   {
-    Assert::That("abcdef", StartsWith("ab") && !EndsWith("qwqw"));
+    AssertThat("abcdef", StartsWith("ab") && !EndsWith("qwqw"));
   }
 
-  std::cout << "ShouldHandleOfLength" << std::endl;
+  it("handles HasLength()");
   {
-    Assert::That("12345", HasLength(5));
+    AssertThat("12345", HasLength(5));
   }
 
-  std::cout << "ShouldHandleWeirdLongExpressions" << std::endl;
+  it("handles weird long expressions");
   {
-    Assert::That("12345", HasLength(5) && StartsWith("123") && !EndsWith("zyxxy"));
+    AssertThat("12345", HasLength(5) && StartsWith("123") && !EndsWith("zyxxy"));
   }
 
-  std::cout << "ShouldHandleStdStrings" << std::endl;
+  it("handles std::string");
   {
-    Assert::That("12345", Contains(std::string("23")));
+    AssertThat("12345", Contains(std::string("23")));
   }
 
-  std::cout << "ShouldHandleSimpleChar" << std::endl;
+  it("handles simple char");
   {
-    Assert::That("12345", StartsWith('1'));
+    AssertThat("12345", StartsWith('1'));
   }
 }

@@ -14,7 +14,7 @@ if (MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /MP ")
 else()
   # Assume GCC-style arguments
-  set(CMAKE_CXX_FLAGS "-Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
 
   if(SNOWHOUSE_IS_CPP11)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wdeprecated")
@@ -37,7 +37,7 @@ else()
   endif()
 endif()
 
-message(${CMAKE_CXX_FLAGS})
+message(STATUS ${CMAKE_CXX_FLAGS})
 
 if (SNOWHOUSE_BUILD_TESTS)
     FILE(GLOB SnowhouseSpecSourceFiles example/*.cpp)

@@ -1,14 +1,14 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+
+using namespace snowhouse;
 
 namespace
 {
   // No overload for operator<<(std::ostream&) or specialization of snowhouse::Stringizer
   struct WithoutStreamOperator
   {
-    WithoutStreamOperator(int id)
-    : m_id(id)
+    explicit WithoutStreamOperator(int id)
+        : m_id(id)
     {
     }
 
@@ -23,8 +23,8 @@ namespace
   // Has operator<<(std::ostream&)
   struct WithStreamOperator : public WithoutStreamOperator
   {
-    WithStreamOperator(int id)
-    : WithoutStreamOperator(id)
+    explicit WithStreamOperator(int id)
+        : WithoutStreamOperator(id)
     {
     }
   };
@@ -38,17 +38,17 @@ namespace
   // Has no operator<<(std::ostream&), but a specialization of snowhouse::Stringizer
   struct WithoutStreamOperatorButWithStringizer : public WithoutStreamOperator
   {
-    WithoutStreamOperatorButWithStringizer(int id)
-    : WithoutStreamOperator(id)
+    explicit WithoutStreamOperatorButWithStringizer(int id)
+        : WithoutStreamOperator(id)
     {
     }
   };
 }
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<>
-  struct Stringizer< WithoutStreamOperatorButWithStringizer >
+  struct Stringizer<WithoutStreamOperatorButWithStringizer>
   {
     static std::string ToString(const WithoutStreamOperatorButWithStringizer& value)
     {
@@ -59,53 +59,49 @@ namespace snowhouse {
 
 void StringizeTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringizeTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Stringize");
 
-  std::cout << "ShouldHandleTypesWithStreamOperators" << std::endl;
+  it("handles types with stream operators");
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  std::cout << "ShouldHandleTypesWithoutStreamOperators" << std::endl;
+  it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
-  std::cout << "ShouldHandleTypesWithTraits" << std::endl;
+  it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  std::cout << "================================================" << std::endl;
-  std::cout << "   StringizeTestsExpressionTemplates" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Stringize expression templates");
 
-  std::cout << "ShouldHandleTypesWithStreamOperators" << std::endl;
+  it("handles types with stream operators");
   {
     WithStreamOperator a(12);
     WithStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Equals(b)), "Expected: equal to 13\nActual: 12");
   }
 
-  std::cout << "ShouldHandleTypesWithoutStreamOperators" << std::endl;
+  it("handles types without stream operators");
   {
     WithoutStreamOperator a(12);
     WithoutStreamOperator b(13);
-    AssertTestFails(Assert::That(a, Equals(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
+    AssertTestFails(AssertThat(a, Equals(b)), "Expected: equal to [unsupported type]\nActual: [unsupported type]");
   }
 
-  std::cout << "ShouldHandleTypesWithTraits" << std::endl;
+  it("handles types with traits");
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
-    AssertTestFails(Assert::That(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 }

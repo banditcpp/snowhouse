@@ -1,12 +1,10 @@
-#include <snowhouse/snowhouse.h>
-using namespace snowhouse;
 #include "tests.h"
+
+using namespace snowhouse;
 
 void MapTests()
 {
-  std::cout << "================================================" << std::endl;
-  std::cout << "   MapTests" << std::endl;
-  std::cout << "================================================" << std::endl;
+  describe("Containing (std::map)");
 
   std::map<std::string, int> ages;
   ages["joakim"] = 38;
@@ -14,25 +12,25 @@ void MapTests()
   ages["hanna"] = 6;
   ages["moa"] = 4;
 
-  std::cout << "ContainingShouldDetermineIfKeyExists" << std::endl;
+  it("determines if key exists");
   {
-    Assert::That(ages, Is().Containing("joakim"));
+    AssertThat(ages, Is().Containing("joakim"));
   }
 
-  std::cout << "ShouldGiveAProperMessageWhenContainingFails" << std::endl;
+  it("gives a proper message when fails");
   {
-    AssertTestFails(Assert::That(ages, Is().Not().Containing("hanna")),
+    AssertTestFails(AssertThat(ages, Is().Not().Containing("hanna")),
         "Expected: not contains hanna");
   }
 
-  std::cout << "ContainingShouldDetermineIfKeyExists" << std::endl;
+  it("determines if key exists");
   {
-    Assert::That(ages, Contains("joakim"));
+    AssertThat(ages, Contains("joakim"));
   }
 
-  std::cout << "ShouldGiveAProperMessageWhenContainingFails" << std::endl;
+  it("gives a proper message when Contains() fails");
   {
-    AssertTestFails(Assert::That(ages, !Contains("hanna")),
+    AssertTestFails(AssertThat(ages, !Contains("hanna")),
         "Expected: not contains hanna");
   }
 }

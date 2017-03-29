@@ -6,15 +6,17 @@
 #ifndef SNOWHOUSE_STARTSWITHCONSTRAINT_H
 #define SNOWHOUSE_STARTSWITHCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
-namespace snowhouse {
-
-  template <typename ExpectedType>
-  struct StartsWithConstraint : Expression< StartsWithConstraint<ExpectedType> >
+namespace snowhouse
+{
+  template<typename ExpectedType>
+  struct StartsWithConstraint : Expression<StartsWithConstraint<ExpectedType> >
   {
     StartsWithConstraint(const ExpectedType& expected)
-      : m_expected(expected) {}
+        : m_expected(expected)
+    {
+    }
 
     bool operator()(const std::string& actual) const
     {
@@ -24,7 +26,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline StartsWithConstraint<ExpectedType> StartsWith(const ExpectedType& expected)
   {
     return StartsWithConstraint<ExpectedType>(expected);
@@ -35,13 +37,13 @@ namespace snowhouse {
     return StartsWithConstraint<std::string>(expected);
   }
 
-  template< typename ExpectedType >
-  struct Stringizer< StartsWithConstraint< ExpectedType > >
+  template<typename ExpectedType>
+  struct Stringizer<StartsWithConstraint<ExpectedType> >
   {
     static std::string ToString(const StartsWithConstraint<ExpectedType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "starts with " << snowhouse::Stringize(constraint.m_expected);
+      builder << "starts with " << snowhouse::Stringize(constraint.m_expected);
 
       return builder.str();
     }

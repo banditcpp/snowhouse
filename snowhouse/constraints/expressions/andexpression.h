@@ -7,20 +7,19 @@
 #define SNOWHOUSE_ANDEXPRESSION_H
 
 #include "../../stringize.h"
-#include "./expression_fwd.h"
+#include "expression_fwd.h"
 
-namespace snowhouse {
-
-  template< typename LeftExpression, typename RightExpression >
-  struct AndExpression : Expression< AndExpression<LeftExpression, RightExpression> >
+namespace snowhouse
+{
+  template<typename LeftExpression, typename RightExpression>
+  struct AndExpression : Expression<AndExpression<LeftExpression, RightExpression> >
   {
     AndExpression(const LeftExpression& left, const RightExpression& right)
-      : m_left(left)
-      , m_right(right)
+        : m_left(left), m_right(right)
     {
     }
 
-    template< typename ActualType >
+    template<typename ActualType>
     bool operator()(const ActualType& actual) const
     {
       return (m_left(actual) && m_right(actual));
@@ -30,8 +29,8 @@ namespace snowhouse {
     RightExpression m_right;
   };
 
-  template< typename LeftExpression, typename RightExpression >
-  struct Stringizer< AndExpression<LeftExpression, RightExpression> >
+  template<typename LeftExpression, typename RightExpression>
+  struct Stringizer<AndExpression<LeftExpression, RightExpression> >
   {
     static std::string ToString(const AndExpression<LeftExpression, RightExpression>& expression)
     {
