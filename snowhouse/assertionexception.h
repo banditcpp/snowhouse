@@ -11,52 +11,52 @@
 
 #include "macros.h"
 
-namespace snowhouse {
-  class AssertionException : public std::exception
+namespace snowhouse
+{
+  struct AssertionException : public std::exception
   {
-    public:
-      explicit AssertionException(const std::string& message)
+    explicit AssertionException(const std::string& message)
         : m_message(message), m_fileName(""), m_line(0)
-      {}
+    {
+    }
 
-      AssertionException(const std::string& message, const std::string& fileName, unsigned int line)
+    AssertionException(const std::string& message, const std::string& fileName, unsigned int line)
         : m_message(message), m_fileName(fileName), m_line(line)
-      {}
+    {
+    }
 
 #if __cplusplus > 199711L
-      AssertionException(const AssertionException&) = default;
+    AssertionException(const AssertionException&) = default;
 #endif
 
 #if __cplusplus > 199711L
-      virtual ~AssertionException() noexcept
-      {
-      }
+    virtual ~AssertionException() noexcept
 #else
-      virtual ~AssertionException() throw()
-      {
-      }
+    virtual ~AssertionException() throw()
 #endif
+    {
+    }
 
-      std::string GetMessage() const
-      {
-        return m_message;
-      }
+    std::string GetMessage() const
+    {
+      return m_message;
+    }
 
-      std::string GetFilename() const
-      {
-        return m_fileName;
-      }
+    std::string GetFilename() const
+    {
+      return m_fileName;
+    }
 
-      unsigned int GetLineNumber() const
-      {
-        return m_line;
-      }
+    unsigned int GetLineNumber() const
+    {
+      return m_line;
+    }
 
-    private:
-      std::string m_message;
-      std::string m_fileName;
-      unsigned int m_line;
+  private:
+    std::string m_message;
+    std::string m_fileName;
+    unsigned int m_line;
   };
 }
 
-#endif // SNOWHOUSE_ASSERTIONEXCEPTION_H
+#endif

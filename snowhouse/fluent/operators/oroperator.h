@@ -6,13 +6,13 @@
 #ifndef SNOWHOUSE_OROPERATOR_H
 #define SNOWHOUSE_OROPERATOR_H
 
-#include "./constraintoperator.h"
+#include "constraintoperator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct OrOperator : public ConstraintOperator
   {
-    template <typename ConstraintListType, typename ActualType>
+    template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
     {
       EvaluateOperatorsWithLessOrEqualPrecedence(*this, operators, result);
@@ -24,7 +24,7 @@ namespace snowhouse {
 
     void PerformOperation(ResultStack& result)
     {
-      if(result.size() < 2)
+      if (result.size() < 2)
       {
         throw InvalidExpressionException("The expression contains an or operator with too few operands");
       }

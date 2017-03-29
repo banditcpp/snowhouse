@@ -8,11 +8,12 @@
 
 #include <string>
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct InvalidExpressionException
   {
-    explicit InvalidExpressionException(const std::string& message) : m_message(message)
+    explicit InvalidExpressionException(const std::string& message)
+        : m_message(message)
     {
     }
 
@@ -23,7 +24,6 @@ namespace snowhouse {
 
     std::string m_message;
   };
-
 }
 
-#endif // SNOWHOUSE_INVALUDEXPRESSIONEXCEPTION_H
+#endif

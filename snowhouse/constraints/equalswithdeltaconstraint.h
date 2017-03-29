@@ -6,15 +6,15 @@
 #ifndef SNOWHOUSE_EQUALSWITHDELTACONSTRAINT_H
 #define SNOWHOUSE_EQUALSWITHDELTACONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
-namespace snowhouse {
-
-  template< typename ExpectedType, typename DeltaType >
-  struct EqualsWithDeltaConstraint : Expression< EqualsWithDeltaConstraint<ExpectedType, DeltaType> >
+namespace snowhouse
+{
+  template<typename ExpectedType, typename DeltaType>
+  struct EqualsWithDeltaConstraint : Expression<EqualsWithDeltaConstraint<ExpectedType, DeltaType> >
   {
     EqualsWithDeltaConstraint(const ExpectedType& expected, const DeltaType& delta)
-      : m_expected(expected), m_delta(delta)
+        : m_expected(expected), m_delta(delta)
     {
     }
 
@@ -28,19 +28,19 @@ namespace snowhouse {
     DeltaType m_delta;
   };
 
-  template< typename ExpectedType, typename DeltaType >
+  template<typename ExpectedType, typename DeltaType>
   inline EqualsWithDeltaConstraint<ExpectedType, DeltaType> EqualsWithDelta(const ExpectedType& expected, const DeltaType& delta)
   {
     return EqualsWithDeltaConstraint<ExpectedType, DeltaType>(expected, delta);
   }
 
-  template< typename ExpectedType, typename DeltaType >
-  struct Stringizer< EqualsWithDeltaConstraint< ExpectedType, DeltaType > >
+  template<typename ExpectedType, typename DeltaType>
+  struct Stringizer<EqualsWithDeltaConstraint<ExpectedType, DeltaType> >
   {
     static std::string ToString(const EqualsWithDeltaConstraint<ExpectedType, DeltaType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "equal to " << snowhouse::Stringize(constraint.m_expected) << " (+/- " << snowhouse::Stringize(constraint.m_delta) << ")";
+      builder << "equal to " << snowhouse::Stringize(constraint.m_expected) << " (+/- " << snowhouse::Stringize(constraint.m_delta) << ")";
 
       return builder.str();
     }

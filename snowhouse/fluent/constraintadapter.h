@@ -9,16 +9,17 @@
 #include "../stringize.h"
 #include "constraintlist.h"
 
-namespace snowhouse {
-
-  template <typename ConstraintType>
+namespace snowhouse
+{
+  template<typename ConstraintType>
   struct ConstraintAdapter
   {
-    explicit ConstraintAdapter(const ConstraintType& constraint) : m_constraint(constraint)
+    explicit ConstraintAdapter(const ConstraintType& constraint)
+        : m_constraint(constraint)
     {
     }
 
-    template <typename ConstraintListType, typename ActualType>
+    template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
     {
       result.push(m_constraint(actual));
@@ -29,7 +30,7 @@ namespace snowhouse {
   };
 
   template<typename ConstraintType>
-  struct Stringizer< ConstraintAdapter<ConstraintType> >
+  struct Stringizer<ConstraintAdapter<ConstraintType> >
   {
     static std::string ToString(const ConstraintAdapter<ConstraintType>& constraintAdapter)
     {

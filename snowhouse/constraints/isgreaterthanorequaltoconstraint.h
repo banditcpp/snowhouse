@@ -6,15 +6,15 @@
 #ifndef SNOWHOUSE_ISGREATERTHANOREQUALTOCONSTRAINT_H
 #define SNOWHOUSE_ISGREATERTHANOREQUALTOCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
-namespace snowhouse {
-
-  template< typename ExpectedType >
-  struct IsGreaterThanOrEqualToConstraint : Expression < IsGreaterThanOrEqualToConstraint<ExpectedType> >
+namespace snowhouse
+{
+  template<typename ExpectedType>
+  struct IsGreaterThanOrEqualToConstraint : Expression<IsGreaterThanOrEqualToConstraint<ExpectedType> >
   {
     IsGreaterThanOrEqualToConstraint(const ExpectedType& expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 
@@ -27,7 +27,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline IsGreaterThanOrEqualToConstraint<ExpectedType> IsGreaterThanOrEqualTo(const ExpectedType& expected)
   {
     return IsGreaterThanOrEqualToConstraint<ExpectedType>(expected);
@@ -38,8 +38,8 @@ namespace snowhouse {
     return IsGreaterThanOrEqualToConstraint<std::string>(expected);
   }
 
-  template< typename ExpectedType >
-  struct Stringizer < IsGreaterThanOrEqualToConstraint< ExpectedType > >
+  template<typename ExpectedType>
+  struct Stringizer<IsGreaterThanOrEqualToConstraint<ExpectedType> >
   {
     static std::string ToString(const IsGreaterThanOrEqualToConstraint<ExpectedType>& constraint)
     {

@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <stdexcept>
+
 #include "tests.h"
+
 using namespace snowhouse;
 
-
-class ClassWithExceptions
+struct ClassWithExceptions
 {
-public:
   int LogicError()
   {
     throw std::logic_error("not logical!");

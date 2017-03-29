@@ -6,15 +6,15 @@
 #ifndef SNOWHOUSE_EQUALSCONSTRAINT_H
 #define SNOWHOUSE_EQUALSCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
-namespace snowhouse {
-
-  template< typename ExpectedType >
-  struct EqualsConstraint : Expression< EqualsConstraint<ExpectedType> >
+namespace snowhouse
+{
+  template<typename ExpectedType>
+  struct EqualsConstraint : Expression<EqualsConstraint<ExpectedType> >
   {
     EqualsConstraint(const ExpectedType& expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 
@@ -27,7 +27,7 @@ namespace snowhouse {
     ExpectedType m_expected;
   };
 
-  template< typename ExpectedType >
+  template<typename ExpectedType>
   inline EqualsConstraint<ExpectedType> Equals(const ExpectedType& expected)
   {
     return EqualsConstraint<ExpectedType>(expected);
@@ -55,8 +55,8 @@ namespace snowhouse {
   }
 #endif
 
-  template <>
-  struct Stringizer< EqualsConstraint< bool > >
+  template<>
+  struct Stringizer<EqualsConstraint<bool> >
   {
     static std::string ToString(const EqualsConstraint<bool>& constraint)
     {
@@ -64,13 +64,13 @@ namespace snowhouse {
     }
   };
 
-  template< typename ExpectedType >
-  struct Stringizer< EqualsConstraint< ExpectedType > >
+  template<typename ExpectedType>
+  struct Stringizer<EqualsConstraint<ExpectedType> >
   {
     static std::string ToString(const EqualsConstraint<ExpectedType>& constraint)
     {
       std::ostringstream builder;
-	  builder << "equal to " << snowhouse::Stringize(constraint.m_expected);
+      builder << "equal to " << snowhouse::Stringize(constraint.m_expected);
 
       return builder.str();
     }

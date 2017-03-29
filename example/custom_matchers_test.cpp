@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include "tests.h"
+
 using namespace snowhouse;
 
 struct IsEvenNumberNoStreamOperator
@@ -22,11 +23,11 @@ struct IsEvenNumberWithStreamOperator
   }
 
   friend std::ostream& operator<<(std::ostream& stm,
-      const IsEvenNumberWithStreamOperator& );
+      const IsEvenNumberWithStreamOperator&);
 };
 
 std::ostream& operator<<(std::ostream& stm,
-    const IsEvenNumberWithStreamOperator& )
+    const IsEvenNumberWithStreamOperator&)
 {
   stm << "An even number";
   return stm;

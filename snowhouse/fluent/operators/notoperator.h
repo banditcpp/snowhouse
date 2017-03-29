@@ -6,13 +6,13 @@
 #ifndef SNOWHOUSE_NOTOPERATOR_H
 #define SNOWHOUSE_NOTOPERATOR_H
 
-#include "./constraintoperator.h"
+#include "constraintoperator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct NotOperator : public ConstraintOperator
   {
-    template <typename ConstraintListType, typename ActualType>
+    template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)
     {
       EvaluateOperatorsWithLessOrEqualPrecedence(*this, operators, result);
@@ -24,7 +24,7 @@ namespace snowhouse {
 
     void PerformOperation(ResultStack& result)
     {
-      if(result.size() < 1)
+      if (result.size() < 1)
       {
         throw InvalidExpressionException("The expression contains a not operator without any operand");
       }
@@ -41,14 +41,14 @@ namespace snowhouse {
     }
   };
 
-   template<>
-   struct Stringizer<NotOperator>
-   {
-      static std::string ToString(const NotOperator&)
-      {
-         return "not";
-      }
-   };
+  template<>
+  struct Stringizer<NotOperator>
+  {
+    static std::string ToString(const NotOperator&)
+    {
+      return "not";
+    }
+  };
 }
 
 #endif

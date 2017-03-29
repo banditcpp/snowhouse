@@ -8,18 +8,19 @@
 
 #include "../constraintoperator.h"
 
-namespace snowhouse {
-   struct CollectionOperator : public ConstraintOperator
-   {
-      void PerformOperation(ResultStack&)
-      {
-      }
+namespace snowhouse
+{
+  struct CollectionOperator : public ConstraintOperator
+  {
+    void PerformOperation(ResultStack&)
+    {
+    }
 
-      int Precedence() const
-      {
-         return 1;
-      }
-   };
+    int Precedence() const
+    {
+      return 1;
+    }
+  };
 }
 
 #endif
