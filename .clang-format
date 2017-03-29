@@ -1,13 +1,7 @@
 # This .clang-format file is tested with clang-format 4.0.0
-# and does not yield the desired style due to bugs or missing
-# features of clang-format. However, if you do not consider
-# macros, the result is pretty close to the desired snowhouse
-# style.
 #
 # Please use
 #   clang-format -style=file -i <your files...>
-# and check with
-#   git add -p
 # before committing your changes.
 ---
 Language: Cpp
@@ -80,8 +74,6 @@ IncludeCategories:
 
 # AlignEscapedNewlinesLeft: false
 # XXX: There should be no alignment at all, but this is not available
-
-# FixNamespaceComments: false
 
 AlwaysBreakAfterReturnType: None
 

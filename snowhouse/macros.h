@@ -1,5 +1,6 @@
 #ifndef SNOWHOUSE_MACROS_H
 #define SNOWHOUSE_MACROS_H
+// clang-format off
 
 #define SNOWHOUSE_VERSION "2.1.0"
 

@@ -74,6 +74,7 @@ namespace snowhouse
   }
 }
 
+// clang-format off
 #define SNOWHOUSE_CONCAT2(a, b) a##b
 #define SNOWHOUSE_CONCAT(a, b) SNOWHOUSE_CONCAT2(a, b)
 
@@ -113,5 +114,6 @@ namespace snowhouse
 # define AssertThrows(EXCEPTION_TYPE, METHOD) \
   SNOWHOUSE_ASSERT_THROWS(EXCEPTION_TYPE, (METHOD), ::snowhouse::DefaultFailureHandler)
 #endif
+// clang-format on
 
 #endif
