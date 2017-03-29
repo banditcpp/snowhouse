@@ -1,8 +1,8 @@
 # This .clang-format file is tested with clang-format 4.0.0
 # and does not yield the desired style due to bugs or missing
 # features of clang-format. However, if you do not consider
-# macros or empty function/class bodies, the result is pretty
-# close to the desired snowhouse style.
+# macros, the result is pretty close to the desired snowhouse
+# style.
 #
 # Please use
 #   clang-format -style=file -i <your files...>
