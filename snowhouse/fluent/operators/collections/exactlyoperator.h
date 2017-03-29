@@ -9,8 +9,8 @@
 #include "collectionoperator.h"
 #include "collectionconstraintevaluator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct ExactlyOperator : public CollectionOperator
   {
     explicit ExactlyOperator(unsigned int expected) : m_expected(expected) {}

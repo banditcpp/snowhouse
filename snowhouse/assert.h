@@ -16,8 +16,8 @@
 # define AssertThat(p1, p2) Assert::That((p1), (p2), __FILE__, __LINE__)
 #endif
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct DefaultFailureHandler
   {
     template<typename ExpectedType, typename ActualType>

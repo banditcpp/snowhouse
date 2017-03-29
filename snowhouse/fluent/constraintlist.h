@@ -8,8 +8,8 @@
 
 #include <stack>
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct ConstraintOperator;
   typedef std::stack<bool> ResultStack;
   typedef std::stack<ConstraintOperator*> OperatorStack;

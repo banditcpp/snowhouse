@@ -9,8 +9,8 @@
 #include "../../stringize.h"
 #include "./expression_fwd.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename ExpressionType>
   struct NotExpression : Expression<NotExpression<ExpressionType> >
   {

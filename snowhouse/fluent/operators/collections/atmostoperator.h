@@ -9,8 +9,8 @@
 #include "collectionoperator.h"
 #include "collectionconstraintevaluator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct AtMostOperator : public CollectionOperator
   {
     explicit AtMostOperator(unsigned int expected) : m_expected(expected) {}

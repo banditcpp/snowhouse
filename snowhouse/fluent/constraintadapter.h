@@ -9,8 +9,8 @@
 #include "../stringize.h"
 #include "constraintlist.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename ConstraintType>
   struct ConstraintAdapter
   {

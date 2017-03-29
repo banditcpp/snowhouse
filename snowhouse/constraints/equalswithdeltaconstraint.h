@@ -8,8 +8,8 @@
 
 #include "./expressions/expression.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename ExpectedType, typename DeltaType>
   struct EqualsWithDeltaConstraint : Expression<EqualsWithDeltaConstraint<ExpectedType, DeltaType> >
   {

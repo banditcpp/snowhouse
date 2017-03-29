@@ -10,8 +10,8 @@
 #include "../constraintlist.h"
 #include "invalidexpressionexception.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct ConstraintOperator
   {
 #if __cplusplus > 199711L

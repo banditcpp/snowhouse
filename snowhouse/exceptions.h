@@ -8,8 +8,8 @@
 
 #include "assert.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename ExceptionType>
   struct ExceptionStorage
   {

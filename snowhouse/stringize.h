@@ -11,10 +11,10 @@
 
 #include "macros.h"
 
-namespace snowhouse {
-
-  namespace detail {
-
+namespace snowhouse
+{
+  namespace detail
+  {
     // This type soaks up any implicit conversions and makes the following operator<<
     // less preferred than any other such operator found via ADL.
     struct any

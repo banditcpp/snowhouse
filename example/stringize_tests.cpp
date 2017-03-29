@@ -1,8 +1,8 @@
 #include "tests.h"
 using namespace snowhouse;
 
-namespace {
-
+namespace
+{
   // No overload for operator<<(std::ostream&) or specialization of snowhouse::Stringizer
   struct WithoutStreamOperator
   {
@@ -38,8 +38,8 @@ namespace {
   };
 }
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<>
   struct Stringizer<WithoutStreamOperatorButWithStringizer>
   {

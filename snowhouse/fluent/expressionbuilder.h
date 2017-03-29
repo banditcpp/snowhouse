@@ -17,8 +17,8 @@
 #include "operators/collections/exactlyoperator.h"
 #include "operators/collections/atmostoperator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   // ---- Evaluation of list of constraints
 
   template<typename ConstraintListType, typename ActualType>

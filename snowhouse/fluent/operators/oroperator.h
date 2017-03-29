@@ -8,8 +8,8 @@
 
 #include "./constraintoperator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct OrOperator : public ConstraintOperator
   {
     template<typename ConstraintListType, typename ActualType>

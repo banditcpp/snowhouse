@@ -8,8 +8,8 @@
 
 #include "../constraintoperator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct CollectionOperator : public ConstraintOperator
   {
     void PerformOperation(ResultStack&) {}

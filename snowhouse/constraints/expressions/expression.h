@@ -10,8 +10,8 @@
 #include "./andexpression.h"
 #include "./orexpression.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename T>
   struct Expression
   {

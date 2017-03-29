@@ -31,7 +31,7 @@ PointerAlignment: Left
 
 BreakBeforeBraces: Custom
 BraceWrapping:
-  AfterNamespace: false
+  AfterNamespace: true
   AfterStruct: true
   AfterClass: true
   AfterFunction: true

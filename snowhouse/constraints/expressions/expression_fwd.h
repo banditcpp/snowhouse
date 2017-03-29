@@ -6,8 +6,8 @@
 #ifndef SNOWHOUSE_EXPRESSION_FWD_H
 #define SNOWHOUSE_EXPRESSION_FWD_H
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename T>
   struct Expression;
 }

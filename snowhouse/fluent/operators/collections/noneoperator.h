@@ -9,8 +9,8 @@
 #include "collectionoperator.h"
 #include "collectionconstraintevaluator.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct NoneOperator : public CollectionOperator
   {
     template<typename ConstraintListType, typename ActualType>

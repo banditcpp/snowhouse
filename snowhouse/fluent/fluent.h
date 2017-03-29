@@ -8,8 +8,8 @@
 
 #include "expressionbuilder.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   inline ExpressionBuilder<Nil> Is()
   {
     return ExpressionBuilder<Nil>(Nil());

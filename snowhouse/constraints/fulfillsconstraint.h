@@ -8,8 +8,8 @@
 
 #include "./expressions/expression.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename MatcherType>
   struct FulfillsConstraint : Expression<FulfillsConstraint<MatcherType> >
   {

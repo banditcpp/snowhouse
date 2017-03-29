@@ -11,8 +11,8 @@
 
 #include "macros.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   struct AssertionException : public std::exception
   {
     explicit AssertionException(const std::string& message)

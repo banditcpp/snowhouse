@@ -11,8 +11,8 @@
 
 #include "./expressions/expression.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename ContainerType>
   struct find_in_container_traits
   {

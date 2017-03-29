@@ -9,8 +9,8 @@
 #include "../../stringize.h"
 #include "./expression_fwd.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename LeftExpression, typename RightExpression>
   struct OrExpression : Expression<OrExpression<LeftExpression, RightExpression> >
   {

@@ -8,8 +8,8 @@
 
 #include "./expressions/expression.h"
 
-namespace snowhouse {
-
+namespace snowhouse
+{
   template<typename ExpectedType>
   struct IsLessThanOrEqualToConstraint : Expression<IsLessThanOrEqualToConstraint<ExpectedType> >
   {
