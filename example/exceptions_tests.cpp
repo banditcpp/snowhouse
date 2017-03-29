@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <stdexcept>
+
 #include "tests.h"
+
 using namespace snowhouse;
 
 struct ClassWithExceptions

@@ -13,6 +13,7 @@ been extracted to be usable in other contexts.
 
 ```C++
 #include <snowhouse/snowhouse.h>
+
 using namespace snowhouse;
 
 int main()

@@ -1,5 +1,7 @@
 #include <stdexcept>
+
 #include "tests.h"
+
 using namespace snowhouse;
 
 void throwRuntimeError()

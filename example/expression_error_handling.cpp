@@ -1,4 +1,5 @@
 #include "tests.h"
+
 using namespace snowhouse;
 
 void ExpressionErrorHandling()
