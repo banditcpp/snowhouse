@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_HASLENGTHCONSTRAINT_H
 #define SNOWHOUSE_HASLENGTHCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
 namespace snowhouse
 {

@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_STARTSWITHCONSTRAINT_H
 #define SNOWHOUSE_STARTSWITHCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
 namespace snowhouse
 {

@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_ENDSWITHCONSTRAINT_H
 #define SNOWHOUSE_ENDSWITHCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
 namespace snowhouse
 {

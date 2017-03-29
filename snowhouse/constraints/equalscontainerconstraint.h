@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_EQUALSCONTAINERCONSTRAINT_H
 #define SNOWHOUSE_EQUALSCONTAINERCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
 namespace snowhouse
 {

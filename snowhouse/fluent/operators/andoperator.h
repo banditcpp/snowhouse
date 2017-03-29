@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_ANDOPERATOR_H
 #define SNOWHOUSE_ANDOPERATOR_H
 
-#include "./constraintoperator.h"
+#include "constraintoperator.h"
 
 namespace snowhouse
 {

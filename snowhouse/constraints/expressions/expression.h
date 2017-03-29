@@ -6,9 +6,9 @@
 #ifndef SNOWHOUSE_EXPRESSION_H
 #define SNOWHOUSE_EXPRESSION_H
 
-#include "./notexpression.h"
-#include "./andexpression.h"
-#include "./orexpression.h"
+#include "notexpression.h"
+#include "andexpression.h"
+#include "orexpression.h"
 
 namespace snowhouse
 {

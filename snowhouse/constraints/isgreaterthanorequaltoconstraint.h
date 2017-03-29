@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_ISGREATERTHANOREQUALTOCONSTRAINT_H
 #define SNOWHOUSE_ISGREATERTHANOREQUALTOCONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
 namespace snowhouse
 {

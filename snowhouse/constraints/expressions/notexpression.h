@@ -7,7 +7,7 @@
 #define SNOWHOUSE_NOTEXPRESSION_H
 
 #include "../../stringize.h"
-#include "./expression_fwd.h"
+#include "expression_fwd.h"
 
 namespace snowhouse
 {

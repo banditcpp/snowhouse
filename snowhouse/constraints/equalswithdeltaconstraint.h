@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_EQUALSWITHDELTACONSTRAINT_H
 #define SNOWHOUSE_EQUALSWITHDELTACONSTRAINT_H
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
 namespace snowhouse
 {

@@ -6,7 +6,7 @@
 #ifndef SNOWHOUSE_NOTOPERATOR_H
 #define SNOWHOUSE_NOTOPERATOR_H
 
-#include "./constraintoperator.h"
+#include "constraintoperator.h"
 
 namespace snowhouse
 {

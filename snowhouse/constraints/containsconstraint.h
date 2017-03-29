@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <map>
 
-#include "./expressions/expression.h"
+#include "expressions/expression.h"
 
 namespace snowhouse
 {
