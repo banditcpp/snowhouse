@@ -19,7 +19,9 @@ struct ClassWithExceptions
     throw std::range_error("range error!");
   }
 
-  void NoError() {}
+  void NoError()
+  {
+  }
 };
 
 void ExceptionTests()

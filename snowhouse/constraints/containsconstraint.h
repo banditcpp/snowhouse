@@ -37,7 +37,9 @@ namespace snowhouse
   struct ContainsConstraint : Expression<ContainsConstraint<ExpectedType> >
   {
     ContainsConstraint(const ExpectedType& expected)
-      : m_expected(expected) {}
+      : m_expected(expected)
+    {
+    }
 
     template<typename ActualType>
     bool operator()(const ActualType& actual) const

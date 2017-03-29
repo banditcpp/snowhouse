@@ -10,9 +10,13 @@ void throwRuntimeError()
 struct IgnoreErrors
 {
   template<typename ExpectedType, typename ActualType>
-  static void Handle(const ExpectedType&, const ActualType&, const char*, int) {}
+  static void Handle(const ExpectedType&, const ActualType&, const char*, int)
+  {
+  }
 
-  static void Handle(const std::string&) {}
+  static void Handle(const std::string&)
+  {
+  }
 };
 
 void BasicAssertions()

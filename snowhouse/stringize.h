@@ -26,7 +26,9 @@ namespace snowhouse
 
     // A tag type returned by operator<< for the any struct in this namespace
     // when T does not support <<.
-    struct tag {};
+    struct tag
+    {
+    };
 
     // Fallback operator<< for types T that don't support <<.
     tag operator<<(std::ostream&, any const&);

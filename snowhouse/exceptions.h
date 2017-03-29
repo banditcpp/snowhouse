@@ -44,7 +44,9 @@ namespace snowhouse
       *last = new ExceptionType(e);
     }
 
-    void compiler_thinks_i_am_unused() {}
+    void compiler_thinks_i_am_unused()
+    {
+    }
 
     ~ExceptionStorage()
     {

@@ -7,7 +7,9 @@ namespace
   struct WithoutStreamOperator
   {
     explicit WithoutStreamOperator(int id)
-      : m_id(id) {}
+      : m_id(id)
+    {
+    }
 
     bool operator==(const WithoutStreamOperator& rhs) const
     {
@@ -21,7 +23,9 @@ namespace
   struct WithStreamOperator : public WithoutStreamOperator
   {
     explicit WithStreamOperator(int id)
-      : WithoutStreamOperator(id) {}
+      : WithoutStreamOperator(id)
+    {
+    }
   };
 
   std::ostream& operator<<(std::ostream& stream, const WithStreamOperator& a)
@@ -34,7 +38,9 @@ namespace
   struct WithoutStreamOperatorButWithStringizer : public WithoutStreamOperator
   {
     explicit WithoutStreamOperatorButWithStringizer(int id)
-      : WithoutStreamOperator(id) {}
+      : WithoutStreamOperator(id)
+    {
+    }
   };
 }
 

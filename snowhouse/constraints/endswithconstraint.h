@@ -14,7 +14,9 @@ namespace snowhouse
   struct EndsWithConstraint : Expression<EndsWithConstraint<ExpectedType> >
   {
     EndsWithConstraint(const ExpectedType& expected)
-      : m_expected(expected) {}
+      : m_expected(expected)
+    {
+    }
 
     bool operator()(const std::string& actual) const
     {

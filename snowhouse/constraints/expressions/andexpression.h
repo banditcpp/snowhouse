@@ -15,7 +15,9 @@ namespace snowhouse
   struct AndExpression : Expression<AndExpression<LeftExpression, RightExpression> >
   {
     AndExpression(const LeftExpression& left, const RightExpression& right)
-      : m_left(left), m_right(right) {}
+      : m_left(left), m_right(right)
+    {
+    }
 
     template<typename ActualType>
     bool operator()(const ActualType& actual) const

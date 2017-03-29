@@ -13,7 +13,10 @@ namespace snowhouse
 {
   struct AtMostOperator : public CollectionOperator
   {
-    explicit AtMostOperator(unsigned int expected) : m_expected(expected) {}
+    explicit AtMostOperator(unsigned int expected)
+      : m_expected(expected)
+    {
+    }
 
     template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)

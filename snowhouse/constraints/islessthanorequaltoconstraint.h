@@ -14,7 +14,9 @@ namespace snowhouse
   struct IsLessThanOrEqualToConstraint : Expression<IsLessThanOrEqualToConstraint<ExpectedType> >
   {
     IsLessThanOrEqualToConstraint(const ExpectedType& expected)
-      : m_expected(expected) {}
+      : m_expected(expected)
+    {
+    }
 
     template<typename ActualType>
     bool operator()(const ActualType& actual) const

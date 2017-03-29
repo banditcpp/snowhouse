@@ -46,9 +46,7 @@ AllowShortBlocksOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: Empty
-# XXX: This does not work correctly since BraceWrapping::AfterFunction is true
-# XXX: Also empty classes should be one a single line, this is not supported.
+AllowShortFunctionsOnASingleLine: None
 
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: false

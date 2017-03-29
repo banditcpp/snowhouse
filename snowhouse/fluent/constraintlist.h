@@ -21,7 +21,9 @@ namespace snowhouse
     typedef TT TailType;
 
     ConstraintList(const HeadType& head, const TailType& tail)
-      : m_head(head), m_tail(tail) {}
+      : m_head(head), m_tail(tail)
+    {
+    }
 
     HeadType m_head;
     TailType m_tail;
@@ -29,8 +31,13 @@ namespace snowhouse
 
   struct Nil
   {
-    Nil() {}
-    Nil(const Nil&) {}
+    Nil()
+    {
+    }
+
+    Nil(const Nil&)
+    {
+    }
   };
 
   // ---- These structs defines the resulting types of list concatenation operations

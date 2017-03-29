@@ -13,7 +13,10 @@ namespace snowhouse
 {
   struct ExactlyOperator : public CollectionOperator
   {
-    explicit ExactlyOperator(unsigned int expected) : m_expected(expected) {}
+    explicit ExactlyOperator(unsigned int expected)
+      : m_expected(expected)
+    {
+    }
 
     template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)

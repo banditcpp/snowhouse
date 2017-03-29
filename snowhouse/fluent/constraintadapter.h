@@ -15,7 +15,9 @@ namespace snowhouse
   struct ConstraintAdapter
   {
     explicit ConstraintAdapter(const ConstraintType& constraint)
-      : m_constraint(constraint) {}
+      : m_constraint(constraint)
+    {
+    }
 
     template<typename ConstraintListType, typename ActualType>
     void Evaluate(ConstraintListType& list, ResultStack& result, OperatorStack& operators, const ActualType& actual)

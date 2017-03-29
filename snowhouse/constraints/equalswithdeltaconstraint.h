@@ -14,7 +14,9 @@ namespace snowhouse
   struct EqualsWithDeltaConstraint : Expression<EqualsWithDeltaConstraint<ExpectedType, DeltaType> >
   {
     EqualsWithDeltaConstraint(const ExpectedType& expected, const DeltaType& delta)
-      : m_expected(expected), m_delta(delta) {}
+      : m_expected(expected), m_delta(delta)
+    {
+    }
 
     template<typename ActualType>
     bool operator()(const ActualType& actual) const

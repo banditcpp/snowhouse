@@ -43,15 +43,21 @@ namespace snowhouse
 
   template<typename T>
   struct Stringizer<std::vector<T> >
-    : detail::SequentialContainerStringizer<std::vector<T> > {};
+      : detail::SequentialContainerStringizer<std::vector<T> >
+  {
+  };
 
   template<typename T>
   struct Stringizer<std::deque<T> >
-    : detail::SequentialContainerStringizer<std::deque<T> > {};
+      : detail::SequentialContainerStringizer<std::deque<T> >
+  {
+  };
 
   template<typename T>
   struct Stringizer<std::list<T> >
-    : detail::SequentialContainerStringizer<std::list<T> > {};
+      : detail::SequentialContainerStringizer<std::list<T> >
+  {
+  };
 }
 
 #endif

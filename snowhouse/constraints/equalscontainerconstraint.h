@@ -23,7 +23,9 @@ namespace snowhouse
   struct EqualsContainerConstraint : Expression<EqualsContainerConstraint<ExpectedType, BinaryPredicate> >
   {
     EqualsContainerConstraint(const ExpectedType& expected, const BinaryPredicate predicate)
-      : expected_(expected), predicate_(predicate) {}
+      : expected_(expected), predicate_(predicate)
+    {
+    }
 
     template<typename ActualType>
     bool operator()(const ActualType& actual) const

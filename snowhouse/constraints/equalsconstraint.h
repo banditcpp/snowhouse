@@ -14,7 +14,9 @@ namespace snowhouse
   struct EqualsConstraint : Expression<EqualsConstraint<ExpectedType> >
   {
     EqualsConstraint(const ExpectedType& expected)
-      : m_expected(expected) {}
+      : m_expected(expected)
+    {
+    }
 
     template<typename ActualType>
     bool operator()(const ActualType& actual) const
