@@ -17,7 +17,8 @@
 
 inline void describe(const char* title)
 {
-  std::cout << std::endl << title << ":" << std::endl;
+  std::cout << std::endl
+            << title << ":" << std::endl;
 }
 
 inline void it(const char* title)

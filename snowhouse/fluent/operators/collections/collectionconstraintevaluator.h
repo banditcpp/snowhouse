@@ -88,7 +88,8 @@ namespace snowhouse
 
       std::ostringstream stm;
       stm << "This string seems to contain an invalid line ending at position "
-          << newline << ":\n" << str << std::endl;
+          << newline << ":" << std::endl
+          << str << std::endl;
       throw InvalidExpressionException(stm.str());
     }
   };
