@@ -14,7 +14,7 @@ namespace snowhouse
   struct ExactlyOperator : public CollectionOperator
   {
     explicit ExactlyOperator(unsigned int expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 

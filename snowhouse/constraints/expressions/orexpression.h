@@ -15,7 +15,7 @@ namespace snowhouse
   struct OrExpression : Expression<OrExpression<LeftExpression, RightExpression> >
   {
     OrExpression(const LeftExpression& left, const RightExpression& right)
-      : m_left(left), m_right(right)
+        : m_left(left), m_right(right)
     {
     }
 

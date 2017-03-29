@@ -14,7 +14,7 @@ namespace snowhouse
   struct FulfillsConstraint : Expression<FulfillsConstraint<MatcherType> >
   {
     FulfillsConstraint(const MatcherType& matcher)
-      : m_matcher(matcher)
+        : m_matcher(matcher)
     {
     }
 

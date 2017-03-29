@@ -15,7 +15,7 @@ namespace snowhouse
   struct ConstraintAdapter
   {
     explicit ConstraintAdapter(const ConstraintType& constraint)
-      : m_constraint(constraint)
+        : m_constraint(constraint)
     {
     }
 

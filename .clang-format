@@ -20,7 +20,7 @@ AccessModifierOffset: -2
 NamespaceIndentation: All
 IndentCaseLabels: false
 ContinuationIndentWidth: 4
-ConstructorInitializerIndentWidth: 2
+ConstructorInitializerIndentWidth: 4
 IndentWrappedFunctionNames: false
 
 AlwaysBreakTemplateDeclarations: true

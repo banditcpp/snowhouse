@@ -14,7 +14,7 @@ namespace snowhouse
   struct AtMostOperator : public CollectionOperator
   {
     explicit AtMostOperator(unsigned int expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 

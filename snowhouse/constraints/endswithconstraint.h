@@ -14,7 +14,7 @@ namespace snowhouse
   struct EndsWithConstraint : Expression<EndsWithConstraint<ExpectedType> >
   {
     EndsWithConstraint(const ExpectedType& expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 

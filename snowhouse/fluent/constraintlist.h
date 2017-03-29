@@ -21,7 +21,7 @@ namespace snowhouse
     typedef TT TailType;
 
     ConstraintList(const HeadType& head, const TailType& tail)
-      : m_head(head), m_tail(tail)
+        : m_head(head), m_tail(tail)
     {
     }
 

@@ -37,7 +37,7 @@ namespace snowhouse
   struct ContainsConstraint : Expression<ContainsConstraint<ExpectedType> >
   {
     ContainsConstraint(const ExpectedType& expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 

@@ -14,7 +14,7 @@ namespace snowhouse
   struct HasLengthConstraint : Expression<HasLengthConstraint<ExpectedType> >
   {
     HasLengthConstraint(const ExpectedType& expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 

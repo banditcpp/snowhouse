@@ -14,7 +14,7 @@ namespace snowhouse
   struct IsGreaterThanConstraint : Expression<IsGreaterThanConstraint<ExpectedType> >
   {
     IsGreaterThanConstraint(const ExpectedType& expected)
-      : m_expected(expected)
+        : m_expected(expected)
     {
     }
 

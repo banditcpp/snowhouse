@@ -36,7 +36,7 @@ namespace snowhouse
   struct ExpressionBuilder
   {
     explicit ExpressionBuilder(const ConstraintListType& list)
-      : m_constraint_list(list)
+        : m_constraint_list(list)
     {
     }
 

@@ -9,7 +9,7 @@ using namespace snowhouse;
 struct my_type
 {
   explicit my_type(int my_val)
-    : my_val_(my_val)
+      : my_val_(my_val)
   {
   }
 
