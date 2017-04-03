@@ -375,7 +375,7 @@ Whenever Snowhouse prints an error message for a type, it will use the stream op
 as a placeholder.
 
 ```cpp
-struct MyType { /*...*/ };
+struct MyType { int x; char c; };
 
 AssertThat(myType, Fulfills(MyConstraint());
 ```
@@ -392,7 +392,7 @@ If we add a stream operator:
 ```cpp
 std::ostream& operator<<(std::ostream& stream, const MyType& a)
 {
-  stream << "MyType( x = " << a.x << " )";
+  stream << a.c << a.x;
   return stream;
 }
 ```
@@ -400,8 +400,35 @@ std::ostream& operator<<(std::ostream& stream, const MyType& a)
 the output will be a bit more readable:
 
 ```
-Expected: To fullfill my constraint
-Actual: MyType( x = 23 )
+Expected: To fulfill my constraint
+Actual: f23
+```
+
+If it is necessary to print an object in a different manner than the
+usual output stream operator provides, for example, to output more detailed
+information, we can use a specialization of the Stringizer class template:
+
+```cpp
+namespace snowhouse
+{
+  template<>
+  struct Stringizer<MyType>
+  {
+    static std::string ToString(const MyType& a)
+    {
+      std::stringstream stream;
+      stream << "MyType(x = " << a.x << ", c = " << int(a.c) << "('" << a.c << "'))";
+      return stream.str();
+    }
+  };
+}
+```
+
+with output:
+
+```
+Expected: To fulfill my constraint
+Actual: MyType(x = 23, c = 102('f'))
 ```
 
 ## Configurable Failure Handlers
