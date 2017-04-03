@@ -5,7 +5,7 @@ snowhouse
 
 An assertion library for C++
 
-Snowhouse is a stand alone assertion framework for C++.
+Snowhouse is a stand-alone assertion framework for C++.
 
 ## Usage
 
@@ -35,7 +35,7 @@ int main()
 
 ### Assertions
 
-Snowhouse uses a constraint based assertion model that is heavily inspired by the
+Snowhouse uses a constraint-based assertion model that is heavily inspired by the
 model used in [NUnit](http://nunit.org/). An assertion in Snowhouse is written
 using the following format:
 
@@ -43,13 +43,15 @@ using the following format:
 AssertThat(actual_value, <constraint expression>);
 ```
 
-where &lt;constraint expression&gt; is an expression that actual_value is evaluated against when the test is executed.
+where &lt;constraint expression&gt; is an expression that actual_value is
+evaluated against when the test is executed.
 
-Constraint expressions come in two basic forms: composite and fluent expressions
+Constraint expressions come in two basic forms: composite and fluent expressions.
 
 #### Composite Expressions
 
-With composite expressions, you can create compact, powerful expressions that combine a set of predefined constraints with ones that you provide yourself.
+With composite expressions, you can create compact, powerful expressions that
+combine a set of predefined constraints with ones that you provide yourself.
 
 Example:
 
@@ -57,15 +59,20 @@ Example:
 AssertThat(length, IsGreaterThan(4) && !Equals(10));
 ```
 
-Composite expressions can be any combination of constraints and the standard logical C++ operators.
+Composite expressions can be any combination of constraints and the
+standard logical C++ operators.
 
 You can also add your own constraints to be used within composite expressions.
 
 #### Fluent Expressions
 
-With fluent expressions, you can create assertions that better convey the intent of a test without exposing implementation-specific details. Fluent expressions aim to help you create tests that are not just by developers for developers, but rather can be read and understood by domain experts.
+With fluent expressions, you can create assertions that better convey the intent
+of a test without exposing implementation-specific details.
+Fluent expressions aim to help you create tests that are not just by developers
+for developers, but rather can be read and understood by domain experts.
 
-Fluent expressions also has the ability to make assertions on the elements in a conteiner in a way you cannot achieve with composite expressions.
+Fluent expressions also have the ability to make assertions on the elements in a
+container in a way you cannot achieve with composite expressions.
 
 Example:
 
@@ -86,7 +93,8 @@ AssertThat(x, Is().EqualTo(12));
 
 #### EqualityWithDelta Constraint
 
-Used to verify equality between actual and expected, allowing the two to differ by a delta.
+Used to verify equality between actual and expected,
+allowing the two to differ by a delta.
 
 ```cpp
 AssertThat(2.49, EqualsWithDelta(2.5, 0.1));
@@ -143,7 +151,8 @@ In this case, the `SNOWHOUSE_HAS_NULLPTR` macro is defined.
 
 ### String Constraints
 
-String assertions in Snowhouse are used to verify the values of STL strings (std::string).
+String assertions in Snowhouse are used to verify the values of
+STL strings (std::string).
 
 #### Equality Constraints
 
@@ -190,11 +199,14 @@ AssertThat(actual_str, HasLength(5));
 AssertThat(actual_str, Is().OfLength(5));
 ```
 
-### Constraints on Multi Line Strings
+### Constraints on Multiline Strings
 
-If you have a string that contains multiple lines, you can use the collection constraints to make assertions on the content of that string. This may be handy if you have a string that, for instance, represents the resulting content of a file or a network transmission.
+If you have a string that contains multiple lines, you can use the collection
+constraints to make assertions on the content of that string.
+This may be handy if you have a string that, for instance, represents the
+resulting content of a file or a network transmission.
 
-Snowhouse can handle both Windows (CR+LF) and Unix (LF) line endings
+Snowhouse can handle both Windows (CR+LF) and Unix (LF) line endings.
 
 ```cpp
 std::string lines = "First line\r\nSecond line\r\nThird line";
@@ -203,7 +215,7 @@ AssertThat(lines, Has().Exactly(1).StartingWith("Second"));
 
 ### Container Constraints
 
-The following constraints can be applied to containers in the standard template library:
+The following constraints can be applied to containers in the standard template library.
 
 #### Contains Constraint
 
@@ -242,7 +254,8 @@ AssertThat(container, Has().All().LessThan(5).Or().EqualTo(66));
 
 #### AtLeast
 
-Used to verify that at least a specified amount of elements in a STL sequence container matches an expectation.
+Used to verify that at least a specified amount of elements in a STL sequence
+container matches an expectation.
 
 ```cpp
 AssertThat(container, Has().AtLeast(3).StartingWith("foo"));
@@ -250,7 +263,8 @@ AssertThat(container, Has().AtLeast(3).StartingWith("foo"));
 
 #### AtMost
 
-Used to verify that at most a specified amount of elements in a STL sequence container matches an expectation.
+Used to verify that at most a specified amount of elements in a STL sequence
+container matches an expectation.
 
 ```cpp
 Assert:That(container, Has().AtMost(2).Not().Containing("failed"));
@@ -258,7 +272,8 @@ Assert:That(container, Has().AtMost(2).Not().Containing("failed"));
 
 #### Exactly
 
-Used to verify that a STL sequence container has exactly a specified amount of elements that matches an expectation.
+Used to verify that a STL sequence container has exactly a specified amount
+of elements that matches an expectation.
 
 ```cpp
 AssertThat(container, Has().Exactly(3).GreaterThan(10).And().LessThan(20));
@@ -275,7 +290,8 @@ AssertThat(container1, Is().EqualToContainer(container2));
 
 ##### Predicate functions
 
-You can supply a predicate function or a functor to EqualsContainer to customize how to compare the elements in the two containers.
+You can supply a predicate function or a functor to EqualsContainer to
+customize how to compare the elements in the two containers.
 
 With a predicate function:
 
@@ -313,7 +329,8 @@ Exception constraints can be used to verify that your code throws the correct ex
 
 #### AssertThrows
 
-AssertThrows succeeds if the exception thrown by the call is of the supplied type (or one of its subtypes).
+AssertThrows succeeds if the exception thrown by the call is of the supplied
+type (or one of its subtypes).
 
 ```cpp
 AssertThrows(std::logic_error, myObject.a_method(42));
@@ -321,14 +338,17 @@ AssertThrows(std::logic_error, myObject.a_method(42));
 
 #### Making Assertions on the Thrown Exceptions
 
-If AssertThrows succeeds, it will store the thrown exception so that you can make more detailed assertions on it.
+If AssertThrows succeeds, it will store the thrown exception so that you can
+make more detailed assertions on it.
 
 ```cpp
 AssertThrows(std::logic_error, myObject.a_method(42));
 AssertThat(LastException<std::logic_error>().what(), Is().Containing("logic failure"));
 ```
 
-The LastException<> is available in the scope of the call to AssertThrows. An exception is not available between specs in order to avoid the result of one spec contaminating another.
+The LastException<> is available in the scope of the call to AssertThrows.
+An exception is not available between specs in order to avoid the result of
+one spec contaminating another.
 
 ### Custom Constraints
 
@@ -363,13 +383,17 @@ AssertThat(42, Fulfills(IsEvenNumber()));
 AssertThat(42, Is().Fulfilling(IsEvenNumber()));
 ```
 
-Your custom matcher should implement a method called Matches() that takes a parameter of the type you expect and returns true if the passed parameter fulfills the constraint.
+Your custom matcher should implement a method called Matches() that takes
+a parameter of the type you expect and returns true if the passed parameter
+fulfills the constraint.
 
-To get more expressive failure messages, you should also implement the streaming operator as in the example above.
+To get more expressive failure messages, you should also implement the
+streaming operator as in the example above.
 
 ## Getting better output for your types
 
-Whenever Snowhouse prints an error message for a type, it will use the stream operator for that type, otherwise it will print "[unsupported type]"
+Whenever Snowhouse prints an error message for a type, it will use the
+stream operator for that type, otherwise it will print "[unsupported type]"
 as a placeholder.
 
 ```cpp
@@ -431,13 +455,24 @@ Actual: MyType(x = 23, c = 102('f'))
 
 ## Configurable Failure Handlers
 
-You can provide Snowhouse with custom failure handlers, for example to call `std::terminate` instead of throwing an exception. See `DefaultFailureHandler` for an example of a failure handler. You can derive your own macros with custom failure handlers using `SNOWHOUSE_ASSERT_THAT` and `SNOWHOUSE_ASSERT_THROWS`. See the definitions of `AssertThat` and `AssertThrows` for examples of these. Define `SNOWHOUSE_NO_MACROS` to disable the unprefixed macros `AssertThat` and `AssertThrows`.
+You can provide Snowhouse with custom failure handlers, for example to
+call `std::terminate` instead of throwing an exception.
+See `DefaultFailureHandler` for an example of a failure handler.
+You can derive your own macros with custom failure handlers using
+`SNOWHOUSE_ASSERT_THAT` and `SNOWHOUSE_ASSERT_THROWS`.
+See the definitions of `AssertThat` and `AssertThrows` for examples of these.
+Define `SNOWHOUSE_NO_MACROS` to disable the unprefixed macros `AssertThat`
+and `AssertThrows`.
 
 ### Example Use Cases
 
 #### Assert Program State
 
-Log an error immediately as we may crash if we try to continue. Don't attempt to unwind the stack as we may be inside a destructor or `nothrow` function. We may want to call `std::terminate`, or attempt to muddle along with the rest of the program.
+Log an error immediately as we may crash if we try to continue.
+Do not attempt to unwind the stack as we may be inside a destructor
+or `nothrow` function.
+We may want to call `std::terminate`, or attempt to muddle along
+with the rest of the program.
 
 #### Assert Program State in Safe Builds
 
@@ -445,7 +480,8 @@ As above, but only in debug builds.
 
 #### Test Assert
 
-Assert that a test behaved as expected. Throw an exception and let our testing framework deal with the test failure.
+Assert that a test behaved as expected.
+Throw an exception and let our testing framework deal with the test failure.
 
 ## Responsibilities
 
