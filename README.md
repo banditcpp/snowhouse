@@ -43,7 +43,7 @@ using the following format:
 AssertThat(actual_value, <constraint expression>);
 ```
 
-where &lt;constraint expression&gt; is an expression that actual_value is
+where `<constraint expression>` is an expression that `actual_value` is
 evaluated against when the test is executed.
 
 Constraint expressions come in two basic forms: composite and fluent expressions.
@@ -152,7 +152,7 @@ In this case, the `SNOWHOUSE_HAS_NULLPTR` macro is defined.
 ### String Constraints
 
 String assertions in Snowhouse are used to verify the values of
-STL strings (std::string).
+STL strings (`std::string`).
 
 #### Equality Constraints
 
@@ -290,7 +290,7 @@ AssertThat(container1, Is().EqualToContainer(container2));
 
 ##### Predicate functions
 
-You can supply a predicate function or a functor to EqualsContainer to
+You can supply a predicate function or a functor to `EqualsContainer` to
 customize how to compare the elements in the two containers.
 
 With a predicate function:
@@ -329,7 +329,7 @@ Exception constraints can be used to verify that your code throws the correct ex
 
 #### AssertThrows
 
-AssertThrows succeeds if the exception thrown by the call is of the supplied
+`AssertThrows` succeeds if the exception thrown by the call is of the supplied
 type (or one of its subtypes).
 
 ```cpp
@@ -338,7 +338,7 @@ AssertThrows(std::logic_error, myObject.a_method(42));
 
 #### Making Assertions on the Thrown Exceptions
 
-If AssertThrows succeeds, it will store the thrown exception so that you can
+If `AssertThrows` succeeds, it will store the thrown exception so that you can
 make more detailed assertions on it.
 
 ```cpp
@@ -346,7 +346,7 @@ AssertThrows(std::logic_error, myObject.a_method(42));
 AssertThat(LastException<std::logic_error>().what(), Is().Containing("logic failure"));
 ```
 
-The LastException<> is available in the scope of the call to AssertThrows.
+The `LastException<>` is available in the scope of the call to `AssertThrows`.
 An exception is not available between specs in order to avoid the result of
 one spec contaminating another.
 
@@ -383,7 +383,7 @@ AssertThat(42, Fulfills(IsEvenNumber()));
 AssertThat(42, Is().Fulfilling(IsEvenNumber()));
 ```
 
-Your custom matcher should implement a method called Matches() that takes
+Your custom matcher should implement a method called `Matches()` that takes
 a parameter of the type you expect and returns true if the passed parameter
 fulfills the constraint.
 
@@ -428,7 +428,7 @@ Actual: f23
 
 If it is necessary to print an object in a different manner than the
 usual output stream operator provides, for example, to output more detailed
-information, we can use a specialization of the Stringizer class template:
+information, we can use a specialization of the `Stringizer` class template:
 
 ```cpp
 namespace snowhouse
