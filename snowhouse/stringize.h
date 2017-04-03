@@ -53,6 +53,14 @@ namespace snowhouse
       static const bool value = sizeof(check(std::cout << x)) == sizeof(yes);
     };
 
+#ifdef SNOWHOUSE_HAS_NULLPTR
+    template<>
+    struct is_output_streamable<std::nullptr_t>
+    {
+      static const bool value = false;
+    };
+#endif
+
     template<typename T, bool type_is_streamable>
     struct DefaultStringizer
     {
