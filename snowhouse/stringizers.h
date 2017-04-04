@@ -6,10 +6,6 @@
 #ifndef SNOWHOUSE_STRINGIZERS_H
 #define SNOWHOUSE_STRINGIZERS_H
 
-#include <deque>
-#include <list>
-#include <vector>
-
 #include "stringize.h"
 
 namespace snowhouse

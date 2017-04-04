@@ -1,3 +1,6 @@
+#include <deque>
+#include <list>
+
 #include "tests.h"
 
 using namespace snowhouse;
