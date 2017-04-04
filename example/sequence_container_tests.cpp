@@ -1,9 +1,38 @@
 #include <deque>
 #include <list>
+#include <set>
 
 #include "tests.h"
 
 using namespace snowhouse;
+
+static void insert_numbers(std::multiset<int>& container)
+{
+  container.insert(1);
+  container.insert(2);
+  container.insert(3);
+  container.insert(5);
+  container.insert(8);
+}
+
+static void insert_numbers(std::set<int>& container)
+{
+  container.insert(1);
+  container.insert(2);
+  container.insert(3);
+  container.insert(5);
+  container.insert(8);
+}
+
+template<typename T>
+static void insert_numbers(T& container)
+{
+  container.push_back(1);
+  container.push_back(2);
+  container.push_back(3);
+  container.push_back(5);
+  container.push_back(8);
+}
 
 template<typename T>
 void SequenceContainerActual()
@@ -12,11 +41,7 @@ void SequenceContainerActual()
 
   T container;
   container.clear();
-  container.push_back(1);
-  container.push_back(2);
-  container.push_back(3);
-  container.push_back(5);
-  container.push_back(8);
+  insert_numbers(container);
 
   it("handles All()");
   {
@@ -185,4 +210,10 @@ void SequenceContainerTests()
 
   describe("Sequence containers (std::deque)");
   SequenceContainerActual<std::deque<int> >();
+
+  describe("Sequence containers (std::set)");
+  SequenceContainerActual<std::set<int> >();
+
+  describe("Sequence containers (std::multiset)");
+  SequenceContainerActual<std::multiset<int> >();
 }
