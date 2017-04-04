@@ -44,7 +44,7 @@ static bool are_my_types_equal(const my_type& lhs, const my_type& rhs)
 
 void ContainerConstraints()
 {
-  describe("Container contstraints");
+  describe("Container constraints");
 
   it("is able to compare containers of custom types");
   {
