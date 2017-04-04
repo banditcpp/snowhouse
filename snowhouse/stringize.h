@@ -82,7 +82,7 @@ namespace snowhouse
     };
   }
 
-  template<typename T>
+  template<typename T, typename = detail::yes>
   struct Stringizer;
 
   template<typename T>
@@ -92,7 +92,7 @@ namespace snowhouse
   }
 
   // NOTE: Specialize snowhouse::Stringizer to customize assertion messages
-  template<typename T>
+  template<typename T, typename>
   struct Stringizer
   {
     static std::string ToString(const T& value)
