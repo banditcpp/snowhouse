@@ -27,7 +27,17 @@ static void insert_numbers(std::set<int>& container)
 }
 
 #if __cplusplus >= 201103L
+#include <array>
 #include <forward_list>
+
+static void insert_numbers(std::array<int, 5>& container)
+{
+  container[0] = 1;
+  container[1] = 2;
+  container[2] = 3;
+  container[3] = 5;
+  container[4] = 8;
+}
 
 static void insert_numbers(std::forward_list<int>& container)
 {
@@ -113,13 +123,11 @@ void TestLength(const std::forward_list<int>&)
 }
 #endif
 
-template<typename T>
-void TestEmpty(const T& container)
+template<typename T, typename TEmpty>
+void TestEmpty(const T& container, const TEmpty& is_empty)
 {
   it("handles IsEmpty()");
   {
-    T is_empty;
-
     AssertThat(is_empty, IsEmpty());
   }
 
@@ -130,8 +138,6 @@ void TestEmpty(const T& container)
 
   it("handles Is().Empty()");
   {
-    T is_empty;
-
     AssertThat(is_empty, Is().Empty());
   }
 
@@ -141,7 +147,21 @@ void TestEmpty(const T& container)
   }
 }
 
+template<typename T>
+void TestEmpty(const T& container)
+{
+  T is_empty;
+  TestEmpty(container, is_empty);
+}
+
 #if __cplusplus >= 201103L
+template<>
+void TestEmpty(const std::array<int, 5>& container)
+{
+  std::array<int, 0> is_empty;
+  TestEmpty(container, is_empty);
+}
+
 template<>
 void TestEmpty(const std::forward_list<int>&)
 {
@@ -153,7 +173,6 @@ template<typename T>
 void SequenceContainerActual()
 {
   T container;
-  container.clear();
   insert_numbers(container);
 
   TestHasAll(container);
@@ -273,6 +292,9 @@ void SequenceContainerTests()
   SequenceContainerActual<std::multiset<int> >();
 
 #if __cplusplus >= 201103L
+  describe("Sequence containers (std::array)");
+  SequenceContainerActual<std::array<int, 5> >();
+
   describe("Sequence containers (std::forward_list)");
   SequenceContainerActual<std::forward_list<int> >();
 #endif
