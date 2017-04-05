@@ -35,7 +35,10 @@ namespace snowhouse
         return stm.str();
       }
     };
+  }
 
+  namespace typing
+  {
     template<typename T>
     struct is_const_iterable
     {
@@ -112,7 +115,7 @@ namespace snowhouse
 
   template<typename T>
   struct Stringizer<T,
-      typename detail::enable_if<detail::is_container<T>::value>::type>
+      typename typing::enable_if<typing::is_container<T>::value>::type>
       : detail::SequentialContainerStringizer<T>
   {
   };

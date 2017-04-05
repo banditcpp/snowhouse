@@ -13,7 +13,7 @@
 
 namespace snowhouse
 {
-  namespace detail
+  namespace typing
   {
     // This type soaks up any implicit conversions and makes the following operator<<
     // less preferred than any other such operator found via ADL.
@@ -60,7 +60,10 @@ namespace snowhouse
       static const bool value = false;
     };
 #endif
+  }
 
+  namespace detail
+  {
     template<typename T, bool type_is_streamable>
     struct DefaultStringizer
     {
@@ -82,7 +85,7 @@ namespace snowhouse
     };
   }
 
-  template<typename T, typename = detail::yes>
+  template<typename T, typename = typing::yes>
   struct Stringizer;
 
   template<typename T>
@@ -97,7 +100,7 @@ namespace snowhouse
   {
     static std::string ToString(const T& value)
     {
-      return detail::DefaultStringizer<T, detail::is_output_streamable<T>::value>::ToString(value);
+      return detail::DefaultStringizer<T, typing::is_output_streamable<T>::value>::ToString(value);
     }
   };
 
