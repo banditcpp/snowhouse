@@ -85,6 +85,16 @@ void SequenceContainerActual()
     AssertTestFails(AssertThat(container, Contains(99)), std::string("contains 99") + ExpectedActual);
   }
 
+  it("handles Is().Containing()");
+  {
+    AssertThat(container, Is().Containing(3));
+  }
+
+  it("detects failing Is().Containing()");
+  {
+    AssertTestFails(AssertThat(container, Is().Containing(99)), std::string("contains 99") + ExpectedActual);
+  }
+
   it("handles HasLength()");
   {
     AssertThat(container, HasLength(5));
@@ -95,24 +105,14 @@ void SequenceContainerActual()
     AssertTestFails(AssertThat(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
   }
 
-  it("handles Contains() expression templates");
+  it("handles Is().OfLength()");
   {
-    AssertThat(container, Contains(3));
+    AssertThat(container, Is().OfLength(5));
   }
 
-  it("detects failing Contains() expression templates");
+  it("handles failing Is().OfLength()");
   {
-    AssertTestFails(AssertThat(container, Contains(99)), std::string("contains 99") + ExpectedActual);
-  }
-
-  it("handles HasLength()");
-  {
-    AssertThat(container, HasLength(5));
-  }
-
-  it("handles failing HasLength() for vectors");
-  {
-    AssertTestFails(AssertThat(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
+    AssertTestFails(AssertThat(container, Is().OfLength(7)), std::string("of length 7") + ExpectedActual);
   }
 
   it("handles IsEmpty()");
@@ -147,14 +147,6 @@ void SequenceContainerActual()
     AssertThat(container, EqualsContainer(expected));
   }
 
-  it("handles EqualsContainer()");
-  {
-    std::list<int> expected;
-    expected.assign(container.begin(), container.end());
-
-    AssertThat(container, Is().EqualToContainer(expected));
-  }
-
   it("handles failing EqualsContainer()");
   {
     const int e[] = {4, 2, 4};
@@ -163,7 +155,15 @@ void SequenceContainerActual()
     AssertTestFails(AssertThat(container, EqualsContainer(expected)), "Expected: [ 4, 2, 4 ]");
   }
 
-  it("handles failing EqualsContainer()");
+  it("handles Is().EqualToContainer()");
+  {
+    std::list<int> expected;
+    expected.assign(container.begin(), container.end());
+
+    AssertThat(container, Is().EqualToContainer(expected));
+  }
+
+  it("handles failing Is().EqualToContainer()");
   {
     const int e[] = {4, 2, 4};
     std::list<int> expected(e, e + sizeof(e) / sizeof(e[0]));
