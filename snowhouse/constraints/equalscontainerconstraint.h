@@ -41,7 +41,7 @@ namespace snowhouse
         }
       }
 
-      return actual.size() == expected_.size();
+      return actual_it == actual.end() && expected_it == expected_.end();
     }
 
     const ExpectedType expected_;
