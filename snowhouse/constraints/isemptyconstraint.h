@@ -11,6 +11,12 @@ namespace snowhouse
 {
   struct IsEmptyConstraint : Expression<IsEmptyConstraint>
   {
+    // The ignored default argument is a workaround to make this class
+    // compatible to ConstraintAdapterType
+    IsEmptyConstraint(int = 0)
+    {
+    }
+
     template<typename ActualType>
     bool operator()(const ActualType& actual) const
     {

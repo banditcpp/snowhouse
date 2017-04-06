@@ -219,10 +219,10 @@ namespace snowhouse
       return BuilderType(Concatenate(m_constraint_list, node));
     }
 
-    ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<HasLengthConstraint<int> >, Nil> >::t>
+    ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<IsEmptyConstraint>, Nil> >::t>
     Empty()
     {
-      typedef ConstraintAdapter<HasLengthConstraint<int> > ConstraintAdapterType;
+      typedef ConstraintAdapter<IsEmptyConstraint> ConstraintAdapterType;
 
       typedef ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapterType, Nil> >::t> BuilderType;
       ConstraintAdapterType constraint(0);
