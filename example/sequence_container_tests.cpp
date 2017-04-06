@@ -137,7 +137,7 @@ static void TestEmpty(const T& container, const TEmpty& is_empty)
 
   it("handles failing IsEmpty()");
   {
-    AssertTestFails(AssertThat(container, IsEmpty()), "of length 0");
+    AssertTestFails(AssertThat(container, IsEmpty()), "empty");
   }
 
   it("handles Is().Empty()");
@@ -167,9 +167,19 @@ void TestEmpty(const std::array<int, 5>& container)
 }
 
 template<>
-void TestEmpty(const std::forward_list<int>&)
+void TestEmpty(const std::forward_list<int>& container, const std::forward_list<int>& is_empty)
 {
-  // The constraint is size-based but there is no size() method available
+  it("handles IsEmpty()");
+  {
+    AssertThat(is_empty, IsEmpty());
+  }
+
+  it("handles failing IsEmpty()");
+  {
+    AssertTestFails(AssertThat(container, IsEmpty()), "empty");
+  }
+
+  // Not handling Is().Empty() because this is still size-based
 }
 #endif
 

@@ -35,11 +35,6 @@ namespace snowhouse
     return HasLengthConstraint<ExpectedType>(expected);
   }
 
-  inline HasLengthConstraint<int> IsEmpty()
-  {
-    return HasLength<int>(0);
-  }
-
   inline HasLengthConstraint<std::string> HasLength(const char* expected)
   {
     return HasLengthConstraint<std::string>(expected);

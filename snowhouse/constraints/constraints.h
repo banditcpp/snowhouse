@@ -10,6 +10,7 @@
 #include "endswithconstraint.h"
 #include "equalsconstraint.h"
 #include "haslengthconstraint.h"
+#include "isemptyconstraint.h"
 #include "isgreaterthanconstraint.h"
 #include "isgreaterthanorequaltoconstraint.h"
 #include "islessthanconstraint.h"
