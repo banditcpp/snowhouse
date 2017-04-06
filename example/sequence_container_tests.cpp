@@ -64,7 +64,7 @@ void insert_numbers(std::forward_list<int>& container)
 #endif
 
 template<typename T>
-void TestHasAll(const T& container)
+static void TestHasAll(const T& container)
 {
   it("handles All()");
   {
@@ -96,7 +96,7 @@ void TestHasAll(const std::forward_list<int>&)
 #endif
 
 template<typename T>
-void TestLength(const T& container)
+static void TestLength(const T& container)
 {
   it("handles HasLength()");
   {
@@ -128,7 +128,7 @@ void TestLength(const std::forward_list<int>&)
 #endif
 
 template<typename T, typename TEmpty>
-void TestEmpty(const T& container, const TEmpty& is_empty)
+static void TestEmpty(const T& container, const TEmpty& is_empty)
 {
   it("handles IsEmpty()");
   {
@@ -174,7 +174,7 @@ void TestEmpty(const std::forward_list<int>&)
 #endif
 
 template<typename T>
-void SequenceContainerActual()
+static void SequenceContainerActual()
 {
   T container;
   insert_numbers(container);

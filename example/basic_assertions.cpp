@@ -4,7 +4,7 @@
 
 using namespace snowhouse;
 
-void throwRuntimeError()
+static void throwRuntimeError()
 {
   throw std::runtime_error("This is expected");
 }
