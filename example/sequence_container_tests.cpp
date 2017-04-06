@@ -1,20 +1,71 @@
+#include <deque>
+#include <list>
+#include <set>
+
 #include "tests.h"
 
 using namespace snowhouse;
 
-template<typename T>
-void SequenceContainerActual()
-{
-  const char* ExpectedActual = "\nActual: [ 1, 2, 3, 5, 8 ]";
+static const char* ExpectedActual = "\nActual: [ 1, 2, 3, 5, 8 ]";
 
-  T container;
-  container.clear();
+template<typename T>
+static void insert_numbers(T& container)
+{
   container.push_back(1);
   container.push_back(2);
   container.push_back(3);
   container.push_back(5);
   container.push_back(8);
+}
 
+template<>
+void insert_numbers(std::multiset<int>& container)
+{
+  container.insert(1);
+  container.insert(2);
+  container.insert(3);
+  container.insert(5);
+  container.insert(8);
+}
+
+template<>
+void insert_numbers(std::set<int>& container)
+{
+  container.insert(1);
+  container.insert(2);
+  container.insert(3);
+  container.insert(5);
+  container.insert(8);
+}
+
+#if __cplusplus >= 201103L
+#include <array>
+#include <forward_list>
+
+template<>
+void insert_numbers(std::array<int, 5>& container)
+{
+  container[0] = 1;
+  container[1] = 2;
+  container[2] = 3;
+  container[3] = 5;
+  container[4] = 8;
+}
+
+template<>
+void insert_numbers(std::forward_list<int>& container)
+{
+  container.push_front(8);
+  container.push_front(5);
+  container.push_front(3);
+  container.push_front(2);
+  container.push_front(1);
+}
+#endif
+
+template<typename T>
+static void TestHasAll(const T& container)
+{
   it("handles All()");
   {
     AssertThat(container, Has().All().GreaterThan(1).Or().LessThan(4));
@@ -34,6 +85,101 @@ void SequenceContainerActual()
   {
     AssertTestFails(AssertThat(container, Has().All()), "The expression after \"all\" operator does not yield any result");
   }
+}
+
+#if __cplusplus >= 201103L
+template<>
+void TestHasAll(const std::forward_list<int>&)
+{
+  // The constraint is size-based but there is no size() method available
+}
+#endif
+
+template<typename T>
+static void TestLength(const T& container)
+{
+  it("handles HasLength()");
+  {
+    AssertThat(container, HasLength(5));
+  }
+
+  it("handles failing HasLength()");
+  {
+    AssertTestFails(AssertThat(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
+  }
+
+  it("handles Is().OfLength()");
+  {
+    AssertThat(container, Is().OfLength(5));
+  }
+
+  it("handles failing Is().OfLength()");
+  {
+    AssertTestFails(AssertThat(container, Is().OfLength(7)), std::string("of length 7") + ExpectedActual);
+  }
+}
+
+#if __cplusplus >= 201103L
+template<>
+void TestLength(const std::forward_list<int>&)
+{
+  // There is no size() method available
+}
+#endif
+
+template<typename T, typename TEmpty>
+static void TestEmpty(const T& container, const TEmpty& is_empty)
+{
+  it("handles IsEmpty()");
+  {
+    AssertThat(is_empty, IsEmpty());
+  }
+
+  it("handles failing IsEmpty()");
+  {
+    AssertTestFails(AssertThat(container, IsEmpty()), "of length 0");
+  }
+
+  it("handles Is().Empty()");
+  {
+    AssertThat(is_empty, Is().Empty());
+  }
+
+  it("handles failing Is().Empty()");
+  {
+    AssertTestFails(AssertThat(container, Is().Empty()), "of length 0");
+  }
+}
+
+template<typename T>
+void TestEmpty(const T& container)
+{
+  T is_empty;
+  TestEmpty(container, is_empty);
+}
+
+#if __cplusplus >= 201103L
+template<>
+void TestEmpty(const std::array<int, 5>& container)
+{
+  std::array<int, 0> is_empty;
+  TestEmpty(container, is_empty);
+}
+
+template<>
+void TestEmpty(const std::forward_list<int>&)
+{
+  // The constraint is size-based but there is no size() method available
+}
+#endif
+
+template<typename T>
+static void SequenceContainerActual()
+{
+  T container;
+  insert_numbers(container);
+
+  TestHasAll(container);
 
   it("handles AtLeast()");
   {
@@ -85,59 +231,19 @@ void SequenceContainerActual()
     AssertTestFails(AssertThat(container, Contains(99)), std::string("contains 99") + ExpectedActual);
   }
 
-  it("handles HasLength()");
+  it("handles Is().Containing()");
   {
-    AssertThat(container, HasLength(5));
+    AssertThat(container, Is().Containing(3));
   }
 
-  it("handles failing HasLength()");
+  it("detects failing Is().Containing()");
   {
-    AssertTestFails(AssertThat(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
+    AssertTestFails(AssertThat(container, Is().Containing(99)), std::string("contains 99") + ExpectedActual);
   }
 
-  it("handles Contains() expression templates");
-  {
-    AssertThat(container, Contains(3));
-  }
+  TestLength(container);
 
-  it("detects failing Contains() expression templates");
-  {
-    AssertTestFails(AssertThat(container, Contains(99)), std::string("contains 99") + ExpectedActual);
-  }
-
-  it("handles HasLength()");
-  {
-    AssertThat(container, HasLength(5));
-  }
-
-  it("handles failing HasLength() for vectors");
-  {
-    AssertTestFails(AssertThat(container, HasLength(7)), std::string("of length 7") + ExpectedActual);
-  }
-
-  it("handles IsEmpty()");
-  {
-    T is_empty;
-
-    AssertThat(is_empty, IsEmpty());
-  }
-
-  it("handles failing IsEmpty()");
-  {
-    AssertTestFails(AssertThat(container, IsEmpty()), "of length 0");
-  }
-
-  it("handles Is().Empty()");
-  {
-    T is_empty;
-
-    AssertThat(is_empty, Is().Empty());
-  }
-
-  it("handles failing Is().Empty()");
-  {
-    AssertTestFails(AssertThat(container, Is().Empty()), "of length 0");
-  }
+  TestEmpty(container);
 
   it("handles EqualsContainer()");
   {
@@ -145,14 +251,6 @@ void SequenceContainerActual()
     expected.assign(container.begin(), container.end());
 
     AssertThat(container, EqualsContainer(expected));
-  }
-
-  it("handles EqualsContainer()");
-  {
-    std::list<int> expected;
-    expected.assign(container.begin(), container.end());
-
-    AssertThat(container, Is().EqualToContainer(expected));
   }
 
   it("handles failing EqualsContainer()");
@@ -163,7 +261,15 @@ void SequenceContainerActual()
     AssertTestFails(AssertThat(container, EqualsContainer(expected)), "Expected: [ 4, 2, 4 ]");
   }
 
-  it("handles failing EqualsContainer()");
+  it("handles Is().EqualToContainer()");
+  {
+    std::list<int> expected;
+    expected.assign(container.begin(), container.end());
+
+    AssertThat(container, Is().EqualToContainer(expected));
+  }
+
+  it("handles failing Is().EqualToContainer()");
   {
     const int e[] = {4, 2, 4};
     std::list<int> expected(e, e + sizeof(e) / sizeof(e[0]));
@@ -182,4 +288,18 @@ void SequenceContainerTests()
 
   describe("Sequence containers (std::deque)");
   SequenceContainerActual<std::deque<int> >();
+
+  describe("Sequence containers (std::set)");
+  SequenceContainerActual<std::set<int> >();
+
+  describe("Sequence containers (std::multiset)");
+  SequenceContainerActual<std::multiset<int> >();
+
+#if __cplusplus >= 201103L
+  describe("Sequence containers (std::array)");
+  SequenceContainerActual<std::array<int, 5> >();
+
+  describe("Sequence containers (std::forward_list)");
+  SequenceContainerActual<std::forward_list<int> >();
+#endif
 }
