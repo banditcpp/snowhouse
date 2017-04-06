@@ -46,6 +46,21 @@ void StringTests()
     AssertThat("12345", HasLength(5));
   }
 
+  it("handles failing HasLength()");
+  {
+    AssertTestFails(AssertThat("1234", HasLength(5)), "of length 5");
+  }
+
+  it("handles IsEmpty()");
+  {
+    AssertThat("", IsEmpty());
+  }
+
+  it("handles failing IsEmpty()");
+  {
+    AssertTestFails(AssertThat("not empty", IsEmpty()), "empty");
+  }
+
   it("handles weird long expressions");
   {
     AssertThat("12345", HasLength(5) && StartsWith("123") && !EndsWith("zyxxy"));
