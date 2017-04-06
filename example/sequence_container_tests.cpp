@@ -8,7 +8,18 @@ using namespace snowhouse;
 
 static const char* ExpectedActual = "\nActual: [ 1, 2, 3, 5, 8 ]";
 
-static void insert_numbers(std::multiset<int>& container)
+template<typename T>
+static void insert_numbers(T& container)
+{
+  container.push_back(1);
+  container.push_back(2);
+  container.push_back(3);
+  container.push_back(5);
+  container.push_back(8);
+}
+
+template<>
+void insert_numbers(std::multiset<int>& container)
 {
   container.insert(1);
   container.insert(2);
@@ -17,7 +28,8 @@ static void insert_numbers(std::multiset<int>& container)
   container.insert(8);
 }
 
-static void insert_numbers(std::set<int>& container)
+template<>
+void insert_numbers(std::set<int>& container)
 {
   container.insert(1);
   container.insert(2);
@@ -30,7 +42,8 @@ static void insert_numbers(std::set<int>& container)
 #include <array>
 #include <forward_list>
 
-static void insert_numbers(std::array<int, 5>& container)
+template<>
+void insert_numbers(std::array<int, 5>& container)
 {
   container[0] = 1;
   container[1] = 2;
@@ -39,7 +52,8 @@ static void insert_numbers(std::array<int, 5>& container)
   container[4] = 8;
 }
 
-static void insert_numbers(std::forward_list<int>& container)
+template<>
+void insert_numbers(std::forward_list<int>& container)
 {
   container.push_front(8);
   container.push_front(5);
@@ -48,16 +62,6 @@ static void insert_numbers(std::forward_list<int>& container)
   container.push_front(1);
 }
 #endif
-
-template<typename T>
-static void insert_numbers(T& container)
-{
-  container.push_back(1);
-  container.push_back(2);
-  container.push_back(3);
-  container.push_back(5);
-  container.push_back(8);
-}
 
 template<typename T>
 void TestHasAll(const T& container)
