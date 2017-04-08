@@ -483,6 +483,33 @@ As above, but only in debug builds.
 Assert that a test behaved as expected.
 Throw an exception and let our testing framework deal with the test failure.
 
+## Versioning
+
+Snowhouse uses [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html) since
+version 3.0.0.
+The macros `SNOWHOUSE_MAJOR`, `SNOWHOUSE_MINOR` and `SNOWHOUSE_PATCH` are defined
+accordingly and `SNOWHOUSE_VERSION` contains the version string.
+Note that in prior versions `SNOWHOUSE_VERSION` was the only defined macro.
+
+## Contributing
+
+The development of Snowhouse takes place on [GitHub](//github.com/banditcpp/snowhouse).
+
+Snowhouse is licensed under the Boost Software License.
+See LICENSE_1_0.txt for further information.
+
+By making available code for inclusion into Snowhouse (e.g., by opening a
+pull request on GitHub), you guarantee that the code is licensed under the
+same license as Snowhouse.
+
+Please make sure to be consistent with the project's coding style.
+The `.clang-format` file allows easy checking and implementation of the
+coding style.
+
+C++ code should comply to C++98, C++03- and C++11.
+Please use `__cplusplus` guards if you want to use language features of
+a certain C++ version.
+
 ## Responsibilities
 
 Snowhouse was originally developed as part of the [Igloo](//github.com/joakimkarlsson/igloo)
@@ -492,6 +519,3 @@ It has been extracted to be usable in other contexts, for example,
 
 Snowhouse is maintained by [Stephan Beyer](//github.com/sbeyer) since
 [October 2016](//twitter.com/JHKarlsson/status/789332548799332352).
-
-Snowhouse is licensed under the Boost Software License.
-See LICENSE_1_0.txt for further information.

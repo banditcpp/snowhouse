@@ -17,6 +17,8 @@ void StringizeTests();
 
 int main()
 {
+  std::cout << "Spec for Snowhouse " SNOWHOUSE_VERSION << std::endl;
+
   try
   {
     BasicAssertions();
