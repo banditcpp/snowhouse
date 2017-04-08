@@ -491,6 +491,25 @@ The macros `SNOWHOUSE_MAJOR`, `SNOWHOUSE_MINOR` and `SNOWHOUSE_PATCH` are define
 accordingly and `SNOWHOUSE_VERSION` contains the version string.
 Note that in prior versions `SNOWHOUSE_VERSION` was the only defined macro.
 
+## Contributing
+
+The development of Snowhouse takes place on [GitHub](//github.com/banditcpp/snowhouse).
+
+Snowhouse is licensed under the Boost Software License.
+See LICENSE_1_0.txt for further information.
+
+By making available code for inclusion into Snowhouse (e.g., by opening a
+pull request on GitHub), you guarantee that the code is licensed under the
+same license as Snowhouse.
+
+Please make sure to be consistent with the project's coding style.
+The `.clang-format` file allows easy checking and implementation of the
+coding style.
+
+C++ code should comply to C++98, C++03- and C++11.
+Please use `__cplusplus` guards if you want to use language features of
+a certain C++ version.
+
 ## Responsibilities
 
 Snowhouse was originally developed as part of the [Igloo](//github.com/joakimkarlsson/igloo)
@@ -500,6 +519,3 @@ It has been extracted to be usable in other contexts, for example,
 
 Snowhouse is maintained by [Stephan Beyer](//github.com/sbeyer) since
 [October 2016](//twitter.com/JHKarlsson/status/789332548799332352).
-
-Snowhouse is licensed under the Boost Software License.
-See LICENSE_1_0.txt for further information.
