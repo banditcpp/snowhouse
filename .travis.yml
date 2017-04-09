@@ -1,20 +1,18 @@
-language: cpp
+sudo: required
 
-compiler:
- - gcc
- - clang
+# language: none <- no language, please, but this is not possible, so it takes Ruby.
+
+services:
+ - docker
 
 env:
- - CPP11=OFF
- - CPP11=ON
-
-before_install:
- - sudo add-apt-repository ppa:kubuntu-ppa/backports -y
- - sudo apt-get update -qq
- - sudo apt-get install -qq cmake=2.8.12.2-0ubuntu1~ubuntu12.04.1~ppa2
-
-before_script:
- - cmake -DSNOWHOUSE_IS_CPP11=${CPP11} .
+ - DOCKER_TAG=snowhouse-minimum CXX_STANDARD=98 CC=gcc-4.4 CXX=g++-4.4
+ - DOCKER_TAG=snowhouse-minimum CXX_STANDARD=98 CC=gcc-4.6 CXX=g++-4.6
+ - DOCKER_TAG=snowhouse-minimum CXX_STANDARD=03 CC=gcc-4.6 CXX=g++-4.6
+ - DOCKER_TAG=snowhouse-minimum CXX_STANDARD=11 CC=gcc-4.6 CXX=g++-4.6
+ - DOCKER_TAG=snowhouse-minimum CXX_STANDARD=98 CC=clang CXX=clang++
+ - DOCKER_TAG=snowhouse-minimum CXX_STANDARD=03 CC=clang CXX=clang++
+ - DOCKER_TAG=snowhouse-minimum CXX_STANDARD=11 CC=clang CXX=clang++
 
 script:
- - make
+ - util/build-in-container.sh ${CXX_STANDARD} banditcpp/build-environments:${DOCKER_TAG}
