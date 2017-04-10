@@ -2,6 +2,25 @@ sudo: required
 
 # language: none <- no language, please, but this is not possible, so it takes Ruby.
 
+matrix:
+  include:
+    # Check if coding style is okay
+    - env: BUILD_TYPE=coding-style-check
+
+      services: docker
+
+      before_install:
+       - sudo apt-get -qq update
+       - sudo apt-get install -y findutils
+
+      script:
+       - git ls-files '*.cpp' '*.h' |
+           xargs
+             docker run -v"$PWD":/media/ banditcpp/build-environments:clang-format-4.0
+             clang-format-4.0 -i &&
+         git diff &&
+         git diff-index --quiet HEAD
+
 services:
  - docker
 
