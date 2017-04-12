@@ -1,0 +1,12 @@
+environment:
+  matrix:
+    - CXX_STANDARD: 98
+    - CXX_STANDARD: 03
+    - CXX_STANDARD: 11
+    - CXX_STANDARD: 14
+
+build_script:
+ - cmake -G "Visual Studio 14" -DSNOWHOUSE_RUN_TESTS=0 -DSNOWHOUSE_CXX_STANDARD=C++%CXX_STANDARD%
+ - cmake --build .
+test_script:
+ - bin\Debug\snowhouse-tests.exe

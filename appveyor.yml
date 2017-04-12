@@ -1,5 +1,0 @@
-build_script:
- - cmake -G "Visual Studio 14" -DSNOWHOUSE_RUN_TESTS=0
- - cmake --build .
-test_script:
- - bin\Debug\snowhouse-tests.exe

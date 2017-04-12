@@ -4,40 +4,43 @@ project(snowhouse)
 
 option(SNOWHOUSE_BUILD_TESTS    "Build the Snowhouse tests"                 ON)
 option(SNOWHOUSE_RUN_TESTS      "Run the Snowhouse tests"                   ON)
-option(SNOWHOUSE_IS_CPP11       "Whether to build this as a C++11 project"  OFF)
+set(SNOWHOUSE_CXX_STANDARD "C++03" CACHE STRING "The C++ standard the examples are compiled with")
+set_property(CACHE SNOWHOUSE_CXX_STANDARD PROPERTY STRINGS "C++98" "C++03" "C++11" "C++14")
 
 include_directories("${PROJECT_SOURCE_DIR}")
+
+if(SNOWHOUSE_CXX_STANDARD STREQUAL "C++98")
+  set(std_name "c++98")
+elseif(SNOWHOUSE_CXX_STANDARD STREQUAL "C++03")
+  set(std_name "c++03")
+elseif(SNOWHOUSE_CXX_STANDARD STREQUAL "C++11")
+  set(std_name "c++11")
+elseif(SNOWHOUSE_CXX_STANDARD STREQUAL "C++14")
+  set(std_name "c++14")
+else()
+  message(WARNING "C++ standard \"${SNOWHOUSE_CXX_STANDARD}\" not known, falling back to default")
+endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 if (MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /MP ")
+  if(DEFINED std_name)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:${std_name}")
+  endif()
 else()
   # Assume GCC-style arguments
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
-
-  if(SNOWHOUSE_IS_CPP11)
+  if(SNOWHOUSE_CXX_STANDARD STREQUAL "C++11" OR SNOWHOUSE_CXX_STANDARD STREQUAL "C++14")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wdeprecated")
+  endif()
 
-    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-      if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.7")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-      else()
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-      endif()
-    endif()
-
-    if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-    endif()
-
-    if (CMAKE_HOST_APPLE AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
-    endif()
+  if(DEFINED std_name)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=${std_name}")
   endif()
 endif()
 
-message(STATUS ${CMAKE_CXX_FLAGS})
+message(STATUS "C++ compiler flags: ${CMAKE_CXX_FLAGS}")
 
 if (SNOWHOUSE_BUILD_TESTS)
     FILE(GLOB SnowhouseSpecSourceFiles example/*.cpp)
