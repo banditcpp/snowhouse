@@ -27,6 +27,6 @@ echo " * image: $image"
 echo " * build path: $buildpath"
 
 mkdir -p "$SRCDIR/$buildpath"
-cd "$SRCDIR/$buildpath"
+cd "$SRCDIR/$buildpath" || exit
 cmake -D"SNOWHOUSE_CXX_STANDARD=C++$cxxstandard" "$SRCDIR" || exit
 cmake --build . || exit
