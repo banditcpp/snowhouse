@@ -15,7 +15,7 @@
 
 #if __cplusplus > 199711L
 // Visual Studio (including 2013) does not support the noexcept keyword
-# ifdef _MSC_VER
+# if defined(_MSC_VER) && !defined(__clang__)
 #  define _ALLOW_KEYWORD_MACROS
 #  define noexcept
 # endif
