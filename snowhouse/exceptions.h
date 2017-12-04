@@ -100,13 +100,13 @@ namespace snowhouse
   } \
   if (SNOWHOUSE_TEMPVAR(no_exception)) \
   { \
-    std::ostringstream stm; \
+    ::std::ostringstream stm;					     \
     stm << "Expected " #EXCEPTION_TYPE ". No exception was thrown."; \
     ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
   } \
   if (SNOWHOUSE_TEMPVAR(wrong_exception)) \
   { \
-    std::ostringstream stm; \
+    ::std::ostringstream stm;						\
     stm << "Expected " #EXCEPTION_TYPE ". Wrong exception was thrown."; \
     ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(stm.str()); \
   } \
