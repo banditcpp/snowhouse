@@ -8,6 +8,14 @@ An assertion library for C++
 
 Snowhouse is a stand-alone assertion framework for C++.
 
+It is a header-only library.
+You can simply use the `headers-only` branch as a submodule:
+
+```sh
+git submodule add -b headers-only https://github.com/banditcpp/snowhouse snowhouse
+git submodule update --init --recursive
+```
+
 ## Usage
 
 ```C++
