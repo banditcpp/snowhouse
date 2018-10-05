@@ -16,6 +16,16 @@ git submodule add -b headers-only https://github.com/banditcpp/snowhouse snowhou
 git submodule update --init --recursive
 ```
 
+As an alternative, CMake >= 3.0 users can use Snowhouse with the provided library target.
+Assuming you have cloned the `master` branch into a `snowhouse` subdirectory,
+your `CMakeLists.txt` might contain lines like the following:
+
+```cmake
+add_subdirectory(snowhouse)
+add_executable(app main.cpp)
+target_link_libraries(app snowhouse)
+```
+
 ## Usage
 
 ```C++

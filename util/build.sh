@@ -28,5 +28,5 @@ echo " * build path: $buildpath"
 
 mkdir -p "$SRCDIR/$buildpath"
 cd "$SRCDIR/$buildpath" || exit
-cmake -D"SNOWHOUSE_CXX_STANDARD=C++$cxxstandard" "$SRCDIR" || exit
+cmake -DSNOWHOUSE_BUILD_TESTS=1 -DSNOWHOUSE_RUN_TESTS=1 -D"SNOWHOUSE_CXX_STANDARD=C++$cxxstandard" "$SRCDIR" || exit
 cmake --build . || exit
