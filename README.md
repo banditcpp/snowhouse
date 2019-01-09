@@ -518,6 +518,8 @@ Compatibility-breaking changes since version 3.0.0:
    Booleans are now displayed as `true` or `false`.
    Strings are put into quotation marks for improved readability.
 
+ * Since version 5.0.0, the support for C++ versions prior to C++11 are dropped.
+
 ## Contributing
 
 The development of Snowhouse takes place on [GitHub](//github.com/banditcpp/snowhouse).
@@ -533,7 +535,7 @@ Please make sure to be consistent with the project's coding style.
 The `.clang-format` file allows easy checking and implementation of the
 coding style.
 
-C++ code should comply to C++98, C++03- and C++11.
+C++ code should comply to C++11.
 Please use `__cplusplus` guards if you want to use language features of
 a certain C++ version.
 
