@@ -286,7 +286,7 @@ Used to verify that at most a specified amount of elements in a STL sequence
 container matches an expectation.
 
 ```cpp
-Assert:That(container, Has().AtMost(2).Not().Containing("failed"));
+AssertThat(container, Has().AtMost(2).Not().Containing("failed"));
 ```
 
 #### Exactly
