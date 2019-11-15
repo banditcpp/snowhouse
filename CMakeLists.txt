@@ -36,9 +36,6 @@ if (MSVC)
 else()
   # Assume GCC-style arguments
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
-  if(SNOWHOUSE_CXX_STANDARD STREQUAL "C++11" OR SNOWHOUSE_CXX_STANDARD STREQUAL "C++14")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wdeprecated")
-  endif()
 
   if(DEFINED std_name)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=${std_name}")
