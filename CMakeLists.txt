@@ -35,7 +35,7 @@ if (MSVC)
   endif()
 else()
   # Assume GCC-style arguments
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -W -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -Wall -Wextra -Werror -Wfloat-equal -Wundef -Wendif-labels -Wshadow -pedantic-errors")
 
   if(DEFINED std_name)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=${std_name}")
