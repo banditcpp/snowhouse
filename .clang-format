@@ -1,4 +1,4 @@
-# This .clang-format file is tested with clang-format 4.0.0
+# This .clang-format file is tested with clang-format 9.0.0
 #
 # Please use
 #   clang-format -style=file -i <your files...>
@@ -12,6 +12,7 @@ IndentWidth: 2
 UseTab: Never
 AccessModifierOffset: -2
 NamespaceIndentation: All
+FixNamespaceComments: false
 IndentCaseLabels: false
 ContinuationIndentWidth: 4
 ConstructorInitializerIndentWidth: 4
