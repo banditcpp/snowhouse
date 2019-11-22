@@ -5,6 +5,8 @@ on: [push]
 jobs:
   linux-build-test:
     runs-on: ubuntu-latest
+    container:
+      image: docker://banditcpp/build-environments:debian-bullseye-compilers
     strategy:
       matrix:
         cxx-standard: ["98", "03", "11", "14", "17"]
@@ -14,7 +16,7 @@ jobs:
         uses: actions/checkout@v1
       - name: Build C++${{ matrix.cxx-standard }} version with ${{ matrix.compiler-env }} and run tests
         run:
-          ${{ matrix.compiler-env }} util/build-in-container.sh ${{ matrix.cxx-standard }} banditcpp/build-environments:debian-bullseye-compilers
+          ${{ matrix.compiler-env }} util/build.sh ${{ matrix.cxx-standard }}
 
   windows-build-test:
     runs-on: windows-2019
