@@ -1,6 +1,6 @@
 #!/bin/sh
 
-test -n "$SRCDIR" || SRCDIR=.
+test -n "$SRCDIR" || SRCDIR="$(pwd)"
 test -n "$CC" || CC=cc
 test -n "$CXX" || CXX=c++
 

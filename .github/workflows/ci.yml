@@ -1,0 +1,35 @@
+name: CI
+
+on: [push]
+
+jobs:
+  linux-build-test:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://banditcpp/build-environments:debian-bullseye-compilers
+    strategy:
+      matrix:
+        cxx-standard: ["98", "03", "11", "14", "17"]
+        compiler-env: ["CC=gcc-9 CXX=g++-9", "CC=clang-9 CXX=clang++-9"]
+    steps:
+      - name: Clone and checkout commit
+        uses: actions/checkout@v1
+      - name: Build C++${{ matrix.cxx-standard }} version with ${{ matrix.compiler-env }} and run tests
+        run:
+          ${{ matrix.compiler-env }} util/build.sh ${{ matrix.cxx-standard }}
+
+  windows-build-test:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        # C++98, C++03 and C++11 is NOT supported by MSVC 2019
+        cxx-standard: ["14", "17"]
+    steps:
+      - name: Clone and checkout commit
+        uses: actions/checkout@v1
+      - name: Let CMake generate build configuration
+        run: cmake -G "Visual Studio 16 2019" -DSNOWHOUSE_RUN_TESTS=0 -DSNOWHOUSE_BUILD_TESTS=1 -DSNOWHOUSE_CXX_STANDARD=C++${{ matrix.cxx-standard }} .
+      - name: Build tests with MSVC and C++${{ matrix.cxx-standard }}
+        run: cmake --build .
+      - name: Run tests
+        run: bin\Debug\snowhouse-tests.exe
