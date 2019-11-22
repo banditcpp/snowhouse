@@ -1,8 +1,21 @@
-name: Windows CI
+name: CI
 
 on: [push]
 
 jobs:
+  linux-build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cxx-standard: ["98", "03", "11", "14", "17"]
+        compiler-env: ["CC=gcc-9 CXX=g++-9", "CC=clang-9 CXX=clang++-9"]
+    steps:
+      - name: Clone and checkout commit
+        uses: actions/checkout@v1
+      - name: Build C++${{ matrix.cxx-standard }} version with ${{ matrix.compiler-env }} and run tests
+        run:
+          ${{ matrix.compiler-env }} util/build-in-container.sh ${{ matrix.cxx-standard }} banditcpp/build-environments:debian-bullseye-compilers
+
   windows-build-test:
     runs-on: windows-2019
     strategy:
