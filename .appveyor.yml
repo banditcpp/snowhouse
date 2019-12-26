@@ -1,7 +1,5 @@
 environment:
   matrix:
-    - CXX_STANDARD: 98
-    - CXX_STANDARD: 03
     - CXX_STANDARD: 11
     - CXX_STANDARD: 14
 

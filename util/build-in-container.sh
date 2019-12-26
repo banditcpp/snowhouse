@@ -2,7 +2,7 @@
 
 if test "$#" -ne 2
 then
-	echo "Usage: $0 (98|03|11|14) <docker image>" >&2
+	echo "Usage: $0 (11|14|17) <docker image>" >&2
 	exit 2
 fi
 
