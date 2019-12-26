@@ -18,7 +18,7 @@ void StringTests()
 
   it("detects failing Contains()");
   {
-    AssertTestFails(AssertThat("abcdef", Contains("hello")), "contains hello");
+    AssertTestFails(AssertThat("abcdef", Contains("hello")), "contains \"hello\"");
   }
 
   it("handles string StartsWith()");

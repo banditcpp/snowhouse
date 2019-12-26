@@ -84,6 +84,15 @@ namespace snowhouse
       }
     };
 
+    template<>
+    struct DefaultStringizer<std::string, true>
+    {
+      static std::string ToString(const std::string& value)
+      {
+        return "\"" + value + "\"";
+      }
+    };
+
     template<typename T>
     struct DefaultStringizer<T, false>
     {

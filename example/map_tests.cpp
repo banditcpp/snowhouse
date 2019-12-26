@@ -20,7 +20,7 @@ void MapTests()
   it("gives a proper message when fails");
   {
     AssertTestFails(AssertThat(ages, Is().Not().Containing("hanna")),
-        "Expected: not contains hanna");
+        "Expected: not contains \"hanna\"");
   }
 
   it("determines if key exists");
@@ -31,6 +31,6 @@ void MapTests()
   it("gives a proper message when Contains() fails");
   {
     AssertTestFails(AssertThat(ages, !Contains("hanna")),
-        "Expected: not contains hanna");
+        "Expected: not contains \"hanna\"");
   }
 }
