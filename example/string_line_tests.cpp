@@ -13,7 +13,7 @@ void StringLineTests()
 
   it("detects when assertion fails");
   {
-    AssertTestFails(AssertThat("First line\n", Has().AtLeast(1).EqualTo("Second line")), "Expected: at least 1 equal to Second line");
+    AssertTestFails(AssertThat("First line\n", Has().AtLeast(1).EqualTo("Second line")), "Expected: at least 1 equal to \"Second line\"");
   }
 
   it("handles line missing newline");

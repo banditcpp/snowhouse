@@ -82,6 +82,16 @@ void StringizeTests()
     AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
   }
 
+  it("provides bools as true or false");
+  {
+    AssertTestFails(AssertThat(false, Is().True()), "Expected: true\nActual: false");
+  }
+
+  it("provides strings in quotation marks");
+  {
+    AssertTestFails(AssertThat("wrong", Is().EqualTo("right")), "Expected: equal to \"right\"\nActual: \"wrong\"");
+  }
+
   describe("Stringize expression templates");
 
   it("handles types with stream operators");
@@ -102,6 +112,16 @@ void StringizeTests()
   {
     WithoutStreamOperatorButWithStringizer a(12);
     WithoutStreamOperatorButWithStringizer b(13);
-    AssertTestFails(AssertThat(a, Is().EqualTo(b)), "Expected: equal to 13\nActual: 12");
+    AssertTestFails(AssertThat(a, Equals(b)), "Expected: equal to 13\nActual: 12");
+  }
+
+  it("provides bools as true or false");
+  {
+    AssertTestFails(AssertThat(true, IsFalse()), "Expected: false\nActual: true");
+  }
+
+  it("provides strings in quotation marks");
+  {
+    AssertTestFails(AssertThat("wrong", Equals("right")), "Expected: equal to \"right\"\nActual: \"wrong\"");
   }
 }

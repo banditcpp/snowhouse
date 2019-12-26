@@ -507,9 +507,16 @@ Throw an exception and let our testing framework deal with the test failure.
 
 Snowhouse uses [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html) since
 version 3.0.0.
+
 The macros `SNOWHOUSE_MAJOR`, `SNOWHOUSE_MINOR` and `SNOWHOUSE_PATCH` are defined
 accordingly and `SNOWHOUSE_VERSION` contains the version string.
 Note that in prior versions `SNOWHOUSE_VERSION` was the only defined macro.
+
+Compatibility-breaking changes since version 3.0.0:
+
+ * Since version 4.0.0, the display of booleans and strings has changed.
+   Booleans are now displayed as `true` or `false`.
+   Strings are put into quotation marks for improved readability.
 
 ## Contributing
 
