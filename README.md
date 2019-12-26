@@ -2,6 +2,7 @@ snowhouse
 =========
 [![Travis CI Status](https://travis-ci.org/banditcpp/snowhouse.svg?branch=master)](https://travis-ci.org/banditcpp/snowhouse)
 [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/banditcpp/snowhouse?branch=master&svg=true)](https://ci.appveyor.com/project/banditcpp/snowhouse)
+[![GitHub Actions CI](https://github.com/banditcpp/snowhouse/workflows/CI/badge.svg)](https://github.com/banditcpp/snowhouse/actions?query=workflow%3ACI+branch%3Amaster)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6a8695cf158c4f70a2d01517d12c2c13)](https://www.codacy.com/app/sbeyer/snowhouse?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=banditcpp/snowhouse&amp;utm_campaign=Badge_Grade)
 
 An assertion library for C++
@@ -506,9 +507,16 @@ Throw an exception and let our testing framework deal with the test failure.
 
 Snowhouse uses [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html) since
 version 3.0.0.
+
 The macros `SNOWHOUSE_MAJOR`, `SNOWHOUSE_MINOR` and `SNOWHOUSE_PATCH` are defined
 accordingly and `SNOWHOUSE_VERSION` contains the version string.
 Note that in prior versions `SNOWHOUSE_VERSION` was the only defined macro.
+
+Compatibility-breaking changes since version 3.0.0:
+
+ * Since version 4.0.0, the display of booleans and strings has changed.
+   Booleans are now displayed as `true` or `false`.
+   Strings are put into quotation marks for improved readability.
 
 ## Contributing
 

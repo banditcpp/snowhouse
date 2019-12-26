@@ -75,6 +75,24 @@ namespace snowhouse
       }
     };
 
+    template<>
+    struct DefaultStringizer<bool, true>
+    {
+      static std::string ToString(bool value)
+      {
+        return value ? "true" : "false";
+      }
+    };
+
+    template<>
+    struct DefaultStringizer<std::string, true>
+    {
+      static std::string ToString(const std::string& value)
+      {
+        return "\"" + value + "\"";
+      }
+    };
+
     template<typename T>
     struct DefaultStringizer<T, false>
     {
