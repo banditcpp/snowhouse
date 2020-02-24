@@ -53,13 +53,11 @@ namespace snowhouse
       static const bool value = sizeof(check(std::cout << x)) == sizeof(yes);
     };
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
     template<>
     struct is_output_streamable<std::nullptr_t>
     {
       static const bool value = false;
     };
-#endif
   }
 
   namespace detail
@@ -122,7 +120,6 @@ namespace snowhouse
     }
   };
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
   // We need this because nullptr_t has ambiguous overloads of operator<< in the standard library.
   template<>
   struct Stringizer<std::nullptr_t>
@@ -132,7 +129,6 @@ namespace snowhouse
       return "nullptr";
     }
   };
-#endif
 }
 
 #endif

@@ -180,7 +180,6 @@ void BasicAssertions()
         "Expected: less than or equal to 5\nActual: 6\n");
   }
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
   it("handles IsNull()");
   {
     AssertThat(nullptr, IsNull());
@@ -220,5 +219,4 @@ void BasicAssertions()
 
     AssertTestFails(AssertThat(nullptr, !IsNull()), message.str());
   }
-#endif
 }

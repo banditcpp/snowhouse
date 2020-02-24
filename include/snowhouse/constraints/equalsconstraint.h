@@ -48,12 +48,10 @@ namespace snowhouse
     return EqualsConstraint<bool>(true);
   }
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
   inline EqualsConstraint<std::nullptr_t> IsNull()
   {
     return EqualsConstraint<std::nullptr_t>(nullptr);
   }
-#endif
 
   template<>
   struct Stringizer<EqualsConstraint<bool> >

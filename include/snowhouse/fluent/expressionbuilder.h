@@ -91,13 +91,11 @@ namespace snowhouse
       return EqualTo<bool>(true);
     }
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<std::nullptr_t> >, Nil> >::t>
     Null()
     {
       return EqualTo<std::nullptr_t>(nullptr);
     }
-#endif
 
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<std::string> >, Nil> >::t>
     EqualTo(const char* expected)

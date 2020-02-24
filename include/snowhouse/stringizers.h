@@ -48,11 +48,7 @@ namespace snowhouse
       template<typename>
       static no compile_time_check_const_iterator(...);
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
       static const bool value = sizeof(compile_time_check_const_iterator<T>(nullptr)) == sizeof(yes);
-#else
-      static const bool value = sizeof(compile_time_check_const_iterator<T>(0)) == sizeof(yes);
-#endif
     };
 
     template<typename T, bool = is_const_iterable<T>::value>

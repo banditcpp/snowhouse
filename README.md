@@ -166,9 +166,6 @@ AssertThat(x, IsNull());
 AssertThat(x, Is().Null());
 ```
 
-Note that this feature is only available for C++11-compliant compilers.
-In this case, the `SNOWHOUSE_HAS_NULLPTR` macro is defined.
-
 ### String Constraints
 
 String assertions in Snowhouse are used to verify the values of
@@ -519,6 +516,7 @@ Compatibility-breaking changes since version 3.0.0:
    Strings are put into quotation marks for improved readability.
 
  * Since version 5.0.0, the support for C++ versions prior to C++11 are dropped.
+   The definition of the macro `SNOWHOUSE_HAS_NULLPTR` is removed.
 
 ## Contributing
 
