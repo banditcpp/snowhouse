@@ -1,6 +1,8 @@
 #include <deque>
 #include <list>
 #include <set>
+#include <array>
+#include <forward_list>
 
 #include "tests.h"
 
@@ -38,10 +40,6 @@ void insert_numbers(std::set<int>& container)
   container.insert(8);
 }
 
-#if __cplusplus >= 201103L
-#include <array>
-#include <forward_list>
-
 template<>
 void insert_numbers(std::array<int, 5>& container)
 {
@@ -61,7 +59,6 @@ void insert_numbers(std::forward_list<int>& container)
   container.push_front(2);
   container.push_front(1);
 }
-#endif
 
 template<typename T>
 static void TestHasAll(const T& container)
@@ -87,13 +84,11 @@ static void TestHasAll(const T& container)
   }
 }
 
-#if __cplusplus >= 201103L
 template<>
 void TestHasAll(const std::forward_list<int>&)
 {
   // The constraint is size-based but there is no size() method available
 }
-#endif
 
 template<typename T>
 static void TestLength(const T& container)
@@ -119,13 +114,11 @@ static void TestLength(const T& container)
   }
 }
 
-#if __cplusplus >= 201103L
 template<>
 void TestLength(const std::forward_list<int>&)
 {
   // There is no size() method available
 }
-#endif
 
 template<typename T, typename TEmpty>
 static void TestEmpty(const T& container, const TEmpty& is_empty)
@@ -158,14 +151,12 @@ void TestEmpty(const T& container)
   TestEmpty(container, is_empty);
 }
 
-#if __cplusplus >= 201103L
 template<>
 void TestEmpty(const std::array<int, 5>& container)
 {
   std::array<int, 0> is_empty;
   TestEmpty(container, is_empty);
 }
-#endif
 
 template<typename T>
 static void SequenceContainerActual()
@@ -289,11 +280,9 @@ void SequenceContainerTests()
   describe("Sequence containers (std::multiset)");
   SequenceContainerActual<std::multiset<int> >();
 
-#if __cplusplus >= 201103L
   describe("Sequence containers (std::array)");
   SequenceContainerActual<std::array<int, 5> >();
 
   describe("Sequence containers (std::forward_list)");
   SequenceContainerActual<std::forward_list<int> >();
-#endif
 }
