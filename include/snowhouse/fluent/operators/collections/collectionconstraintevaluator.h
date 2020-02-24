@@ -23,10 +23,9 @@ namespace snowhouse
           operators, result);
 
       unsigned int passed_elements = 0;
-      typename ActualType::const_iterator it;
-      for (it = actual.begin(); it != actual.end(); ++it)
+      for (const auto member : actual)
       {
-        if (ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression, *it))
+        if (ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression, member))
         {
           ++passed_elements;
         }
