@@ -26,6 +26,14 @@ struct ClassWithExceptions
   }
 };
 
+struct ExpectedException : public std::exception
+{
+  const char* what() const throw()
+  {
+    return "Description of the exception we expected";
+  }
+};
+
 void ExceptionTests()
 {
   ClassWithExceptions objectUnderTest;
@@ -88,5 +96,10 @@ void ExceptionTests()
     }
     AssertThrows(AssertionException, LastException<std::logic_error>());
     AssertThat(LastException<AssertionException>().GetMessage(), Contains("No exception was stored"));
+  }
+
+  it("prints description of unwanted exception");
+  {
+    AssertTestFails(AssertThrows(ExpectedException, objectUnderTest.LogicError()), "Expected ExpectedException. Wrong exception was thrown. Description of unwanted exception: not logical!");
   }
 }
