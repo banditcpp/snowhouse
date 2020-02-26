@@ -39,7 +39,7 @@ namespace snowhouse
     // directly and is chosen if T supports the expression. So using sizeof(check(<expression>))
     // returns 2 for the first overload and 1 for the second overload.
     typedef char yes;
-    typedef char (&no)[2];
+    using no = char (&)[2];
 
     no check(tag);
 

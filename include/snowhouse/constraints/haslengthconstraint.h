@@ -21,7 +21,7 @@ namespace snowhouse
     template<typename ActualType>
     bool operator()(const ActualType& actual) const
     {
-      typedef typename ActualType::size_type SizeType;
+      using SizeType = typename ActualType::size_type;
       SizeType expectedSize = static_cast<SizeType>(m_expected);
       return (actual.size() == expectedSize);
     }

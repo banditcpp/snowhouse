@@ -110,7 +110,7 @@ namespace snowhouse
     }
   };
 
-  typedef ConfigurableAssert<DefaultFailureHandler> Assert;
+  using Assert = ConfigurableAssert<DefaultFailureHandler>;
 }
 
 #endif

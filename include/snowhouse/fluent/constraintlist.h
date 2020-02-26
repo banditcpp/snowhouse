@@ -12,13 +12,13 @@ namespace snowhouse
 {
   struct ConstraintOperator;
   typedef std::stack<bool> ResultStack;
-  typedef std::stack<ConstraintOperator*> OperatorStack;
+  using OperatorStack = std::stack<ConstraintOperator*>;
 
   template<typename HT, typename TT>
   struct ConstraintList
   {
-    typedef HT HeadType;
-    typedef TT TailType;
+    using HeadType = HT;
+    using TailType = TT;
 
     ConstraintList(const HeadType& head, const TailType& tail)
         : m_head(head), m_tail(tail)
@@ -44,13 +44,13 @@ namespace snowhouse
   template<typename L1, typename L2>
   struct type_concat
   {
-    typedef ConstraintList<typename L1::HeadType, typename type_concat<typename L1::TailType, L2>::t> t;
+    using t = ConstraintList<typename L1::HeadType, typename type_concat<typename L1::TailType, L2>::t>;
   };
 
   template<typename L2>
   struct type_concat<Nil, L2>
   {
-    typedef L2 t;
+    using t = L2;
   };
 
   template<typename L3>
