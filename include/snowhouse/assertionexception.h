@@ -27,10 +27,6 @@ namespace snowhouse
 
     AssertionException(const AssertionException&) = default;
 
-    virtual ~AssertionException() noexcept
-    {
-    }
-
     std::string GetMessage() const
     {
       return m_message;

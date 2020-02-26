@@ -28,7 +28,7 @@ struct ClassWithExceptions
 
 struct ExpectedException : public std::exception
 {
-  const char* what() const throw()
+  const char* what() const noexcept override
   {
     return "Description of the exception we expected";
   }

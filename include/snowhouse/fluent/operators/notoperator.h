@@ -22,7 +22,7 @@ namespace snowhouse
       EvaluateConstraintList(list.m_tail, result, operators, actual);
     }
 
-    void PerformOperation(ResultStack& result)
+    void PerformOperation(ResultStack& result) override
     {
       if (result.size() < 1)
       {
@@ -35,7 +35,7 @@ namespace snowhouse
       result.push(!right);
     }
 
-    int Precedence() const
+    int Precedence() const override
     {
       return 2;
     }
