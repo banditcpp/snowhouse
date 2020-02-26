@@ -24,7 +24,7 @@ namespace snowhouse
   };
 
   template<typename KeyType, typename ValueType>
-  struct find_in_container_traits<std::map<KeyType, ValueType> >
+  struct find_in_container_traits<std::map<KeyType, ValueType>>
   {
     template<typename ExpectedType>
     static bool find(const std::map<KeyType, ValueType>& container, const ExpectedType& expected)
@@ -34,7 +34,7 @@ namespace snowhouse
   };
 
   template<typename ExpectedType>
-  struct ContainsConstraint : Expression<ContainsConstraint<ExpectedType> >
+  struct ContainsConstraint : Expression<ContainsConstraint<ExpectedType>>
   {
     ContainsConstraint(const ExpectedType& expected)
         : m_expected(expected)
@@ -67,7 +67,7 @@ namespace snowhouse
   }
 
   template<typename ExpectedType>
-  struct Stringizer<ContainsConstraint<ExpectedType> >
+  struct Stringizer<ContainsConstraint<ExpectedType>>
   {
     static std::string ToString(const ContainsConstraint<ExpectedType>& constraint)
     {

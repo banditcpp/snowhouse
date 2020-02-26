@@ -102,7 +102,7 @@ namespace snowhouse
     {
       std::vector<std::string> lines;
       StringLineParser::Parse(actual, lines);
-      return CollectionConstraintEvaluator<ConstraintListType, std::vector<std::string> >::Evaluate(op, expression, result, operators, lines);
+      return CollectionConstraintEvaluator<ConstraintListType, std::vector<std::string>>::Evaluate(op, expression, result, operators, lines);
     }
   };
 }

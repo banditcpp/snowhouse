@@ -266,23 +266,23 @@ static void SequenceContainerActual()
 void SequenceContainerTests()
 {
   describe("Sequence containers (std::vector)");
-  SequenceContainerActual<std::vector<int> >();
+  SequenceContainerActual<std::vector<int>>();
 
   describe("Sequence containers (std::list)");
-  SequenceContainerActual<std::list<int> >();
+  SequenceContainerActual<std::list<int>>();
 
   describe("Sequence containers (std::deque)");
-  SequenceContainerActual<std::deque<int> >();
+  SequenceContainerActual<std::deque<int>>();
 
   describe("Sequence containers (std::set)");
-  SequenceContainerActual<std::set<int> >();
+  SequenceContainerActual<std::set<int>>();
 
   describe("Sequence containers (std::multiset)");
-  SequenceContainerActual<std::multiset<int> >();
+  SequenceContainerActual<std::multiset<int>>();
 
   describe("Sequence containers (std::array)");
-  SequenceContainerActual<std::array<int, 5> >();
+  SequenceContainerActual<std::array<int, 5>>();
 
   describe("Sequence containers (std::forward_list)");
-  SequenceContainerActual<std::forward_list<int> >();
+  SequenceContainerActual<std::forward_list<int>>();
 }
