@@ -75,12 +75,12 @@ namespace snowhouse
         return newline + 2;
       }
 
-      if (str.find("\n", newline) == newline)
+      if (str.find('\n', newline) == newline)
       {
         return newline + 1;
       }
 
-      if (str.find("\r", newline) == newline)
+      if (str.find('\r', newline) == newline)
       {
         return newline + 1;
       }
