@@ -85,6 +85,8 @@ namespace snowhouse
   SNOWHOUSE_TEMPVAR(storage).compiler_thinks_i_am_unused(); \
   bool SNOWHOUSE_TEMPVAR(wrong_exception) = false; \
   bool SNOWHOUSE_TEMPVAR(no_exception) = false; \
+  bool SNOWHOUSE_TEMPVAR(more_info) = true; \
+  std::string SNOWHOUSE_TEMPVAR(info_string); \
   try \
   { \
     METHOD; \
@@ -97,6 +99,14 @@ namespace snowhouse
   catch (...) \
   { \
     SNOWHOUSE_TEMPVAR(wrong_exception) = true; \
+    if (auto eptr = std::current_exception()) { \
+      try { \
+        std::rethrow_exception(eptr); \
+      } catch (const std::exception& e) { \
+        SNOWHOUSE_TEMPVAR(more_info) = true; \
+        SNOWHOUSE_TEMPVAR(info_string) = e.what(); \
+      } catch (...) {} \
+    } \
   } \
   if (SNOWHOUSE_TEMPVAR(no_exception)) \
   { \
@@ -108,6 +118,9 @@ namespace snowhouse
   { \
     ::std::ostringstream SNOWHOUSE_TEMPVAR(stm); \
     SNOWHOUSE_TEMPVAR(stm) << "Expected " #EXCEPTION_TYPE ". Wrong exception was thrown."; \
+    if (SNOWHOUSE_TEMPVAR(more_info)) { \
+      SNOWHOUSE_TEMPVAR(stm) << " Description of unwanted exception: " << SNOWHOUSE_TEMPVAR(info_string); \
+    } \
     ::snowhouse::ConfigurableAssert<FAILURE_HANDLER_TYPE>::Failure(SNOWHOUSE_TEMPVAR(stm).str()); \
   } \
   do {} while (false)
