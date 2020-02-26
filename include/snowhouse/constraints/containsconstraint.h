@@ -49,7 +49,7 @@ namespace snowhouse
 
     bool operator()(const std::string& actual) const
     {
-      return actual.find(m_expected) != actual.npos;
+      return actual.find(m_expected) != std::string::npos;
     }
 
     ExpectedType m_expected;
