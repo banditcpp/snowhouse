@@ -23,7 +23,7 @@ namespace snowhouse
           operators, result);
 
       unsigned int passed_elements = 0;
-      for (const auto member : actual)
+      for (const auto& member : actual)
       {
         if (ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression, member))
         {
