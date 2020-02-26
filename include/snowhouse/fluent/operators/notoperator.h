@@ -24,7 +24,7 @@ namespace snowhouse
 
     void PerformOperation(ResultStack& result) override
     {
-      if (result.size() < 1)
+      if (result.empty())
       {
         throw InvalidExpressionException("The expression contains a not operator without any operand");
       }
