@@ -75,7 +75,7 @@ static void TestHasAll(const T& container)
 
   it("handles invalid expression after All()");
   {
-    AssertTestFails(AssertThat(container, Has().All().Not()), "The expression contains a not operator without any operand");
+    AssertTestFails(AssertThat(container, Has().All().Not()), "The expression contains a \"not\" operator without any operand");
   }
 
   it("handles no expression after All()");

@@ -26,7 +26,7 @@ namespace snowhouse
     {
       if (result.empty())
       {
-        throw InvalidExpressionException("The expression contains a not operator without any operand");
+        throw InvalidExpressionException("The expression contains a \"not\" operator without any operand");
       }
 
       bool right = result.top();

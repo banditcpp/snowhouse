@@ -26,7 +26,7 @@ namespace snowhouse
     {
       if (result.size() < 2)
       {
-        throw InvalidExpressionException("The expression contains an and operator with too few operands");
+        throw InvalidExpressionException("The expression contains an \"and\" operator with too few operands");
       }
 
       bool right = result.top();
