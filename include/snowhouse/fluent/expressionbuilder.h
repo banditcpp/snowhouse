@@ -44,7 +44,7 @@ namespace snowhouse
     ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapter<EqualsConstraint<ExpectedType>>, Nil>>::t>
     EqualTo(const ExpectedType& expected)
     {
-      typedef ConstraintAdapter<EqualsConstraint<ExpectedType>> ConstraintAdapterType;
+      using ConstraintAdapterType = ConstraintAdapter<EqualsConstraint<ExpectedType>>;
       using BuilderType = ExpressionBuilder<typename type_concat<ConstraintListType, ConstraintList<ConstraintAdapterType, Nil>>::t>;
 
       ConstraintAdapterType constraint(expected);

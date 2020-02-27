@@ -11,7 +11,7 @@
 namespace snowhouse
 {
   struct ConstraintOperator;
-  typedef std::stack<bool> ResultStack;
+  using ResultStack = std::stack<bool>;
   using OperatorStack = std::stack<ConstraintOperator*>;
 
   template<typename HT, typename TT>
