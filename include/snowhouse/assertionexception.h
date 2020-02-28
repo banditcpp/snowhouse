@@ -25,15 +25,7 @@ namespace snowhouse
     {
     }
 
-#if __cplusplus > 199711L
-    AssertionException(const AssertionException&) = default;
-#endif
-
-#if __cplusplus > 199711L
-    virtual ~AssertionException() noexcept
-#else
     virtual ~AssertionException() throw()
-#endif
     {
     }
 
