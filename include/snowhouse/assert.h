@@ -71,7 +71,7 @@ namespace snowhouse
       }
       catch (const InvalidExpressionException& e)
       {
-        FailureHandler::Handle("Malformed expression: \"" + snowhouse::Stringize(expression) + "\"\n" + e.Message());
+        FailureHandler::Handle("Malformed expression: \"" + snowhouse::Stringize(expression) + "\"\n" + e.what());
       }
     }
 

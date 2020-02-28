@@ -6,23 +6,17 @@
 #ifndef SNOWHOUSE_INVALIDEXPRESSIONEXCEPTION_H
 #define SNOWHOUSE_INVALIDEXPRESSIONEXCEPTION_H
 
+#include <stdexcept>
 #include <string>
 
 namespace snowhouse
 {
-  struct InvalidExpressionException
+  struct InvalidExpressionException : public std::runtime_error
   {
     explicit InvalidExpressionException(const std::string& message)
-        : m_message(message)
+        : std::runtime_error(message)
     {
     }
-
-    const std::string& Message() const
-    {
-      return m_message;
-    }
-
-    std::string m_message;
   };
 }
 
