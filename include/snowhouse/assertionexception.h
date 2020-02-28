@@ -25,8 +25,6 @@ namespace snowhouse
     {
     }
 
-    AssertionException(const AssertionException&) = default;
-
     std::string file() const
     {
       return m_file;
