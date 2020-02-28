@@ -88,8 +88,8 @@ void BasicAssertions()
     }
     catch (const AssertionException& e)
     {
-      line = e.GetLineNumber();
-      file = e.GetFilename();
+      line = e.line();
+      file = e.file();
     }
 
     AssertThat(line, Equals(32));

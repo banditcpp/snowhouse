@@ -6,45 +6,39 @@
 #ifndef SNOWHOUSE_ASSERTIONEXCEPTION_H
 #define SNOWHOUSE_ASSERTIONEXCEPTION_H
 
-#include <exception>
+#include <stdexcept>
 #include <string>
 
 #include "macros.h"
 
 namespace snowhouse
 {
-  struct AssertionException : public std::exception
+  struct AssertionException : public std::runtime_error
   {
-    explicit AssertionException(const std::string& message)
-        : m_message(message), m_fileName(""), m_line(0)
+    explicit AssertionException(const std::string& message, const std::string& file, unsigned int line)
+        : std::runtime_error(message), m_file(file), m_line(line)
     {
     }
 
-    AssertionException(const std::string& message, const std::string& fileName, unsigned int line)
-        : m_message(message), m_fileName(fileName), m_line(line)
+    explicit AssertionException(const std::string& message)
+        : AssertionException(message, "", 0)
     {
     }
 
     AssertionException(const AssertionException&) = default;
 
-    std::string GetMessage() const
+    std::string file() const
     {
-      return m_message;
+      return m_file;
     }
 
-    std::string GetFilename() const
-    {
-      return m_fileName;
-    }
-
-    unsigned int GetLineNumber() const
+    unsigned int line() const
     {
       return m_line;
     }
 
   private:
-    std::string m_message;
-    std::string m_fileName;
+    std::string m_file;
     unsigned int m_line;
   };
 }

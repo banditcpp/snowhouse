@@ -37,7 +37,7 @@ int main()
   catch (const AssertionException& e)
   {
     std::cout << "Tests failed!" << std::endl;
-    std::cout << e.GetMessage() << std::endl;
+    std::cout << e.what() << std::endl;
     return 1;
   }
 

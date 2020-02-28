@@ -95,7 +95,7 @@ void ExceptionTests()
       AssertThrows(std::logic_error, objectUnderTest.LogicError());
     }
     AssertThrows(AssertionException, LastException<std::logic_error>());
-    AssertThat(LastException<AssertionException>().GetMessage(), Contains("No exception was stored"));
+    AssertThat(LastException<AssertionException>().what(), Contains("No exception was stored"));
   }
 
   it("prints description of unwanted exception");

@@ -46,7 +46,7 @@ int main()
   catch(const AssertionException& ex)
   {
     std::cout << "Apparently this failed:" << std::endl;
-    std::cout << ex.GetMessage() << std::endl;
+    std::cout << ex.what() << std::endl;
   }
 
   return 0;
@@ -517,6 +517,8 @@ Compatibility-breaking changes since version 3.0.0:
 
  * Since version 5.0.0, the support for C++ versions prior to C++11 are dropped.
    The definition of the macro `SNOWHOUSE_HAS_NULLPTR` is removed.
+   Our exceptions are now derived from the `std::exception` hierarchy,
+   thus their method names changed.
 
 ## Contributing
 
