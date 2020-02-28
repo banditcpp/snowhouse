@@ -15,8 +15,8 @@ namespace snowhouse
 {
   struct AssertionException : public std::runtime_error
   {
-    explicit AssertionException(const std::string& message, const std::string& file, unsigned int line)
-        : std::runtime_error(message), m_file(file), m_line(line)
+    explicit AssertionException(const std::string& message, const std::string& filename, unsigned int line_number)
+        : std::runtime_error(message), m_file(filename), m_line(line_number)
     {
     }
 
