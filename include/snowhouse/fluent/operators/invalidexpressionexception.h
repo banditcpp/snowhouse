@@ -13,10 +13,7 @@ namespace snowhouse
 {
   struct InvalidExpressionException : public std::runtime_error
   {
-    explicit InvalidExpressionException(const std::string& message)
-        : std::runtime_error(message)
-    {
-    }
+    using std::runtime_error::runtime_error;
   };
 }
 
