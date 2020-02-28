@@ -505,6 +505,11 @@ Throw an exception and let our testing framework deal with the test failure.
 Snowhouse uses [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html) since
 version 3.0.0.
 
+Snowhouse requires C++11 since version 5.0.0.
+Feel free to use Snowhouse with major version 4 if you want to use it
+in a pre-C++11 setting.
+Major version 4 is still maintained in the `maint-v4` branch (bug fixes, etc.).
+
 The macros `SNOWHOUSE_MAJOR`, `SNOWHOUSE_MINOR` and `SNOWHOUSE_PATCH` are defined
 accordingly and `SNOWHOUSE_VERSION` contains the version string.
 Note that in prior versions `SNOWHOUSE_VERSION` was the only defined macro.
