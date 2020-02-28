@@ -14,6 +14,7 @@ namespace snowhouse
 {
   struct ConstraintOperator
   {
+    virtual ~ConstraintOperator() noexcept = default;
     virtual void PerformOperation(ResultStack& result) = 0;
     virtual int Precedence() const = 0;
 
