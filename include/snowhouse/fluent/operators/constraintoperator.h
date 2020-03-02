@@ -14,6 +14,9 @@ namespace snowhouse
 {
   struct ConstraintOperator
   {
+    ConstraintOperator() = default;
+    explicit ConstraintOperator(const ConstraintOperator&) = default;
+    ConstraintOperator& operator=(const ConstraintOperator&) = default;
     virtual ~ConstraintOperator() noexcept = default;
     virtual void PerformOperation(ResultStack& result) = 0;
     virtual int Precedence() const = 0;
