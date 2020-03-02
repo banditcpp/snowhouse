@@ -8,16 +8,26 @@ snowhouse
 An assertion library for C++
 
 Snowhouse is a stand-alone assertion framework for C++.
-
 It is a header-only library.
-You can simply use the `headers-only` branch as a submodule:
+
+Snowhouse requires a C++11-compatible compiler since version 5.0.0.
+Feel free to use Snowhouse with major version 4 if you want to use it
+in a pre-C++11 setting.
+Major version 4 is still maintained in the `maint-v4` branch (bug fixes, etc.).
+
+For inclusion in your projects, you have several options:
+
+a) You can copy the code and just use it as the license allows.
+
+b) You can use the `headers-only` branch as a submodule:
 
 ```sh
 git submodule add -b headers-only https://github.com/banditcpp/snowhouse snowhouse
 git submodule update --init --recursive
 ```
 
-As an alternative, CMake >= 3.0 users can use Snowhouse with the provided library target.
+c) If you use CMake >= 3.1 in your project,
+you can use Snowhouse with the provided library target.
 Assuming you have cloned the `master` branch into a `snowhouse` subdirectory,
 your `CMakeLists.txt` might contain lines like the following:
 
@@ -504,11 +514,6 @@ Throw an exception and let our testing framework deal with the test failure.
 
 Snowhouse uses [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html) since
 version 3.0.0.
-
-Snowhouse requires C++11 since version 5.0.0.
-Feel free to use Snowhouse with major version 4 if you want to use it
-in a pre-C++11 setting.
-Major version 4 is still maintained in the `maint-v4` branch (bug fixes, etc.).
 
 The macros `SNOWHOUSE_MAJOR`, `SNOWHOUSE_MINOR` and `SNOWHOUSE_PATCH` are defined
 accordingly and `SNOWHOUSE_VERSION` contains the version string.
