@@ -12,7 +12,7 @@
   }  \
   catch (const AssertionException& exception_from_snowhouse_assertion)  \
   {  \
-  SNOWHOUSE_INTERNAL_expected_error = exception_from_snowhouse_assertion.what();  \
+    SNOWHOUSE_INTERNAL_expected_error = exception_from_snowhouse_assertion.what();  \
   }  \
   AssertThat(SNOWHOUSE_INTERNAL_expected_error, Is().Containing(expected_error_text));
 // clang-format on
