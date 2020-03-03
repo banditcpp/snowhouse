@@ -19,7 +19,7 @@ namespace snowhouse
       ToString(const Container& cont)
       {
         std::ostringstream stm;
-        typedef typename Container::const_iterator Iterator;
+        using Iterator = typename Container::const_iterator;
 
         stm << "[ ";
         for (Iterator it = cont.begin(); it != cont.end();)
@@ -48,17 +48,13 @@ namespace snowhouse
       template<typename>
       static no compile_time_check_const_iterator(...);
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
       static const bool value = sizeof(compile_time_check_const_iterator<T>(nullptr)) == sizeof(yes);
-#else
-      static const bool value = sizeof(compile_time_check_const_iterator<T>(0)) == sizeof(yes);
-#endif
     };
 
     template<typename T, bool = is_const_iterable<T>::value>
     struct is_container
     {
-      typedef typename T::const_iterator Iterator;
+      using Iterator = typename T::const_iterator;
 
       struct FallbackBeginEnd
       {
@@ -66,7 +62,7 @@ namespace snowhouse
         Iterator end() const;
       };
 
-      typedef Iterator (FallbackBeginEnd::*fallback_method)() const;
+      using fallback_method = Iterator (FallbackBeginEnd::*)() const;
 
       template<typename CLASS, CLASS>
       struct is_of_type;
@@ -113,7 +109,7 @@ namespace snowhouse
     template<typename TRUE_TYPE>
     struct enable_if<true, TRUE_TYPE>
     {
-      typedef TRUE_TYPE type;
+      using type = TRUE_TYPE;
     };
   }
 

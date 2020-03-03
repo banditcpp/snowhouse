@@ -22,11 +22,11 @@ namespace snowhouse
       EvaluateConstraintList(list.m_tail, result, operators, actual);
     }
 
-    void PerformOperation(ResultStack& result)
+    void PerformOperation(ResultStack& result) override
     {
-      if (result.size() < 1)
+      if (result.empty())
       {
-        throw InvalidExpressionException("The expression contains a not operator without any operand");
+        throw InvalidExpressionException("The expression contains a \"not\" operator without any operand");
       }
 
       bool right = result.top();
@@ -35,7 +35,7 @@ namespace snowhouse
       result.push(!right);
     }
 
-    int Precedence() const
+    int Precedence() const override
     {
       return 2;
     }

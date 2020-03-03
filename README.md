@@ -8,16 +8,26 @@ snowhouse
 An assertion library for C++
 
 Snowhouse is a stand-alone assertion framework for C++.
-
 It is a header-only library.
-You can simply use the `headers-only` branch as a submodule:
+
+Snowhouse requires a C++11-compatible compiler since version 5.0.0.
+Feel free to use Snowhouse with major version 4 if you want to use it
+in a pre-C++11 setting.
+Major version 4 is still maintained in the `maint-v4` branch (bug fixes, etc.).
+
+For inclusion in your projects, you have several options:
+
+a) You can copy the code and just use it as the license allows.
+
+b) You can use the `headers-only` branch as a submodule:
 
 ```sh
 git submodule add -b headers-only https://github.com/banditcpp/snowhouse snowhouse
 git submodule update --init --recursive
 ```
 
-As an alternative, CMake >= 3.0 users can use Snowhouse with the provided library target.
+c) If you use CMake >= 3.1 in your project,
+you can use Snowhouse with the provided library target.
 Assuming you have cloned the `master` branch into a `snowhouse` subdirectory,
 your `CMakeLists.txt` might contain lines like the following:
 
@@ -43,10 +53,10 @@ int main()
   {
     AssertThat(12, Is().LessThan(11).And().GreaterThan(99));
   }
-  catch(const AssertionException& ex)
+  catch (const AssertionException& ex)
   {
     std::cout << "Apparently this failed:" << std::endl;
-    std::cout << ex.GetMessage() << std::endl;
+    std::cout << ex.what() << std::endl;
   }
 
   return 0;
@@ -165,9 +175,6 @@ Used to check for `nullptr` equality.
 AssertThat(x, IsNull());
 AssertThat(x, Is().Null());
 ```
-
-Note that this feature is only available for C++11-compliant compilers.
-In this case, the `SNOWHOUSE_HAS_NULLPTR` macro is defined.
 
 ### String Constraints
 
@@ -518,6 +525,11 @@ Compatibility-breaking changes since version 3.0.0:
    Booleans are now displayed as `true` or `false`.
    Strings are put into quotation marks for improved readability.
 
+ * Since version 5.0.0, the support for C++ versions prior to C++11 are dropped.
+   The definition of the macro `SNOWHOUSE_HAS_NULLPTR` is removed.
+   Our exceptions are now derived from the `std::exception` hierarchy,
+   thus their method names changed.
+
 ## Contributing
 
 The development of Snowhouse takes place on [GitHub](//github.com/banditcpp/snowhouse).
@@ -533,7 +545,7 @@ Please make sure to be consistent with the project's coding style.
 The `.clang-format` file allows easy checking and implementation of the
 coding style.
 
-C++ code should comply to C++98, C++03- and C++11.
+C++ code should comply to C++11.
 Please use `__cplusplus` guards if you want to use language features of
 a certain C++ version.
 

@@ -20,10 +20,10 @@ namespace snowhouse
   }
 
   template<typename ExpectedType, typename BinaryPredicate>
-  struct EqualsContainerConstraint : Expression<EqualsContainerConstraint<ExpectedType, BinaryPredicate> >
+  struct EqualsContainerConstraint : Expression<EqualsContainerConstraint<ExpectedType, BinaryPredicate>>
   {
     EqualsContainerConstraint(const ExpectedType& expected, const BinaryPredicate predicate)
-        : expected_(expected), predicate_(predicate)
+        : m_expected(expected), m_predicate(predicate)
     {
     }
 
@@ -33,27 +33,19 @@ namespace snowhouse
       typename ActualType::const_iterator actual_it;
       typename ExpectedType::const_iterator expected_it;
 
-      for (actual_it = actual.begin(), expected_it = expected_.begin(); actual_it != actual.end() && expected_it != expected_.end(); ++actual_it, ++expected_it)
+      for (actual_it = actual.begin(), expected_it = m_expected.begin(); actual_it != actual.end() && expected_it != m_expected.end(); ++actual_it, ++expected_it)
       {
-        if (!predicate_(*actual_it, *expected_it))
+        if (!m_predicate(*actual_it, *expected_it))
         {
           return false;
         }
       }
 
-      return actual_it == actual.end() && expected_it == expected_.end();
+      return actual_it == actual.end() && expected_it == m_expected.end();
     }
 
-    const ExpectedType expected_;
-    const BinaryPredicate predicate_;
-
-  private:
-#if __cplusplus <= 199711L
-    EqualsContainerConstraint& operator=(const EqualsContainerConstraint&)
-    {
-      return *this;
-    }
-#endif
+    const ExpectedType m_expected;
+    const BinaryPredicate m_predicate;
   };
 
   template<typename ExpectedType>
@@ -69,12 +61,12 @@ namespace snowhouse
   }
 
   template<typename ExpectedType, typename BinaryPredicate>
-  struct Stringizer<EqualsContainerConstraint<ExpectedType, BinaryPredicate> >
+  struct Stringizer<EqualsContainerConstraint<ExpectedType, BinaryPredicate>>
   {
     static std::string ToString(const EqualsContainerConstraint<ExpectedType, BinaryPredicate>& constraint)
     {
       std::ostringstream builder;
-      builder << snowhouse::Stringize(constraint.expected_);
+      builder << snowhouse::Stringize(constraint.m_expected);
       return builder.str();
     }
   };

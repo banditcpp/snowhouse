@@ -22,11 +22,11 @@ namespace snowhouse
       EvaluateConstraintList(list.m_tail, result, operators, actual);
     }
 
-    void PerformOperation(ResultStack& result)
+    void PerformOperation(ResultStack& result) override
     {
       if (result.size() < 2)
       {
-        throw InvalidExpressionException("The expression contains an or operator with too few operands");
+        throw InvalidExpressionException("The expression contains an \"or\" operator with too few operands");
       }
 
       bool right = result.top();
@@ -37,7 +37,7 @@ namespace snowhouse
       result.push(left || right);
     }
 
-    int Precedence() const
+    int Precedence() const override
     {
       return 4;
     }

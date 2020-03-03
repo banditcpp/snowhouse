@@ -11,7 +11,7 @@
 namespace snowhouse
 {
   template<typename ExpectedType>
-  struct HasLengthConstraint : Expression<HasLengthConstraint<ExpectedType> >
+  struct HasLengthConstraint : Expression<HasLengthConstraint<ExpectedType>>
   {
     HasLengthConstraint(const ExpectedType& expected)
         : m_expected(expected)
@@ -21,7 +21,7 @@ namespace snowhouse
     template<typename ActualType>
     bool operator()(const ActualType& actual) const
     {
-      typedef typename ActualType::size_type SizeType;
+      using SizeType = typename ActualType::size_type;
       SizeType expectedSize = static_cast<SizeType>(m_expected);
       return (actual.size() == expectedSize);
     }
@@ -41,7 +41,7 @@ namespace snowhouse
   }
 
   template<typename ExpectedType>
-  struct Stringizer<HasLengthConstraint<ExpectedType> >
+  struct Stringizer<HasLengthConstraint<ExpectedType>>
   {
     static std::string ToString(const HasLengthConstraint<ExpectedType>& constraint)
     {
