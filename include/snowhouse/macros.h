@@ -2,7 +2,7 @@
 #define SNOWHOUSE_MACROS_H
 // clang-format off
 
-#define SNOWHOUSE_MAJOR 4
+#define SNOWHOUSE_MAJOR 5
 #define SNOWHOUSE_MINOR 0
 #define SNOWHOUSE_PATCH 0
 
