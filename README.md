@@ -53,7 +53,7 @@ int main()
   {
     AssertThat(12, Is().LessThan(11).And().GreaterThan(99));
   }
-  catch(const AssertionException& ex)
+  catch (const AssertionException& ex)
   {
     std::cout << "Apparently this failed:" << std::endl;
     std::cout << ex.what() << std::endl;
