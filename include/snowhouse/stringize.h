@@ -38,8 +38,8 @@ namespace snowhouse
     // T does not support the expression, such as <<, whereas the second overload returns a char
     // directly and is chosen if T supports the expression. So using sizeof(check(<expression>))
     // returns 2 for the first overload and 1 for the second overload.
-    typedef char yes;
-    typedef char (&no)[2];
+    using yes = char;
+    using no = char (&)[2];
 
     no check(tag);
 
@@ -53,13 +53,11 @@ namespace snowhouse
       static const bool value = sizeof(check(std::cout << x)) == sizeof(yes);
     };
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
     template<>
     struct is_output_streamable<std::nullptr_t>
     {
       static const bool value = false;
     };
-#endif
   }
 
   namespace detail
@@ -122,7 +120,6 @@ namespace snowhouse
     }
   };
 
-#ifdef SNOWHOUSE_HAS_NULLPTR
   // We need this because nullptr_t has ambiguous overloads of operator<< in the standard library.
   template<>
   struct Stringizer<std::nullptr_t>
@@ -132,7 +129,6 @@ namespace snowhouse
       return "nullptr";
     }
   };
-#endif
 }
 
 #endif

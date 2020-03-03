@@ -9,7 +9,7 @@ jobs:
       image: docker://banditcpp/build-environments:debian-bullseye-compilers
     strategy:
       matrix:
-        cxx-standard: ["98", "03", "11", "14", "17"]
+        cxx-standard: ["11", "14", "17"]
         compiler-env: ["CC=gcc-9 CXX=g++-9", "CC=clang-9 CXX=clang++-9"]
     steps:
       - name: Clone and checkout commit
@@ -22,7 +22,7 @@ jobs:
     runs-on: windows-2019
     strategy:
       matrix:
-        # C++98, C++03 and C++11 is NOT supported by MSVC 2019
+        # C++11 is NOT supported by MSVC 2019
         cxx-standard: ["14", "17"]
     steps:
       - name: Clone and checkout commit

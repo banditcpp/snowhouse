@@ -5,7 +5,7 @@
 # before committing your changes.
 ---
 Language: Cpp
-Standard: Cpp03
+Standard: Cpp11
 
 ColumnLimit: 0
 IndentWidth: 2

@@ -93,7 +93,7 @@ void OperatorTests()
   it("yields error on malformed expression");
   {
     AssertTestFails(AssertThat(4, Is().Not()),
-        "The expression contains a not operator without any operand");
+        "The expression contains a \"not\" operator without any operand");
   }
 
   it("handles failing EqualsWithDelta() when larger than delta");

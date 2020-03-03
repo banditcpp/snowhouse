@@ -30,7 +30,7 @@ namespace snowhouse
   };
 
   template<typename ConstraintType>
-  struct Stringizer<ConstraintAdapter<ConstraintType> >
+  struct Stringizer<ConstraintAdapter<ConstraintType>>
   {
     static std::string ToString(const ConstraintAdapter<ConstraintType>& constraintAdapter)
     {

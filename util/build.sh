@@ -6,10 +6,10 @@ test -n "$CXX" || CXX=c++
 
 cxxstandard="$1"
 case "$cxxstandard" in
-98|03|11|14|17)
+11|14|17)
 	;;
 *)
-	echo "Usage: $0 (98|03|11|14|17) [image name]" >&2
+	echo "Usage: $0 (11|14|17) [image name]" >&2
 	exit 1
 esac
 

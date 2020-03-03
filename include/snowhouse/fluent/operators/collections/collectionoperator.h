@@ -12,11 +12,11 @@ namespace snowhouse
 {
   struct CollectionOperator : public ConstraintOperator
   {
-    void PerformOperation(ResultStack&)
+    void PerformOperation(ResultStack&) override
     {
     }
 
-    int Precedence() const
+    int Precedence() const override
     {
       return 1;
     }

@@ -11,7 +11,7 @@
 namespace snowhouse
 {
   template<typename ExpectedType, typename DeltaType>
-  struct EqualsWithDeltaConstraint : Expression<EqualsWithDeltaConstraint<ExpectedType, DeltaType> >
+  struct EqualsWithDeltaConstraint : Expression<EqualsWithDeltaConstraint<ExpectedType, DeltaType>>
   {
     EqualsWithDeltaConstraint(const ExpectedType& expected, const DeltaType& delta)
         : m_expected(expected), m_delta(delta)
@@ -35,7 +35,7 @@ namespace snowhouse
   }
 
   template<typename ExpectedType, typename DeltaType>
-  struct Stringizer<EqualsWithDeltaConstraint<ExpectedType, DeltaType> >
+  struct Stringizer<EqualsWithDeltaConstraint<ExpectedType, DeltaType>>
   {
     static std::string ToString(const EqualsWithDeltaConstraint<ExpectedType, DeltaType>& constraint)
     {

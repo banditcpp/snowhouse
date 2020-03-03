@@ -23,10 +23,9 @@ namespace snowhouse
           operators, result);
 
       unsigned int passed_elements = 0;
-      typename ActualType::const_iterator it;
-      for (it = actual.begin(); it != actual.end(); ++it)
+      for (const auto& member : actual)
       {
-        if (ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression, *it))
+        if (ConstraintOperator::EvaluateElementAgainstRestOfExpression(expression, member))
         {
           ++passed_elements;
         }
@@ -76,12 +75,12 @@ namespace snowhouse
         return newline + 2;
       }
 
-      if (str.find("\n", newline) == newline)
+      if (str.find('\n', newline) == newline)
       {
         return newline + 1;
       }
 
-      if (str.find("\r", newline) == newline)
+      if (str.find('\r', newline) == newline)
       {
         return newline + 1;
       }
@@ -103,7 +102,7 @@ namespace snowhouse
     {
       std::vector<std::string> lines;
       StringLineParser::Parse(actual, lines);
-      return CollectionConstraintEvaluator<ConstraintListType, std::vector<std::string> >::Evaluate(op, expression, result, operators, lines);
+      return CollectionConstraintEvaluator<ConstraintListType, std::vector<std::string>>::Evaluate(op, expression, result, operators, lines);
     }
   };
 }
