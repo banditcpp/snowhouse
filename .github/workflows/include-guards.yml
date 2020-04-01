@@ -1,0 +1,23 @@
+name: check-include-guards
+
+on: [push, pull_request]
+
+jobs:
+  include-guards:
+    name: Check include guards
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Check include guard of snowhouse.h
+      uses: sbeyer/include-guards-check-action@v1.0.0
+      with:
+        path: include
+        pattern: '{file}'
+        only: 'snowhouse/snowhouse\.h'
+    - name: Check include guards of remaining files
+      uses: sbeyer/include-guards-check-action@v1.0.0
+      with:
+        path: include
+        pattern: '{first_dir}_{file}'
+        ignore: 'snowhouse/snowhouse\.h'
