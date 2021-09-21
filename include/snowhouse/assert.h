@@ -16,6 +16,8 @@
 #ifndef SNOWHOUSE_NO_MACROS
 # define AssertThat(P1, P2) \
   SNOWHOUSE_ASSERT_THAT((P1), (P2), ::snowhouse::DefaultFailureHandler)
+# define Assert(P1) \
+  AssertThat((P1), ::snowhouse::IsTrue())
 #endif
 // clang-format on
 
