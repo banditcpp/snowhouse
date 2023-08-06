@@ -1,6 +1,5 @@
 snowhouse
 =========
-[![Travis CI Status](https://travis-ci.org/banditcpp/snowhouse.svg?branch=main)](https://travis-ci.org/banditcpp/snowhouse)
 [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/banditcpp/snowhouse?branch=main&svg=true)](https://ci.appveyor.com/project/banditcpp/snowhouse)
 [![GitHub Actions CI](https://github.com/banditcpp/snowhouse/workflows/CI/badge.svg)](https://github.com/banditcpp/snowhouse/actions?query=workflow%3ACI+branch%3Amain)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6a8695cf158c4f70a2d01517d12c2c13)](https://www.codacy.com/app/sbeyer/snowhouse?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=banditcpp/snowhouse&amp;utm_campaign=Badge_Grade)

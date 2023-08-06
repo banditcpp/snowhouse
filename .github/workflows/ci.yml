@@ -3,7 +3,22 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  linux-build-test:
+  linux-build-test-old:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://banditcpp/build-environments:debian-stretch-compilers
+    strategy:
+      matrix:
+        cxx-standard: ["11"]
+        compiler-env: ["CC=gcc-6 CXX=g++-6", "CC=clang-3.9 CXX=clang++-3.9"]
+    steps:
+      - name: Clone and checkout commit
+        uses: actions/checkout@v1
+      - name: Build C++${{ matrix.cxx-standard }} version with ${{ matrix.compiler-env }} and run tests
+        run:
+          ${{ matrix.compiler-env }} util/build.sh ${{ matrix.cxx-standard }}
+
+  linux-build-test-new:
     runs-on: ubuntu-latest
     container:
       image: docker://banditcpp/build-environments:debian-bullseye-compilers
