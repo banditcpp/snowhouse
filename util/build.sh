@@ -6,10 +6,10 @@ test -n "$CXX" || CXX=c++
 
 cxxstandard="$1"
 case "$cxxstandard" in
-11|14|17)
+11|14|17|20|23)
 	;;
 *)
-	echo "Usage: $0 (11|14|17) [image name]" >&2
+	echo "Usage: $0 (11|14|17|20|23) [image name]" >&2
 	exit 1
 esac
 
@@ -28,5 +28,5 @@ echo " * build path: $buildpath"
 
 mkdir -p "$SRCDIR/$buildpath"
 cd "$SRCDIR/$buildpath" || exit
-cmake -DSNOWHOUSE_BUILD_TESTS=1 -DSNOWHOUSE_RUN_TESTS=1 -D"SNOWHOUSE_CXX_STANDARD=C++$cxxstandard" "$SRCDIR" || exit
+cmake -DSNOWHOUSE_BUILD_TESTS=1 -DSNOWHOUSE_DEVELOP=1 -DSNOWHOUSE_RUN_TESTS=1 -D"SNOWHOUSE_CXX_STANDARD=C++$cxxstandard" "$SRCDIR" || exit
 cmake --build . || exit

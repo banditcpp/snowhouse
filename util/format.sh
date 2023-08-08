@@ -2,7 +2,7 @@
 # Reformat all tracked files (run this from snowhouse git root directory,
 # not from util!)
 
-DEFAULT_FORMAT_TOOL=clang-format-9
+DEFAULT_FORMAT_TOOL=clang-format-16
 test -n "$FORMATTER" || FORMATTER="$(command -v "$DEFAULT_FORMAT_TOOL")"
 
 if test -z "$FORMATTER"

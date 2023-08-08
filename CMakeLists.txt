@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.1)
 
 project(snowhouse)
 
-option(SNOWHOUSE_BUILD_TESTS    "Build the Snowhouse tests"                 OFF)
-option(SNOWHOUSE_RUN_TESTS      "Run the Snowhouse tests"                   OFF)
+option(SNOWHOUSE_BUILD_TESTS    "Build the Snowhouse tests"                      OFF)
+option(SNOWHOUSE_RUN_TESTS      "Run the Snowhouse tests"                        OFF)
+option(SNOWHOUSE_DEVELOP        "Build tests with options useful for developing" OFF)
 set(SNOWHOUSE_CXX_STANDARD "C++11" CACHE STRING "The C++ standard the examples are compiled with")
 set_property(CACHE SNOWHOUSE_CXX_STANDARD PROPERTY STRINGS "C++11" "C++14" "C++17")
 
@@ -16,6 +17,10 @@ elseif(SNOWHOUSE_CXX_STANDARD STREQUAL "C++14")
   set(CMAKE_CXX_STANDARD 14)
 elseif(SNOWHOUSE_CXX_STANDARD STREQUAL "C++17")
   set(CMAKE_CXX_STANDARD 17)
+elseif(SNOWHOUSE_CXX_STANDARD STREQUAL "C++20")
+  set(CMAKE_CXX_STANDARD 20)
+elseif(SNOWHOUSE_CXX_STANDARD STREQUAL "C++23")
+  set(CMAKE_CXX_STANDARD 23)
 else()
   message(WARNING "C++ standard \"${SNOWHOUSE_CXX_STANDARD}\" not known, falling back to default")
 endif()
@@ -29,6 +34,11 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
     -Wall -Wextra -pedantic -Wdeprecated -Wdeprecated-declarations -Wnon-virtual-dtor \
     -Wshadow -Wfloat-equal -Wundef -Wendif-labels -Wno-error=unknown-pragmas")
+
+  if (SNOWHOUSE_DEVELOP)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
+      -Werror -fsanitize=address,undefined")
+  endif()
 endif()
 
 message(STATUS "C++ compiler flags: ${CMAKE_CXX_FLAGS}")

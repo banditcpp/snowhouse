@@ -79,7 +79,7 @@ void BasicAssertions()
 
   it("contains location information");
   {
-    int line;
+    int line = -1;
     std::string file;
 
     try
