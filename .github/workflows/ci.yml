@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  linux-build-test-old:
+  linux-build-test-minimum-compiler-version:
     runs-on: ubuntu-latest
     container:
       image: docker://banditcpp/build-environments:debian-stretch-compilers
@@ -18,18 +18,31 @@ jobs:
         run:
           ${{ matrix.compiler-env }} util/build.sh ${{ matrix.cxx-standard }}
 
-  linux-build-test-new:
+  linux-build-test-recent-gcc:
     runs-on: ubuntu-latest
     container:
-      image: docker://banditcpp/build-environments:debian-bullseye-compilers
+      image: docker://banditcpp/build-environments:gcc-13
     strategy:
       matrix:
         cxx-standard: ["11", "14", "17"]
-        compiler-env: ["CC=gcc-9 CXX=g++-9", "CC=clang-9 CXX=clang++-9"]
     steps:
       - name: Clone and checkout commit
         uses: actions/checkout@v1
-      - name: Build C++${{ matrix.cxx-standard }} version with ${{ matrix.compiler-env }} and run tests
+      - name: Build C++${{ matrix.cxx-standard }} version with recent gcc and run tests
+        run:
+          ${{ matrix.compiler-env }} util/build.sh ${{ matrix.cxx-standard }}
+
+  linux-build-test-recent-clang:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://banditcpp/build-environments:clang-16
+    strategy:
+      matrix:
+        cxx-standard: ["11", "14", "17"]
+    steps:
+      - name: Clone and checkout commit
+        uses: actions/checkout@v1
+      - name: Build C++${{ matrix.cxx-standard }} version with recent clang and run tests
         run:
           ${{ matrix.compiler-env }} util/build.sh ${{ matrix.cxx-standard }}
 
