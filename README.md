@@ -1,7 +1,7 @@
 snowhouse
 =========
 [![GitHub Actions CI](https://github.com/banditcpp/snowhouse/workflows/CI/badge.svg)](https://github.com/banditcpp/snowhouse/actions?query=workflow%3ACI+branch%3Amain)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6a8695cf158c4f70a2d01517d12c2c13)](https://www.codacy.com/app/sbeyer/snowhouse?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=banditcpp/snowhouse&amp;utm_campaign=Badge_Grade)
+[![Codacy quality grade](https://app.codacy.com/project/badge/Grade/204e42185a3a4c92b55321ec01a79567)](https://app.codacy.com/gh/banditcpp/snowhouse/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 An assertion library for C++
 
