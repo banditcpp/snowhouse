@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef SNOWHOUSE_CONTRAINTOPERATOR_H
-#define SNOWHOUSE_CONTRAINTOPERATOR_H
+#ifndef SNOWHOUSE_CONSTRAINTOPERATOR_H
+#define SNOWHOUSE_CONSTRAINTOPERATOR_H
 
 #include "../../stringize.h"
 #include "../constraintlist.h"
