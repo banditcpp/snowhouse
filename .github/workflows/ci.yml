@@ -24,7 +24,7 @@ jobs:
       image: docker://banditcpp/build-environments:gcc-13
     strategy:
       matrix:
-        cxx-standard: ["11", "14", "17"]
+        cxx-standard: ["11", "14", "17", "20", "23"]
     steps:
       - name: Clone and checkout commit
         uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
       image: docker://banditcpp/build-environments:clang-16
     strategy:
       matrix:
-        cxx-standard: ["11", "14", "17"]
+        cxx-standard: ["11", "14", "17", "20", "23"]
     steps:
       - name: Clone and checkout commit
         uses: actions/checkout@v3
